@@ -12,6 +12,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
     CustomerComponent,
     CustomerDetailsComponent,
     AddCustomerComponent,
-    FlightSearchComponent
+    FlightSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
