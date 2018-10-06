@@ -29,7 +29,7 @@ const routes: Routes = [
    },
    { 
      path: '', 
-     redirectTo: 'customers', 
+     redirectTo: 'login', 
      pathMatch: 'full'
    }, 
 ];
