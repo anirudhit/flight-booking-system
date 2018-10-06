@@ -7,6 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
+  imports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
+],
   exports: [
     MatToolbarModule,
     MatCardModule,
