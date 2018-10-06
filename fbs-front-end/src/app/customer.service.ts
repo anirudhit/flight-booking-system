@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CustomerService {
-  private customersUrl = 'http://localhost:8080/api/customers';  // URL to web api
+  private customersUrl = '/api/customers';  //URL to web api
   constructor( 
     private http: HttpClient
   ) { }
