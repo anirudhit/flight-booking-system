@@ -13,6 +13,7 @@ body {
     cursor: pointer;
 }
 
+/* Styles for the header in login, register and header component */
 .application-logo {
     margin: 0 4px 3px 0;
     height: 35px;
@@ -20,4 +21,17 @@ body {
 }
 .fill-remaining-space {
   flex: 1 1 auto;
+}
+
+/* Styles for the user card login and register */
+.user-mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+.user-card-content {
+  padding: 60px 1rem;
+}
+.full-width-input {
+  width: 100%;
 }
