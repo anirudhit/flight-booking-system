@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/components/login.component';
+import { RegisterComponent } from './register/register.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/components/login.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent//,
+    LoginComponent,
+    RegisterComponent//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
