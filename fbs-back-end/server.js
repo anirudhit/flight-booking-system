@@ -14,12 +14,13 @@ app.use(cors(corsOptions))
 const db = require('./app/config/db.config.js');
   
 // force: true will drop the table if it already exists
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync with { force: true }');
-  initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync with { force: true }');
+//   initial();
+// });
 
 require('./app/route/customer.route.js')(app);
+require('./app/route/login.route.js')(app);
  
 // Create a Server
 var server = app.listen(8080, function () {
