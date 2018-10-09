@@ -7,10 +7,10 @@
   <a mat-button routerLink="/register">Register</a>
 </mat-toolbar>
 
-<div class="signin-content">
-  <mat-card>
+<div class="user-card-content">
+  <mat-card class="user-mat-card">
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
         <p>Please login to continue</p>
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Username" formControlName="userName" required>
