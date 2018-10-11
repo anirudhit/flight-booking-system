@@ -9,8 +9,14 @@ body {
     font-family: 'Roboto', sans-serif;
 } */
 
+.clearfix{
+    clear: both;
+}
 .cursor-pointer {
     cursor: pointer;
+}
+.mr-t-15{
+    margin-top: 15px;
 }
 
 /* Styles for the header in login, register and header component */
