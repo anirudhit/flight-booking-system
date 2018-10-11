@@ -10,7 +10,7 @@ exports.findLoggedInUser = (req, res) => {
 		'imageUrl',
 		'name',
 		'email'
-	 ],where: {name: loginUser.name} }).then(user => {
+	 ],where: {username: loginUser.username} }).then(user => {
 		// Send logged in user
 		if(user){
 			LoginUserPwd.findOne({ attributes: [
