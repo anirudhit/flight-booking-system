@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.userLoginForm.valid) {
       let loginUser = new LoginUser();
-      loginUser.name = this.userLoginForm.value.userName;
+      loginUser.username = this.userLoginForm.value.userName;
       loginUser.password = this.userLoginForm.value.password;
       return this.loginService.getLoggedInUser(loginUser)
                .subscribe(
