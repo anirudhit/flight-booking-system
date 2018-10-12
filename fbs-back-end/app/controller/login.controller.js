@@ -1,13 +1,13 @@
 const db = require('../config/db.config.js');
-const LoginUser = db.users;
-const LoginUserPwd = db.userpwds;
+const LoginUser = db.t_users;
+const LoginUserPwd = db.t_user_pwds;
 // Authenticate the logged in user
 exports.findLoggedInUser = (req, res) => {
 	let loginUser = req.body;
 	LoginUser.findOne({ attributes: [
 		'id',
 		'username',
-		'imageUrl',
+		'image_url',
 		'name',
 		'email'
 	 ],where: {username: loginUser.username} }).then(user => {
@@ -15,9 +15,9 @@ exports.findLoggedInUser = (req, res) => {
 		if(user){
 			LoginUserPwd.findOne({ attributes: [
 				'id',
-				'userid',
+				'user_id',
 				'password'
-		 	],where: {userid: user.id} }).then(userPassword => {
+		 	],where: {user_id: user.id} }).then(userPassword => {
 				// check logged in user password
 				if(userPassword.password === loginUser.password){
 					res.json(user);
