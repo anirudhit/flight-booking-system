@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-	const User = sequelize.define('user', {
+	const User = sequelize.define('t_users', {
 	  id: {
 			type: Sequelize.INTEGER,
 			primaryKey: true
@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
 	  username: {
 			type: Sequelize.STRING
 	  },
-	  imageUrl: {
+	  image_url: {
 		  type: Sequelize.STRING
     },
     name: {
