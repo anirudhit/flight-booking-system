@@ -15,9 +15,9 @@ exports.findLoggedInUser = (req, res) => {
 		if(user){
 			LoginUserPwd.findOne({ attributes: [
 				'id',
-				'user_id',
+				'userid',
 				'password'
-		 	],where: {user_id: user.id} }).then(userPassword => {
+		 	],where: {userid: user.id} }).then(userPassword => {
 				// check logged in user password
 				if(userPassword.password === loginUser.password){
 					res.json(user);
