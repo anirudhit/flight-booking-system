@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-	const UserPwd = sequelize.define('userPwd', {
-	  userid: {
+	const UserPwd = sequelize.define('t_user_pwds', {
+	  user_id: {
 			type: Sequelize.STRING
 	  },
 	  password: {
