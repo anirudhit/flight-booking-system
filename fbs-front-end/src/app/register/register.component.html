@@ -10,7 +10,7 @@
 <div class="user-card-content">
   <mat-card class="user-mat-card">
     <mat-card-content>
-      <form [formGroup]="userRegisterForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="userRegisterForm">
         <p>Please register with github username to continue</p>
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Username" formControlName="userName" required>
@@ -24,7 +24,20 @@
             Please enter your password
           </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">Register</button>
+        <button mat-raised-button color="primary"
+        (click)="checkUsername()">Register</button>
+
+        <div class="exception-message clearfix mr-t-15" *ngIf="showErrorMessage">
+          <mat-error>
+            {{errorMessage}}
+          </mat-error>
+        </div>
+
+        <div class="success-message clearfix mr-t-15" *ngIf="showHintMessage">
+          <mat-hint>
+            User registered successfully.
+          </mat-hint><a routerLink="/login">Login</a>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>
