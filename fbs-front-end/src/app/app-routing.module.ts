@@ -13,7 +13,8 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: LoginComponent }
   // { path: '**', redirectTo: ''},
   // { 
   //   path: 'customers', 
