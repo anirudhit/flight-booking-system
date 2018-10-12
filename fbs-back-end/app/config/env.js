@@ -1,6 +1,6 @@
 const env = {
   //Localhost instance mapping
-  database: 'testdb',
+  database: 'flightbookingsystem',
   username: 'root',
   password: 'uah@1208',
   host: 'localhost',
