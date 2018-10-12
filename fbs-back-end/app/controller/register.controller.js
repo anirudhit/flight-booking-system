@@ -1,13 +1,13 @@
 const db = require('../config/db.config.js');
-const LoginUser = db.users;
-const LoginUserPwd = db.userpwds;
+const LoginUser = db.t_users;
+const LoginUserPwd = db.t_user_pwds;
 
 exports.registerUser = (req, res) => {
     let registerUserReq = req.body;
     // Save to MySQL database
     let registerUser = {
         username: registerUserReq.username,
-        imageUrl: registerUserReq.imageUrl,
+        image_url: registerUserReq.imageUrl,
         name: registerUserReq.name,
         email: registerUserReq.email
     };
@@ -19,16 +19,14 @@ exports.registerUser = (req, res) => {
                 // Send logged in user
                 if(user){
                     let registerUserPassword = {
-                        userid: user.id,
+                        user_id: user.id,
                         password: registerUserReq.password
                     };
                     LoginUserPwd.create(registerUserPassword).then(result => {		
                         // Send the cerated acknowledgement to client
                         if(result){
-                            console.log("in if");
                             res.json(true);
                         }else{
-                            console.log("in else");
                             res.json(false);
                         }
                     });
