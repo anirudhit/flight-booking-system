@@ -21,6 +21,7 @@ const db = require('./app/config/db.config.js');
 
 require('./app/route/customer.route.js')(app);
 require('./app/route/login.route.js')(app);
+require('./app/route/register.route.js')(app);
  
 // Create a Server
 var server = app.listen(8080, function () {
