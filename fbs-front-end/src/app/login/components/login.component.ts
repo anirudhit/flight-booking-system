@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.authService.logout();
   }
 
   isFieldInvalid(field: string) { // {6}
@@ -32,22 +33,20 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  login() {
     if (this.userLoginForm.valid) {
       let loginUser = new LoginUser();
       loginUser.username = this.userLoginForm.value.userName;
       loginUser.password = this.userLoginForm.value.password;
       return this.loginService.getLoggedInUser(loginUser)
-               .subscribe(
-                 loggedInUser => {
-                  if(loggedInUser){
-                    this.authService.login(this.userLoginForm.value);    // {7}
-                    this.formSubmitAttempt = true;             // {8}
-                  }else{
-                    console.log("In else");
-                  }
-                 }
-                );
+      .subscribe(loggedInUser => {
+        if(loggedInUser){
+          this.authService.login(this.userLoginForm.value);    // {7}
+          this.formSubmitAttempt = true;             // {8}
+        }else{
+          console.log("In else");
+        }
+      });
     }
   }
 }
