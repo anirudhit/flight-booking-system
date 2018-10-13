@@ -17,13 +17,21 @@ export class AuthService {
 
   login(user: User) {
     if (user.userName !== '' && user.password !== '' ) {
-      this.loggedIn.next(true);
+      localStorage.setItem('isLoggedIn', "true");
+      localStorage.setItem('token', user.userName);
+      this.setLoginHeader();
       this.router.navigate(['/home']);
     }
   }
 
+  setLoginHeader(){
+    this.loggedIn.next(true);
+  }
+
   logout() {
     this.loggedIn.next(false);
+    localStorage.setItem('isLoggedIn', "false");
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }
