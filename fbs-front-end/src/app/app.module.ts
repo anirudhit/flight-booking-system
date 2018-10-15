@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/components/login.component';
 import { RegisterComponent } from './register/register.component';
+import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent//,
+    RegisterComponent,
+    FlightScheduleComponent//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
