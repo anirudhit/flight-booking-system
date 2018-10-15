@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/components/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { AddCustomerComponent } from './add-customer/add-customer.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
+  { path: 'flightschedule', component: FlightScheduleComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent }
   // { path: '**', redirectTo: ''},
   // { 
