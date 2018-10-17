@@ -15,8 +15,34 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+.mr-t-5{
+    margin-top: 5px;
+}
+.mr-t-10{
+    margin-top: 10px;
+}
 .mr-t-15{
     margin-top: 15px;
+}
+.mr-t-20{
+    margin-top: 20px;
+}
+
+.mr-b-5{
+    margin-bottom: 5px;
+}
+.mr-b-10{
+    margin-bottom: 10px;
+}
+.mr-b-15{
+    margin-bottom: 15px;
+}
+.mr-b-20{
+    margin-bottom: 20px;
+}
+
+.full-width{
+    width: 100%;
 }
 
 /* Styles for the header in login, register and header component */
