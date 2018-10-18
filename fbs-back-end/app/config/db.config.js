@@ -23,6 +23,8 @@ db.sequelize = sequelize;
 db.customers = require('../model/customer.model.js')(sequelize, Sequelize);
 db.t_users = require('../model/user.model.js')(sequelize, Sequelize);
 db.t_user_pwds = require('../model/userPwds.model.js')(sequelize, Sequelize);
+db.t_airports = require('../model/airport.model.js')(sequelize, Sequelize);
+db.t_flights = require('../model/flight.model.js')(sequelize, Sequelize);
 
 
 module.exports = db;
