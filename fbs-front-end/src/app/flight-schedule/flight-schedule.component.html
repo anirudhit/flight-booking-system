@@ -1,3 +1,103 @@
-<p>
-  flight-schedule works!
-</p>
+<div class="clearfix mr-t-15 mr-b-15">
+    <h2 class="mat-h2">Schedule a flight</h2>
+</div>
+
+<form [formGroup]="adminFlightScheduleForm">
+  <mat-grid-list cols="5" rowHeight="75px">
+    <div class="clearfix">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Arrival" aria-label="Arrival" [matAutocomplete]="autoArrival"
+              formControlName="arrival" required>
+            <mat-autocomplete #autoArrival="matAutocomplete">
+              <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
+                title="{{airport.name}}">
+                <span>{{airport.city}}</span> |
+                <small>({{airport.code}})</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error>
+                Please select the flight arrival
+            </mat-error>
+          </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Departure" aria-label="Departure" [matAutocomplete]="autoDeparture"
+            formControlName="departure" required>
+          <mat-autocomplete #autoDeparture="matAutocomplete">
+            <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
+              title="{{airport.name}}">
+              <span>{{airport.city}} ({{airport.code}})</span> |
+              <small>{{airport.name}}</small>
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error>
+              Please select the flight departure
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+    </div>
+
+    <div class="clearfix">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Start time" formControlName="startTime" required>
+          <mat-error>
+            Please enter the flight start time
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="End time" formControlName="endTime" required>
+          <mat-error>the flight end time
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+    </div>
+
+    <div class="clearfix">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Flight fare" formControlName="flightFare" required>
+            <mat-error>
+              Please enter the flight fare
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+    </div>
+
+    <div class="clearfix">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Flight" aria-label="Flight" [matAutocomplete]="autoFlight"
+              formControlName="flightId" required>
+            <mat-autocomplete #autoFlight="matAutocomplete">
+              <mat-option *ngFor="let flight of flightsList" [value]="flight.code"
+                title="{{flight.name}}">
+                <span>{{flight.code}} ({{flight.name}})</span>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error>
+                Please select a flight
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </div>
+  </mat-grid-list>
+</form>
