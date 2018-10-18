@@ -7,6 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -16,7 +19,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatAutocompleteModule
 ],
   exports: [
     MatToolbarModule,
@@ -25,7 +31,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ]
 })
 export class AppMaterialModule {}
