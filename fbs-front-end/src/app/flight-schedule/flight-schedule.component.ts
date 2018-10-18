@@ -19,7 +19,6 @@ export class FlightScheduleComponent implements OnInit {
   ngOnInit() {
     this.createAdminFlightScheduleForm();
     this.loadAirportsArrivalList();
-    this.loadAirportsDepartureList();
     this.loadFlightsList();
   }
 
@@ -41,8 +40,8 @@ export class FlightScheduleComponent implements OnInit {
     });
   }
 
-  loadAirportsDepartureList(){
-    this.flightScheduleService.getAirportsDepartureList()
+  loadAirportsDepartureList(arrivalId){
+    this.flightScheduleService.getAirportsDepartureList(arrivalId)
     .subscribe(airports => {
         this.departureAirportList = airports;
     });
@@ -56,8 +55,8 @@ export class FlightScheduleComponent implements OnInit {
   }
 
   selectArrival(arrivalObj){
-    console.log(arrivalObj);
-    this.adminFlightScheduleForm.get('arrival').patchValue(arrivalObj.id);
+    this.adminFlightScheduleForm.get('departure').patchValue("");
+    this.loadAirportsDepartureList(arrivalObj.id);
   }
 
   scheduleFlight(){

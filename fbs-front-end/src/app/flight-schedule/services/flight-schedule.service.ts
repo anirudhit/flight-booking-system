@@ -19,8 +19,8 @@ export class FlightScheduleService {
     return this.http.get(url);
   }
 
-  getAirportsDepartureList(){
-    let url = this.airportsUrl + '/departure/list';
+  getAirportsDepartureList(arrivalId){
+    let url = this.airportsUrl + '/departure/list?id='+arrivalId;
     return this.http.get(url);
   }
 
