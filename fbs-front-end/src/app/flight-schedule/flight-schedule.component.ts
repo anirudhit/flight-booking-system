@@ -11,6 +11,11 @@ export class FlightScheduleComponent implements OnInit {
   arrivalAirportList: any;
   departureAirportList: any;
   flightsList: any;
+  arrival_id: number = 0;
+  departure_id: number = 0;
+  duration: string = "0hr 0min";
+  flight_id: number = 0;
+
   constructor(
     private fb: FormBuilder,
     private flightScheduleService: FlightScheduleService
@@ -26,8 +31,8 @@ export class FlightScheduleComponent implements OnInit {
     this.adminFlightScheduleForm = this.fb.group({
       arrival: ['', Validators.required],
       departure: [{ value: '', disabled:true }, Validators.required],
-      startTime: ['', Validators.required],
-      endTime: ['', Validators.required],
+      arrivalTime: ['', Validators.required],
+      departureTime: ['', Validators.required],
       flightFare: ['', Validators.required],
       flightId: ['', Validators.required]
     });
@@ -57,13 +62,50 @@ export class FlightScheduleComponent implements OnInit {
   selectArrival(arrivalObj){
     this.adminFlightScheduleForm.get('departure').patchValue("");
     this.adminFlightScheduleForm.get('departure').enable();
+    this.arrival_id = arrivalObj.id;
     this.loadAirportsDepartureList(arrivalObj.id);
+  }
+
+  selectDeparture(departureObj){
+    this.departure_id = departureObj.id;
+  }
+
+  selectFlight(flightObj){
+    this.flight_id = flightObj.id;
+  }
+
+  parseTime(cTime){
+    if (cTime == '') return null;
+    var d = new Date();
+    var time = cTime.match(/(\d+)(:(\d\d))?\s*(p?)/);
+    d.setHours( parseInt(time[1]) + ( ( parseInt(time[1]) < 12 && time[4] ) ? 12 : 0) );
+    d.setMinutes( parseInt(time[3]) || 0 );
+    d.setSeconds(0, 0);
+    return d;
   }
 
   scheduleFlight(){
     if(this.adminFlightScheduleForm.valid){
-      console.log(this.adminFlightScheduleForm.value);
-      alert("valid");
+
+      let tStart: any = this.parseTime(this.adminFlightScheduleForm.value.arrivalTime);
+      let tStop: any = this.parseTime(this.adminFlightScheduleForm.value.departureTime);
+
+      let minutes: any = Math.abs((tStop - tStart)/(1000*60));
+
+      let hrs = Math.floor(minutes/60);
+      let min = minutes%60;
+
+      this.duration = hrs + 'Hr ' + min + 'Min';
+      let req ={
+        arrival_id:     this.arrival_id,
+        departure_id:   this.departure_id,
+        arrival_time:   this.adminFlightScheduleForm.value.arrivalTime,
+        departure_time: this.adminFlightScheduleForm.value.departureTime,
+        fare:           this.adminFlightScheduleForm.value.flightFare,
+        duration:       this.duration,
+        flight_id:      this.flight_id
+      }
+      console.log(req);
     }
   }
 

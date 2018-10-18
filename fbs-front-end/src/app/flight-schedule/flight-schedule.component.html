@@ -29,7 +29,7 @@
             formControlName="departure" required>
           <mat-autocomplete #autoDeparture="matAutocomplete">
             <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
-              title="{{airport.name}}">
+              title="{{airport.name}}"  (click)="selectDeparture(airport)">
               <span>{{airport.city}} ({{airport.code}})</span> |
               <small>{{airport.name}}</small>
             </mat-option>
@@ -46,18 +46,18 @@
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="Start time" formControlName="startTime" required>
+          <input matInput placeholder="Start time" formControlName="arrivalTime" required>
           <mat-error>
-            Please enter the flight start time
+            Please enter the flight arrival time
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="End time" formControlName="endTime" required>
+          <input matInput placeholder="End time" formControlName="departureTime" required>
           <mat-error>
-              Please enter the flight end time
+              Please enter the flight departure time
           </mat-error>
         </mat-form-field>
       </mat-grid-tile>
@@ -87,7 +87,7 @@
               formControlName="flightId" required>
             <mat-autocomplete #autoFlight="matAutocomplete">
               <mat-option *ngFor="let flight of flightsList" [value]="flight.code"
-                title="{{flight.name}}">
+                title="{{flight.name}}" (click)="selectFlight(flight)">
                 <span>{{flight.code}} ({{flight.name}})</span>
               </mat-option>
             </mat-autocomplete>

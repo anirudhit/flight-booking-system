@@ -28,4 +28,9 @@ export class FlightScheduleService {
     let url = this.flightsUrl + '/list';
     return this.http.get(url);
   }
+
+  scheduleFlight(req){
+    let url = this.flightsUrl + '/schedule';
+    return this.http.post(req,url);
+  }
 }
