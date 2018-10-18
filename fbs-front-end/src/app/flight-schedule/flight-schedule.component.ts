@@ -101,11 +101,20 @@ export class FlightScheduleComponent implements OnInit {
         departure_id:   this.departure_id,
         arrival_time:   this.adminFlightScheduleForm.value.arrivalTime,
         departure_time: this.adminFlightScheduleForm.value.departureTime,
-        fare:           this.adminFlightScheduleForm.value.flightFare,
+        fare:           Number(this.adminFlightScheduleForm.value.flightFare),
         duration:       this.duration,
         flight_id:      this.flight_id
       }
       console.log(req);
+
+      this.flightScheduleService.scheduleFlight(req)
+      .subscribe(schedule => {
+          console.log(schedule);
+          if(schedule){
+            this.adminFlightScheduleForm.reset();
+          }
+      });
+
     }
   }
 

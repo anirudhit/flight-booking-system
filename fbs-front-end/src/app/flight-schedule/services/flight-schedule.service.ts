@@ -31,6 +31,6 @@ export class FlightScheduleService {
 
   scheduleFlight(req){
     let url = this.flightsUrl + '/schedule';
-    return this.http.post(req,url);
+    return this.http.post(url, req, httpOptions);
   }
 }
