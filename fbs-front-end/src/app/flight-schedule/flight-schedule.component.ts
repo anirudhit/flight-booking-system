@@ -25,7 +25,7 @@ export class FlightScheduleComponent implements OnInit {
   createAdminFlightScheduleForm(){
     this.adminFlightScheduleForm = this.fb.group({
       arrival: ['', Validators.required],
-      departure: ['', Validators.required],
+      departure: [{ value: '', disabled:true }, Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
       flightFare: ['', Validators.required],
@@ -56,6 +56,7 @@ export class FlightScheduleComponent implements OnInit {
 
   selectArrival(arrivalObj){
     this.adminFlightScheduleForm.get('departure').patchValue("");
+    this.adminFlightScheduleForm.get('departure').enable();
     this.loadAirportsDepartureList(arrivalObj.id);
   }
 
