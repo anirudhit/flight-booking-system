@@ -18,27 +18,32 @@ export class FlightScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.createAdminFlightScheduleForm();
-    this.loadAirportsList();
+    this.loadAirportsArrivalList();
+    this.loadAirportsDepartureList();
     this.loadFlightsList();
   }
 
   createAdminFlightScheduleForm(){
     this.adminFlightScheduleForm = this.fb.group({
-      arrival: [],
-      departure: [],
-      startTime: [],
-      endTime: [],
-      flightFare: [],
-      flightId: [],
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      arrival: ['', Validators.required],
+      departure: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      flightFare: ['', Validators.required],
+      flightId: ['', Validators.required]
     });
   }
 
-  loadAirportsList(){
-    this.flightScheduleService.getAirportsList()
+  loadAirportsArrivalList(){
+    this.flightScheduleService.getAirportsArrivalList()
     .subscribe(airports => {
         this.arrivalAirportList = airports;
+    });
+  }
+
+  loadAirportsDepartureList(){
+    this.flightScheduleService.getAirportsDepartureList()
+    .subscribe(airports => {
         this.departureAirportList = airports;
     });
   }
@@ -48,6 +53,18 @@ export class FlightScheduleComponent implements OnInit {
     .subscribe(flights => {
         this.flightsList = flights;
     });
+  }
+
+  selectArrival(arrivalObj){
+    console.log(arrivalObj);
+    this.adminFlightScheduleForm.get('arrival').patchValue(arrivalObj.id);
+  }
+
+  scheduleFlight(){
+    if(this.adminFlightScheduleForm.valid){
+      console.log(this.adminFlightScheduleForm.value);
+      alert("valid");
+    }
   }
 
 }

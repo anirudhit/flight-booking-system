@@ -12,9 +12,9 @@
               formControlName="arrival" required>
             <mat-autocomplete #autoArrival="matAutocomplete">
               <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
-                title="{{airport.name}}">
-                <span>{{airport.city}}</span> |
-                <small>({{airport.code}})</small>
+                title="{{airport.name}}" (click)="selectArrival(airport)">
+                <span>{{airport.city}} ({{airport.code}})</span> |
+                <small>({{airport.name}})</small>
               </mat-option>
             </mat-autocomplete>
             <mat-error>
@@ -98,6 +98,14 @@
         <mat-grid-tile></mat-grid-tile>
         <mat-grid-tile></mat-grid-tile>
         <mat-grid-tile></mat-grid-tile>
+      </div>
+
+      <div class="clearfix">
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-raised-button color="primary"
+            (click)="scheduleFlight()">Schedule flight</button>
+        </mat-grid-tile>
       </div>
   </mat-grid-list>
 </form>
