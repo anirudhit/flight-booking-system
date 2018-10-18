@@ -27,7 +27,7 @@ exports.airportsDepartureList = (req, res) => {
         attributes: ['id','name','code','city','country_code'],
         where: {
             id: {
-              [Op.ne]: [1]
+              [Op.ne]: [req.query.id]
             }
         }
       }).then(airports => {
