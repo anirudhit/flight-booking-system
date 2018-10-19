@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightScheduleService } from './services/flight-schedule.service';
 @Component({
   selector: 'app-flight-schedule',
@@ -18,6 +19,7 @@ export class FlightScheduleComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private flightScheduleService: FlightScheduleService
   ) { }
 
@@ -84,6 +86,10 @@ export class FlightScheduleComponent implements OnInit {
     return d;
   }
 
+  scheduledFlightToast(message: string, action: string) {
+    this.snackBar.open(message, action);
+  }
+
   scheduleFlight(){
     if(this.adminFlightScheduleForm.valid){
 
@@ -109,9 +115,11 @@ export class FlightScheduleComponent implements OnInit {
 
       this.flightScheduleService.scheduleFlight(req)
       .subscribe(schedule => {
-          console.log(schedule);
           if(schedule){
             this.adminFlightScheduleForm.reset();
+            this.scheduledFlightToast("Flight scheduled","Ok");
+          }else{
+            this.scheduledFlightToast("Sorry. Some error occured","Ok");
           }
       });
 
