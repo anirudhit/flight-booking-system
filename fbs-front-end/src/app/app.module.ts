@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/components/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -37,7 +38,8 @@ import { FlightScheduleComponent } from './flight-schedule/flight-schedule.compo
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MatSnackBarModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
