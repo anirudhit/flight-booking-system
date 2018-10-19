@@ -15,10 +15,12 @@ export class AuthService {
     private router: Router
   ) {}
 
-  login(user: User) {
-    if (user.userName !== '' && user.password !== '' ) {
+  login(user: any) {
+    if (user) {
       localStorage.setItem('isLoggedIn', "true");
-      localStorage.setItem('token', user.userName);
+      localStorage.setItem('token', user.username);
+      localStorage.setItem('id', user.id);
+      localStorage.setItem('image_url', user.image_url);
       this.setLoginHeader();
       this.router.navigate(['/home']);
     }
@@ -32,6 +34,8 @@ export class AuthService {
     this.loggedIn.next(false);
     localStorage.setItem('isLoggedIn', "false");
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('image_url');
     this.router.navigate(['/login']);
   }
 }
