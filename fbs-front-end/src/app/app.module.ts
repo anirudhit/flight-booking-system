@@ -15,6 +15,7 @@ import { LoginComponent } from './login/components/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProfileComponent } from './profile/profile.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -27,7 +28,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    FlightScheduleComponent//,
+    FlightScheduleComponent,
+    ProfileComponent//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
