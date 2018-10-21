@@ -24,6 +24,8 @@ require('./app/route/login.route.js')(app);
 require('./app/route/register.route.js')(app);
 require('./app/route/airport.route.js')(app);
 require('./app/route/flight.route.js')(app);
+require('./app/route/user.route.js')(app);
+
  
 // Create a Server
 var server = app.listen(8080, function () {
