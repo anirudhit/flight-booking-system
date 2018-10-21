@@ -1,8 +1,10 @@
 <mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
-  <span>
-    <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
-    Hsv Air
-  </span>
+  <a mat-button routerLink="/home">
+    <span>
+      <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
+      Hsv Air
+    </span>
+  </a>
   <span class="fill-remaining-space"></span>
   <button mat-button>About</button>
   <button mat-button>Contact</button>
