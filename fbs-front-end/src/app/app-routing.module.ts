@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'flightschedule', component: FlightScheduleComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: '', component: LoginComponent }
+  { path: '', component: HomeComponent }
   // { path: '**', redirectTo: ''},
   // { 
   //   path: 'customers', 
