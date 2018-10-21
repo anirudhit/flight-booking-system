@@ -24,15 +24,15 @@ export class HomeComponent implements OnInit {
 
   initMenu(){
     this.menuOptions.push({
-      name: "Profile",
-      page: "/profile"
-    });
-    this.menuOptions.push({
       name: "Book a ticket",
       page: "/profile"
     });
     this.menuOptions.push({
       name: "Booking history",
+      page: "/profile"
+    });
+    this.menuOptions.push({
+      name: "Profile",
       page: "/profile"
     });
     this.menuOptions.push({
