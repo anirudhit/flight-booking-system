@@ -35,6 +35,8 @@ export class FlightScheduleComponent implements OnInit {
       departure: [{ value: '', disabled:true }, Validators.required],
       arrivalTime: ['', Validators.required],
       departureTime: ['', Validators.required],
+      arrivalTerminal: ['', Validators.required],
+      departureTerminal: ['', Validators.required],
       flightFare: ['', Validators.required],
       flightId: ['', Validators.required]
     });
@@ -107,6 +109,8 @@ export class FlightScheduleComponent implements OnInit {
         departure_id:   this.departure_id,
         arrival_time:   this.adminFlightScheduleForm.value.arrivalTime,
         departure_time: this.adminFlightScheduleForm.value.departureTime,
+        arrival_terminal:   this.adminFlightScheduleForm.value.arrivalTerminal,
+        departure_terminal: this.adminFlightScheduleForm.value.departureTerminal,
         fare:           Number(this.adminFlightScheduleForm.value.flightFare),
         duration:       this.duration,
         flight_id:      this.flight_id
