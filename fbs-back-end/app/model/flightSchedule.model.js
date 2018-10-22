@@ -16,6 +16,12 @@ module.exports = (sequelize, Sequelize) => {
         departure_time: {
             type: Sequelize.STRING
         },
+        arrival_terminal: {
+            type: Sequelize.STRING
+        },
+        departure_terminal: {
+            type: Sequelize.STRING
+        },
         fare: {
             type: Sequelize.STRING
         },
