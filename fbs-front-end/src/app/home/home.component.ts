@@ -39,6 +39,10 @@ export class HomeComponent implements OnInit {
       name: "Schedule flight",
       page: "/flightschedule"
     });
+    this.menuOptions.push({
+      name: "Flight history",
+      page: "/flightshistory"
+    });
   }
 
 }
