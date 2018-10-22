@@ -14,7 +14,6 @@ exports.flightsList = (req, res) => {
 //Create a Flight schedule
 exports.createFlightSchedule = (req, res) => {
     let flightSchedule = req.body;
-    console.log(flightSchedule);
     FlightSchedule.create(flightSchedule).then(result => {
 		res.json(result);
 	});
