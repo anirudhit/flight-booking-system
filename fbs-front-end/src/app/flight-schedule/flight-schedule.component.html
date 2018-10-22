@@ -2,111 +2,118 @@
     <h2 class="mat-h2">Schedule a flight</h2>
 </div>
 
-<form [formGroup]="adminFlightScheduleForm">
-  <mat-grid-list cols="5" rowHeight="75px">
-    <div class="clearfix">
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Arrival" aria-label="Arrival" [matAutocomplete]="autoArrival"
-              formControlName="arrival" required>
-            <mat-autocomplete #autoArrival="matAutocomplete">
-              <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
-                title="{{airport.name}}" (click)="selectArrival(airport)">
-                <span>{{airport.city}} ({{airport.code}})</span> |
-                <small>({{airport.name}})</small>
-              </mat-option>
-            </mat-autocomplete>
-            <mat-error>
-                Please select the flight arrival
-            </mat-error>
-          </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Departure" aria-label="Departure" [matAutocomplete]="autoDeparture"
-            formControlName="departure" required>
-          <mat-autocomplete #autoDeparture="matAutocomplete">
-            <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
-              title="{{airport.name}}"  (click)="selectDeparture(airport)">
-              <span>{{airport.city}} ({{airport.code}})</span> |
-              <small>{{airport.name}}</small>
-            </mat-option>
-          </mat-autocomplete>
-          <mat-error>
-              Please select the flight departure
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-    </div>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="adminFlightScheduleForm">
+            <mat-grid-list cols="5" rowHeight="75px">
+              <div class="clearfix">
+                <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Arrival" aria-label="Arrival" [matAutocomplete]="autoArrival"
+                        formControlName="arrival" required>
+                      <mat-autocomplete #autoArrival="matAutocomplete">
+                        <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
+                          title="{{airport.name}}" (click)="selectArrival(airport)">
+                          <span>{{airport.city}} ({{airport.code}})</span> |
+                          <small>({{airport.name}})</small>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <mat-error>
+                          Please select the flight arrival
+                      </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Departure" aria-label="Departure" [matAutocomplete]="autoDeparture"
+                      formControlName="departure" required>
+                    <mat-autocomplete #autoDeparture="matAutocomplete">
+                      <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
+                        title="{{airport.name}}"  (click)="selectDeparture(airport)">
+                        <span>{{airport.city}} ({{airport.code}})</span> |
+                        <small>{{airport.name}}</small>
+                      </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>
+                        Please select the flight departure
+                    </mat-error>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+              </div>
+          
+              <div class="clearfix">
+                <mat-grid-tile>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Start time" formControlName="arrivalTime" required>
+                    <mat-error>
+                      Please enter the flight arrival time
+                    </mat-error>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="End time" formControlName="departureTime" required>
+                    <mat-error>
+                        Please enter the flight departure time
+                    </mat-error>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+              </div>
+          
+              <div class="clearfix">
+                <mat-grid-tile>
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Flight fare" formControlName="flightFare" required>
+                      <mat-error>
+                        Please enter the flight fare
+                      </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+              </div>
+          
+              <div class="clearfix">
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Flight" aria-label="Flight" [matAutocomplete]="autoFlight"
+                        formControlName="flightId" required>
+                      <mat-autocomplete #autoFlight="matAutocomplete">
+                        <mat-option *ngFor="let flight of flightsList" [value]="flight.code"
+                          title="{{flight.name}}" (click)="selectFlight(flight)">
+                          <span>{{flight.code}} ({{flight.name}})</span>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <mat-error>
+                          Please select a flight
+                      </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+                  <mat-grid-tile></mat-grid-tile>
+                  <mat-grid-tile></mat-grid-tile>
+                  <mat-grid-tile></mat-grid-tile>
+                  <mat-grid-tile></mat-grid-tile>
+                </div>
+            </mat-grid-list>
+          </form>
+    </mat-card-content>
 
-    <div class="clearfix">
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="full-width-input">
-          <input matInput placeholder="Start time" formControlName="arrivalTime" required>
-          <mat-error>
-            Please enter the flight arrival time
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="full-width-input">
-          <input matInput placeholder="End time" formControlName="departureTime" required>
-          <mat-error>
-              Please enter the flight departure time
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-    </div>
-
-    <div class="clearfix">
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="Flight fare" formControlName="flightFare" required>
-            <mat-error>
-              Please enter the flight fare
-            </mat-error>
-          </mat-form-field>
-        </mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-    </div>
-
-    <div class="clearfix">
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Flight" aria-label="Flight" [matAutocomplete]="autoFlight"
-              formControlName="flightId" required>
-            <mat-autocomplete #autoFlight="matAutocomplete">
-              <mat-option *ngFor="let flight of flightsList" [value]="flight.code"
-                title="{{flight.name}}" (click)="selectFlight(flight)">
-                <span>{{flight.code}} ({{flight.name}})</span>
-              </mat-option>
-            </mat-autocomplete>
-            <mat-error>
-                Please select a flight
-            </mat-error>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile></mat-grid-tile>
-      </div>
-
-      <div class="clearfix">
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>
-            <button mat-raised-button color="primary"
-            (click)="scheduleFlight()">Schedule flight</button>
-        </mat-grid-tile>
-      </div>
-  </mat-grid-list>
-</form>
+    <mat-card-actions>
+      <mat-grid-list cols="5" rowHeight="75px">
+          <div class="clearfix">
+            <mat-grid-tile>
+                <button mat-raised-button color="primary"
+                (click)="scheduleFlight()">Schedule flight</button>
+            </mat-grid-tile>
+          </div>
+      </mat-grid-list>
+    </mat-card-actions>
+  </mat-card>
