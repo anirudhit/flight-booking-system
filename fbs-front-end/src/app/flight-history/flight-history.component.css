@@ -1,0 +1,14 @@
+.flight-history-card{
+    width: 29%;
+    margin: 1%;
+    display: inline-block;
+}
+.fbs-card{
+    background: url(/assets/img/card-bg-1.jpg) no-repeat center center;
+    background-size: cover;
+    padding: 0;
+}
+.fbs-card-header{
+    background-color: #ffa000 !important;
+    padding: 8px;
+}
