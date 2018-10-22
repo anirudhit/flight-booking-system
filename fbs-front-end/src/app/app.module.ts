@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from './profile/profile.component';
+import { FlightHistoryComponent } from './flight-history/flight-history.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     FlightScheduleComponent,
-    ProfileComponent//,
+    ProfileComponent,
+    FlightHistoryComponent//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
