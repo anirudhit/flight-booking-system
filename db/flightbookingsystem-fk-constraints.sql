@@ -1,4 +1,9 @@
 -- Adding constraints
+
+-- (t_users)
+ALTER TABLE t_users ADD CONSTRAINT t_users_user_role_id_fk
+FOREIGN KEY (role_id) REFERENCES t_user_roles(id);
+
 -- (t_user_pwds)
 ALTER TABLE t_user_pwds ADD CONSTRAINT t_user_pwds_user_id_fk
 FOREIGN KEY (user_id) REFERENCES t_users(id);
