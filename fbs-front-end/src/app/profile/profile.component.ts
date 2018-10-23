@@ -70,8 +70,14 @@ export class ProfileComponent implements OnInit {
         this.profileService.updateUserProfile(this.profileForm.value, userId)
           .subscribe(user => {
               if(user){
+                console.log(user);
+                let userDetails: any = user;
+                if(userDetails.errorMessage){
+                  this.profileToast(userDetails.errorMessage,"Ok");
+                }else{
                   this.profileToast("Profile is updated","Ok");
                   this.profileForm.reset(this.profileForm.value);
+                }
               }else{
                 this.profileToast("Sorry. Some error occured","Ok");
               }
