@@ -4,7 +4,8 @@ INSERT INTO
 VALUES 
 (1, 'admin', now(), now()),
 (2, 'agent', now(), now()),
-(3, 'user', now(), now());
+(3, 'user', now(), now()),
+(4, 'guest', now(), now());
 
 
 INSERT INTO 
