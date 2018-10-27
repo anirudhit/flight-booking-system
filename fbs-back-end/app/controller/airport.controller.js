@@ -13,7 +13,7 @@ exports.airportsList = (req, res) => {
 };
 
 //Send arrival Airports list
-exports.airportsArrivalList = (req, res) => {
+exports.airportsDepartureList = (req, res) => {
     Airport.findAll({
         attributes: ['id','name','code','city','country_code']
       }).then(airports => {
@@ -22,7 +22,7 @@ exports.airportsArrivalList = (req, res) => {
 };
 
 //Send departure Airports list
-exports.airportsDepartureList = (req, res) => {
+exports.airportsArrivalList = (req, res) => {
     Airport.findAll({
         attributes: ['id','name','code','city','country_code'],
         where: {
