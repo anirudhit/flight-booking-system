@@ -9,34 +9,34 @@
               <div class="clearfix">
                 <mat-grid-tile>
                     <mat-form-field class="full-width">
-                      <input matInput placeholder="Arrival" aria-label="Arrival" [matAutocomplete]="autoArrival"
-                        formControlName="arrival" required>
-                      <mat-autocomplete #autoArrival="matAutocomplete">
-                        <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
-                          title="{{airport.name}}" (click)="selectArrival(airport)">
+                      <input matInput placeholder="Departure city" aria-label="Departure city" [matAutocomplete]="autoDeparture"
+                        formControlName="departure" required>
+                      <mat-autocomplete #autoDeparture="matAutocomplete">
+                        <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
+                          title="{{airport.name}}" (click)="selectDeparture(airport)">
                           <span>{{airport.city}} ({{airport.code}})</span> |
                           <small>({{airport.name}})</small>
                         </mat-option>
                       </mat-autocomplete>
                       <mat-error>
-                          Please select the flight arrival
+                          Please select the flight departure city
                       </mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile></mat-grid-tile>
                 <mat-grid-tile>
                   <mat-form-field class="full-width">
-                    <input matInput placeholder="Departure" aria-label="Departure" [matAutocomplete]="autoDeparture"
-                      formControlName="departure" required>
-                    <mat-autocomplete #autoDeparture="matAutocomplete">
-                      <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
-                        title="{{airport.name}}"  (click)="selectDeparture(airport)">
+                    <input matInput placeholder="Arrival city" aria-label="Arrival city" [matAutocomplete]="autoArrival"
+                      formControlName="arrival" required>
+                    <mat-autocomplete #autoArrival="matAutocomplete">
+                      <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
+                        title="{{airport.name}}"  (click)="selectArrival(airport)">
                         <span>{{airport.city}} ({{airport.code}})</span> |
                         <small>{{airport.name}}</small>
                       </mat-option>
                     </mat-autocomplete>
                     <mat-error>
-                        Please select the flight departure
+                        Please select the flight arrival city
                     </mat-error>
                   </mat-form-field>
                 </mat-grid-tile>
@@ -47,18 +47,18 @@
               <div class="clearfix">
                 <mat-grid-tile>
                   <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Arrival terminal" formControlName="arrivalTerminal" required>
+                    <input matInput placeholder="Departure terminal" formControlName="departureTerminal" required>
                     <mat-error>
-                      Please enter the flight arrival terminal
+                      Please enter the flight departure terminal
                     </mat-error>
                   </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile></mat-grid-tile>
                 <mat-grid-tile>
                   <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Departure terminal" formControlName="departureTerminal" required>
+                    <input matInput placeholder="Arrival terminal" formControlName="arrivalTerminal" required>
                     <mat-error>
-                        Please enter the flight departure terminal
+                        Please enter the flight arrival terminal
                     </mat-error>
                   </mat-form-field>
                 </mat-grid-tile>
@@ -69,18 +69,18 @@
               <div class="clearfix">
                   <mat-grid-tile>
                     <mat-form-field class="full-width-input">
-                      <input matInput placeholder="Start time" formControlName="arrivalTime" required>
+                      <input matInput placeholder="Departure time" formControlName="departureTime" required>
                       <mat-error>
-                        Please enter the flight arrival time
+                        Please enter the flight departure time
                       </mat-error>
                     </mat-form-field>
                   </mat-grid-tile>
                   <mat-grid-tile></mat-grid-tile>
                   <mat-grid-tile>
                     <mat-form-field class="full-width-input">
-                      <input matInput placeholder="End time" formControlName="departureTime" required>
+                      <input matInput placeholder="Arrival time" formControlName="arrivalTime" required>
                       <mat-error>
-                          Please enter the flight departure time
+                          Please enter the flight arrival time
                       </mat-error>
                     </mat-form-field>
                   </mat-grid-tile>

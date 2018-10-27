@@ -8,51 +8,51 @@ import {  FlightScheduleService } from './services/flight-schedule.service';
   styleUrls: ['./flight-schedule.component.css']
 })
 export class FlightScheduleComponent implements OnInit {
-  adminFlightScheduleForm: FormGroup;
-  arrivalAirportList: any;
-  departureAirportList: any;
-  flightsList: any;
-  arrival_id: number = 0;
-  departure_id: number = 0;
-  duration: string = "0hr 0min";
-  flight_id: number = 0;
+  adminFlightScheduleForm : FormGroup;
+  arrivalAirportList      : any;
+  departureAirportList    : any;
+  flightsList             : any;
+  departure_id            : number = 0;
+  arrival_id              : number = 0;
+  duration                : string = "0hr 0min";
+  flight_id               : number = 0;
 
   constructor(
-    private fb: FormBuilder,
+    private fb      : FormBuilder,
     private snackBar: MatSnackBar,
-    private flightScheduleService: FlightScheduleService
+    private flightScheduleService:  FlightScheduleService
   ) { }
 
   ngOnInit() {
     this.createAdminFlightScheduleForm();
-    this.loadAirportsArrivalList();
+    this.loadAirportsDepartureList();
     this.loadFlightsList();
   }
 
   createAdminFlightScheduleForm(){
-    this.adminFlightScheduleForm = this.fb.group({
-      arrival: ['', Validators.required],
-      departure: [{ value: '', disabled:true }, Validators.required],
-      arrivalTime: ['', Validators.required],
-      departureTime: ['', Validators.required],
-      arrivalTerminal: ['', Validators.required],
-      departureTerminal: ['', Validators.required],
-      flightFare: ['', Validators.required],
-      flightId: ['', Validators.required]
+    this.adminFlightScheduleForm  = this.fb.group({
+      departure         : ['', Validators.required],
+      arrival           : [{ value: '', disabled:true }, Validators.required],
+      departureTime     : ['', Validators.required],
+      arrivalTime       : ['', Validators.required],
+      departureTerminal : ['', Validators.required],
+      arrivalTerminal   : ['', Validators.required],
+      flightFare        : ['', Validators.required],
+      flightId          : ['', Validators.required]
     });
   }
 
-  loadAirportsArrivalList(){
-    this.flightScheduleService.getAirportsArrivalList()
-    .subscribe(airports => {
-        this.arrivalAirportList = airports;
-    });
-  }
-
-  loadAirportsDepartureList(arrivalId){
-    this.flightScheduleService.getAirportsDepartureList(arrivalId)
+  loadAirportsDepartureList(){
+    this.flightScheduleService.getAirportsDepartureList()
     .subscribe(airports => {
         this.departureAirportList = airports;
+    });
+  }
+
+  loadAirportsArrivalList(arrivalId){
+    this.flightScheduleService.getAirportsArrivalList(arrivalId)
+    .subscribe(airports => {
+        this.arrivalAirportList = airports;
     });
   }
 
@@ -64,14 +64,14 @@ export class FlightScheduleComponent implements OnInit {
   }
 
   selectArrival(arrivalObj){
-    this.adminFlightScheduleForm.get('departure').patchValue("");
-    this.adminFlightScheduleForm.get('departure').enable();
     this.arrival_id = arrivalObj.id;
-    this.loadAirportsDepartureList(arrivalObj.id);
   }
 
   selectDeparture(departureObj){
+    this.adminFlightScheduleForm.get('arrival').patchValue("");
+    this.adminFlightScheduleForm.get('arrival').enable();
     this.departure_id = departureObj.id;
+    this.loadAirportsArrivalList(departureObj.id);
   }
 
   selectFlight(flightObj){
@@ -94,28 +94,23 @@ export class FlightScheduleComponent implements OnInit {
 
   scheduleFlight(){
     if(this.adminFlightScheduleForm.valid){
-
-      let tStart: any = this.parseTime(this.adminFlightScheduleForm.value.arrivalTime);
-      let tStop: any = this.parseTime(this.adminFlightScheduleForm.value.departureTime);
-
-      let minutes: any = Math.abs((tStop - tStart)/(1000*60));
-
+      let tStart  : any = this.parseTime(this.adminFlightScheduleForm.value.departureTime);
+      let tStop   : any = this.parseTime(this.adminFlightScheduleForm.value.arrivalTime);
+      let minutes : any = Math.abs((tStop - tStart)/(1000*60));
       let hrs = Math.floor(minutes/60);
       let min = minutes%60;
-
       this.duration = hrs + 'Hr ' + min + 'Min';
       let req ={
-        arrival_id:     this.arrival_id,
-        departure_id:   this.departure_id,
-        arrival_time:   this.adminFlightScheduleForm.value.arrivalTime,
-        departure_time: this.adminFlightScheduleForm.value.departureTime,
-        arrival_terminal:   this.adminFlightScheduleForm.value.arrivalTerminal,
-        departure_terminal: this.adminFlightScheduleForm.value.departureTerminal,
-        fare:           Number(this.adminFlightScheduleForm.value.flightFare),
-        duration:       this.duration,
-        flight_id:      this.flight_id
-      }
-      console.log(req);
+        departure_id: this.departure_id,
+        arrival_id  : this.arrival_id,
+        departure_time  : this.adminFlightScheduleForm.value.departureTime,
+        arrival_time    : this.adminFlightScheduleForm.value.arrivalTime,
+        departure_terminal  : this.adminFlightScheduleForm.value.departureTerminal,
+        arrival_terminal    : this.adminFlightScheduleForm.value.arrivalTerminal,
+        fare                : Number(this.adminFlightScheduleForm.value.flightFare),
+        duration            : this.duration,
+        flight_id           : this.flight_id
+      };
 
       this.flightScheduleService.scheduleFlight(req)
       .subscribe(schedule => {
@@ -126,8 +121,6 @@ export class FlightScheduleComponent implements OnInit {
             this.scheduledFlightToast("Sorry. Some error occured","Ok");
           }
       });
-
     }
   }
-
 }

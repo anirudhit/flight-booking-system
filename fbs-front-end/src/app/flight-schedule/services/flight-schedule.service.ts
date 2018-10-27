@@ -14,13 +14,13 @@ export class FlightScheduleService {
     private http: HttpClient
   ) { }
 
-  getAirportsArrivalList(){
-    let url = this.airportsUrl + '/arrival/list';
+  getAirportsDepartureList(){
+    let url = this.airportsUrl + '/departure/list';
     return this.http.get(url);
   }
 
-  getAirportsDepartureList(arrivalId){
-    let url = this.airportsUrl + '/departure/list?id='+arrivalId;
+  getAirportsArrivalList(arrivalId){
+    let url = this.airportsUrl + '/arrival/list?id='+arrivalId;
     return this.http.get(url);
   }
 
