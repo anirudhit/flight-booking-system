@@ -4,7 +4,7 @@ module.exports = function(app) {
  
     // Airport list
     app.get('/api/airports/list', airports.airportsList);
-    app.get('/api/airports/arrival/list', airports.airportsArrivalList);
     app.get('/api/airports/departure/list', airports.airportsDepartureList);
+    app.get('/api/airports/arrival/list', airports.airportsArrivalList);
     
 }
