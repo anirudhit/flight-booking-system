@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'flightschedule', component: FlightScheduleComponent, canActivate: [AuthGuard] },
   { path: 'flightshistory', component: FlightHistoryComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: '', component: HomeComponent }
+  { path: '', component: LoginComponent }
   // { path: '**', redirectTo: ''},
   // { 
   //   path: 'customers', 
