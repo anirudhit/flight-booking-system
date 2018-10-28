@@ -23,6 +23,16 @@ exports.createFlightSchedule = (req, res) => {
 	});
 };
 
+//Delete a Flight schedule
+exports.deleteFlightSchedule = (req, res) => {
+    let id = req.params.flightId;
+    FlightSchedule.destroy({
+        where: { id: id }
+    }).then(() => {
+        res.status(200).json({message:'The flight schedule is deleted.'});
+    });
+};
+
 //Get flight schedule list
 exports.getFlightSchedules = (req, res) => {
     FlightSchedule.sequelize.query(flightQueries.FLIGHT_SCHEDULE_LIST,{ type: Sequelize.QueryTypes.SELECT})
