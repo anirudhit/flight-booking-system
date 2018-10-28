@@ -45,7 +45,7 @@
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <p class="mat-body-strong">Fare:
-                            <span class="mat-body">{{schedule.fare}}</span>
+                            <span class="mat-body">$ {{schedule.fare}}</span>
                         </p>
                     </mat-grid-tile>
                     <mat-grid-tile>
@@ -56,8 +56,8 @@
                 </mat-grid-list>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="primary" class="mr-l-15-imp mr-r-15-imp">Update</button>
-                <button mat-raised-button color="warn">Delete</button>
+                <button mat-raised-button color="primary" class="mr-l-15-imp mr-r-15-imp">Update schedule</button>
+                <button mat-raised-button color="warn" (click)="openDialog(schedule)">Delete schedule</button>
             </mat-card-actions>
         </mat-card>
     </div>
