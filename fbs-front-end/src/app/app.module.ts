@@ -17,12 +17,17 @@ import { FlightScheduleComponent } from './flight-schedule/flight-schedule.compo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from './profile/profile.component';
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
+import { MatDialogModule }  from '@angular/material/dialog';
+import { DeleteScheduleDialog } from './flight-history/flight-history.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 // import { AddCustomerComponent } from './add-customer/add-customer.component';
 
 @NgModule({
+  entryComponents:[
+    DeleteScheduleDialog
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -31,7 +36,8 @@ import { FlightHistoryComponent } from './flight-history/flight-history.componen
     RegisterComponent,
     FlightScheduleComponent,
     ProfileComponent,
-    FlightHistoryComponent//,
+    FlightHistoryComponent,
+    DeleteScheduleDialog//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
@@ -43,7 +49,8 @@ import { FlightHistoryComponent } from './flight-history/flight-history.componen
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
