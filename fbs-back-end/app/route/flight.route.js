@@ -6,6 +6,7 @@ module.exports = function(app) {
     app.get('/api/flights/list', flights.flightsList);
     app.post('/api/flights/schedule', flights.createFlightSchedule);
     app.get('/api/flights/schedule/list', flights.getFlightSchedules);
+    app.delete('/api/flights/schedule/:flightId', flights.deleteFlightSchedule);
     
     
 }
