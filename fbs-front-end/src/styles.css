@@ -28,6 +28,22 @@ body {
     margin-top: 20px;
 }
 
+.mr-r-5{
+    margin-right: 5px;
+}
+.mr-r-10{
+    margin-right: 10px;
+}
+.mr-r-15{
+    margin-right: 15px;
+}
+.mr-r-15-imp{
+    margin-right: 15px !important;
+}
+.mr-r-20{
+    margin-right: 20px;
+}
+
 .mr-b-5{
     margin-bottom: 5px;
 }
@@ -41,6 +57,22 @@ body {
     margin-bottom: 20px;
 }
 
+.mr-l-5{
+    margin-left: 5px;
+}
+.mr-l-10{
+    margin-left: 10px;
+}
+.mr-l-15{
+    margin-left: 15px;
+}
+.mr-l-15-imp{
+    margin-left: 15px !important;
+}
+.mr-l-20{
+    margin-left: 20px;
+}
+
 .full-width{
     width: 100%;
 }
@@ -48,6 +80,32 @@ body {
     color: #999999;
     font-size: 10px;
     font-family: 'Tahoma';
+}
+.text-center{
+    text-align: center;
+}
+.text-left-imp{
+    text-align: center !important;
+}
+.text-right{
+    text-align: right;
+}
+.text-right-imp{
+    text-align: right !important;
+}
+.text-left{
+    text-align: left;
+}
+.text-left-imp{
+    text-align: left !important;
+}
+
+.ic-35{
+	font-size: 35px;
+}
+
+.fs-24{
+	font-size: 24px !important;
 }
 
 /* Styles for the header in login, register and header component */
