@@ -2,73 +2,64 @@
     <h2 class="mat-h2">Flight history</h2>
 </div>
 
-<mat-card>
-    <mat-card-content>
-        <div class="fbs-flight-history">
-            <div class="flight-history-card">
-                <mat-card class="fbs-card">
-                    <mat-card-header class="fbs-card-header">
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>LIKE</button>
-                        <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
 
-            <div class="flight-history-card">
-                <mat-card class="fbs-card">
-                    <mat-card-header class="fbs-card-header">
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
+<div class="clearfix">
+    <div class="flight-history-card">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon class="ic-35">flight</mat-icon>
+                </div>
+                <mat-card-title class="fs-24">Flight</mat-card-title>
+                <mat-card-subtitle>HA-BAQ (Boeing 737 Classic)</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="30px" gutterSize="6px" class="full-width">
+                    <mat-grid-tile>
+                        <p matTooltip="Huntsville International - Carl T. Jones Field"><mat-icon>flight_takeoff</mat-icon></p>
+                        <p class="mr-l-15-imp mat-title" matTooltip="Huntsville">HSV</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p matTooltip="Jackson-evers"><mat-icon>flight_land</mat-icon></p>
+                        <p class="mr-l-15-imp mat-title" matTooltip="Missisipi">JAN</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Departure terminal:
+                            <span class="mat-body">A</span>
                         </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>LIKE</button>
-                        <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-
-            <div class="flight-history-card">
-                <mat-card class="fbs-card">
-                    <mat-card-header class="fbs-card-header">
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Arrival terminal:
+                            <span class="mat-body">B</span>
                         </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-button>LIKE</button>
-                        <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </div>
-        
-    </mat-card-content>
-</mat-card>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Departure time:
+                            <span class="mat-body">7:15</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Arrival time:
+                            <span class="mat-body">11:40</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Fare:
+                            <span class="mat-body">325 $</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Duration:
+                            <span class="mat-body">4Hr 25Min</span>
+                        </p>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" class="mr-l-15-imp mr-r-15-imp">Update</button>
+                <button mat-raised-button color="warn">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
 
