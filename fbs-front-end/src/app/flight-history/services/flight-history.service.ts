@@ -17,4 +17,9 @@ export class FlightHistoryService {
     let url = this.flightSchedulesUrl + '/list?offset=0&limit=10';
     return this.http.get(url);
   }
+
+  deleteFlightSchedule(scheduleId){
+    let url = this.flightSchedulesUrl + '/' + scheduleId;
+    return this.http.delete(url);
+  }
 }
