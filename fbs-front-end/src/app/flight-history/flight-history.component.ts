@@ -44,7 +44,7 @@ export class FlightHistoryComponent implements OnInit {
     });
   }
 
-  openDialog(schedule): void {
+  openDeleteScheduleDialog(schedule): void {
     const dialogRef = this.dialog.open(DeleteScheduleDialog, {
       width: '250px',
       data: schedule
@@ -71,7 +71,8 @@ export class DeleteScheduleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DeleteScheduleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DeleteScheduleData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DeleteScheduleData
+  ) { }
 
   
   onDeleteClick(): void {
