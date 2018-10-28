@@ -5,5 +5,7 @@ module.exports = function(app) {
     // Airport list
     app.get('/api/flights/list', flights.flightsList);
     app.post('/api/flights/schedule', flights.createFlightSchedule);
+    app.get('/api/flights/schedule/list', flights.getFlightSchedules);
+    
     
 }
