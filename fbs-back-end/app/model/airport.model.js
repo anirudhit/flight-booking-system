@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
 	const Airport = sequelize.define('t_airports', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         primaryKey: true
       },
       name: {
