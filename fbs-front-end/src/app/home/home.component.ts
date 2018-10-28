@@ -36,11 +36,11 @@ export class HomeComponent implements OnInit {
       page: "/profile"
     });
     this.menuOptions.push({
-      name: "Schedule flight",
+      name: "Schedule a flight",
       page: "/flightschedule"
     });
     this.menuOptions.push({
-      name: "Flight history",
+      name: "Flight schedules",
       page: "/flightshistory"
     });
   }
