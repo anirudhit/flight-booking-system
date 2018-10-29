@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { MatDialogModule }  from '@angular/material/dialog';
 import { DeleteScheduleDialog } from './flight-history/flight-history.component';
+import { UpdateScheduleDialog } from './flight-history/flight-history.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { CustomerDetailsComponent } from './customer-details/customer-details.component';
@@ -26,7 +27,8 @@ import { DeleteScheduleDialog } from './flight-history/flight-history.component'
 
 @NgModule({
   entryComponents:[
-    DeleteScheduleDialog
+    DeleteScheduleDialog,
+    UpdateScheduleDialog
   ],
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import { DeleteScheduleDialog } from './flight-history/flight-history.component'
     FlightScheduleComponent,
     ProfileComponent,
     FlightHistoryComponent,
-    DeleteScheduleDialog//,
+    DeleteScheduleDialog,
+    UpdateScheduleDialog//,
     // CustomerComponent,
     // CustomerDetailsComponent,
     // AddCustomerComponent
