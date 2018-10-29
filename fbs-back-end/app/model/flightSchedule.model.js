@@ -31,7 +31,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         fare: {
-            type: Sequelize.STRING
+            type: Sequelize.DECIMAL
         },
         duration: {
             type: Sequelize.STRING
