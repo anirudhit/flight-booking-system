@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Update schedule</h1>
+<div mat-dialog-content>
+    <form [formGroup]="updateFlightScheduleForm">
+        <mat-grid-list cols="2" rowHeight="75px" gutterSize="12px">
+          <div class="clearfix">
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Departure terminal" formControlName="departure_terminal" required>
+                <mat-error>
+                  Please enter the flight departure terminal
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Arrival terminal" formControlName="arrival_terminal" required>
+                <mat-error>
+                    Please enter the flight arrival terminal
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          </div>
+
+          <div class="clearfix">
+              <mat-grid-tile>
+                <mat-form-field class="full-width-input">
+                  <input matInput placeholder="Departure time" formControlName="departure_time" required>
+                  <mat-error>
+                    Please enter the flight departure time
+                  </mat-error>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-form-field class="full-width-input">
+                  <input matInput placeholder="Arrival time" formControlName="arrival_time" required>
+                  <mat-error>
+                      Please enter the flight arrival time
+                  </mat-error>
+                </mat-form-field>
+              </mat-grid-tile>
+            </div>
+      
+          <div class="clearfix">
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Flight fare" formControlName="fare" required>
+                <mat-error>
+                  Please enter the flight fare
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onUpdateClick()">Update</button>
+  <button mat-raised-button (click)="onCancelClick()">Cancel</button>
+</div>
