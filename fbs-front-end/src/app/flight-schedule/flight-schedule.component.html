@@ -46,8 +46,9 @@
           
               <div class="clearfix">
                 <mat-grid-tile>
-                  <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Departure terminal" formControlName="departureTerminal" required>
+                  <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                    <input matInput placeholder="Departure terminal" maxlength="5" formControlName="departureTerminal" required>
+                    <mat-hint align="end">{{adminFlightScheduleForm.value.departureTerminal.length || 0}}/5</mat-hint>
                     <mat-error>
                       Please enter the flight departure terminal
                     </mat-error>
@@ -55,8 +56,9 @@
                 </mat-grid-tile>
                 <mat-grid-tile></mat-grid-tile>
                 <mat-grid-tile>
-                  <mat-form-field class="full-width-input">
+                  <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
                     <input matInput placeholder="Arrival terminal" formControlName="arrivalTerminal" required>
+                    <mat-hint align="end">{{adminFlightScheduleForm.value.arrivalTerminal.length || 0}}/5</mat-hint>
                     <mat-error>
                         Please enter the flight arrival terminal
                     </mat-error>
@@ -68,8 +70,9 @@
 
               <div class="clearfix">
                   <mat-grid-tile>
-                    <mat-form-field class="full-width-input">
-                      <input matInput placeholder="Departure time" formControlName="departureTime" required>
+                    <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                      <input matInput placeholder="Departure time" maxlength="5" formControlName="departureTime" required>
+                      <mat-hint align="end">{{adminFlightScheduleForm.value.departureTime.length || 0}}/5</mat-hint>
                       <mat-error>
                         Please enter the flight departure time
                       </mat-error>
@@ -77,8 +80,9 @@
                   </mat-grid-tile>
                   <mat-grid-tile></mat-grid-tile>
                   <mat-grid-tile>
-                    <mat-form-field class="full-width-input">
-                      <input matInput placeholder="Arrival time" formControlName="arrivalTime" required>
+                    <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                      <input matInput placeholder="Arrival time" maxlength="5" formControlName="arrivalTime" required>
+                      <mat-hint align="end">{{adminFlightScheduleForm.value.arrivalTime.length || 0}}/5</mat-hint>
                       <mat-error>
                           Please enter the flight arrival time
                       </mat-error>
@@ -106,8 +110,10 @@
                 </mat-grid-tile>
                 <mat-grid-tile></mat-grid-tile>
                 <mat-grid-tile>
-                  <mat-form-field class="full-width-input">
-                    <input matInput placeholder="Flight fare" formControlName="flightFare" required>
+                  <mat-form-field class="full-width-input" hintLabel="Max 8 characters">
+                    <input matInput placeholder="Flight fare" maxlength="8" formControlName="flightFare" required>
+                    <mat-hint align="end">{{adminFlightScheduleForm.value.flightFare.length || 0}}/8</mat-hint>
+                    <span matPrefix>$&nbsp;</span>
                     <mat-error>
                       Please enter the flight fare
                     </mat-error>
