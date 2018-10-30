@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatAutocompleteModule,
     MatRippleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
 ],
   exports: [
     MatToolbarModule,
@@ -40,7 +42,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatAutocompleteModule,
     MatRippleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ]
 })
 export class AppMaterialModule {}
