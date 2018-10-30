@@ -29,7 +29,18 @@ exports.deleteFlightSchedule = (req, res) => {
     FlightSchedule.destroy({
         where: { id: id }
     }).then(() => {
-        res.status(200).json({message:'The flight schedule is deleted.'});
+        res.status(200).json({message:"The flight schedule is deleted."});
+    });
+};
+
+//Update a Flight schedule
+exports.updateFlightSchedule = (req, res) => {
+    let flightSchedule = req.body.value;
+    let id = req.body.id;
+	FlightSchedule.update(flightSchedule,{
+        where: {id: id} 
+    }).then(() => {
+            res.status(200).json({message:"The flight schedule is updated"});
     });
 };
 
