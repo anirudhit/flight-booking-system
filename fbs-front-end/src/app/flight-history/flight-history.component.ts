@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AppService } from './../app.service';
 import { FlightHistoryService } from './services/flight-history.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -53,7 +54,10 @@ export class FlightHistoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.updateSchedule(result);
+        this.loadFlightSchedulesList();
+        this.scheduledHistoryToast(result.message,"Ok");
+      }else{
+        this.scheduledHistoryToast("Sorry. Some error occured","Ok");
       }
     });
   }
@@ -123,7 +127,10 @@ export class UpdateScheduleDialog {
   constructor(
     private fb      : FormBuilder,
     public dialogRef: MatDialogRef<UpdateScheduleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: UpdateScheduleData
+    @Inject(MAT_DIALOG_DATA) public data: UpdateScheduleData,
+    private appService:  AppService,
+    private flightHistoryService:  FlightHistoryService,
+    private snackBar: MatSnackBar
   ) {
     this.createAdminFlightScheduleForm();
   }
@@ -143,8 +150,14 @@ export class UpdateScheduleDialog {
       id: this.data.id,
       value: this.updateFlightScheduleForm.value
     };
+    let d_time = this.updateFlightScheduleForm.value.departure_time;
+    let a_time = this.updateFlightScheduleForm.value.arrival_time;
+    scheduleObj.value.duration = this.appService.getTimeDuration(d_time,a_time);
     if(this.updateFlightScheduleForm.valid){
-      this.dialogRef.close(scheduleObj);
+      this.flightHistoryService.updateFlightSchedule(scheduleObj)
+        .subscribe(scheduleResponse => {
+          this.dialogRef.close(scheduleResponse);
+        });
     }
   }
 

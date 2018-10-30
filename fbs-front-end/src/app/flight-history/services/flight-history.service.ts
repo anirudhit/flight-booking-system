@@ -22,4 +22,9 @@ export class FlightHistoryService {
     let url = this.flightSchedulesUrl + '/' + scheduleId;
     return this.http.delete(url);
   }
+
+  updateFlightSchedule(schedule){
+    let url = this.flightSchedulesUrl;
+    return this.http.put(url, schedule, httpOptions);
+  }
 }
