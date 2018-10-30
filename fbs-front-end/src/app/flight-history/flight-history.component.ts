@@ -25,6 +25,7 @@ export interface UpdateScheduleData {
 })
 export class FlightHistoryComponent implements OnInit {
   flightSchedules : any;
+  flightSchedulesLoading : boolean = true;
   constructor(
     private flightHistoryService:  FlightHistoryService,
     private snackBar: MatSnackBar,
@@ -36,9 +37,11 @@ export class FlightHistoryComponent implements OnInit {
   }
 
   loadFlightSchedulesList(){
+    this.flightSchedulesLoading = true;
     this.flightHistoryService.getFlightSchedulesList()
     .subscribe(schedules => {
         this.flightSchedules = schedules;
+        this.flightSchedulesLoading = false;
     });
   }
 
