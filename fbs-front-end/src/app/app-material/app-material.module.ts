@@ -13,6 +13,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatAutocompleteModule,
     MatRippleModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
 ],
   exports: [
     MatToolbarModule,
@@ -43,7 +45,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatAutocompleteModule,
     MatRippleModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
   ]
 })
 export class AppMaterialModule {}
