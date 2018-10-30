@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FlightBookingComponent } from './flight-booking/flight-booking.component';
 
 // import { CustomerComponent } from './customer/customer.component';
 // import { AddCustomerComponent } from './add-customer/add-customer.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'flightschedule', component: FlightScheduleComponent, canActivate: [AuthGuard] },
   { path: 'flightshistory', component: FlightHistoryComponent, canActivate: [AuthGuard] },
+  { path: 'flightsbooking', component: FlightBookingComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '', component: LoginComponent }
   // { path: '**', redirectTo: ''},
