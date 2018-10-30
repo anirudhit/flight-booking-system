@@ -51,14 +51,14 @@ export class ProfileComponent implements OnInit {
     .subscribe(user => {
         let userDetails: any = user;
         this.profileForm.patchValue({
-          name: userDetails.name,
-          first_name: userDetails.first_name,
-          last_name: userDetails.last_name,
-          middle_name: userDetails.middle_name,
-          ssn: userDetails.ssn,
-          email: userDetails.email,
-          address: userDetails.address,
-          cell_number: userDetails.cell_number
+          name: userDetails.name ? userDetails.name : '',
+          first_name: userDetails.first_name ? userDetails.first_name : '',
+          last_name: userDetails.last_name ? userDetails.last_name : '',
+          middle_name: userDetails.middle_name ? userDetails.middle_name : '',
+          ssn: userDetails.ssn ? userDetails.ssn : '',
+          email: userDetails.email ? userDetails.email : '',
+          address: userDetails.address ? userDetails.address : '',
+          cell_number: userDetails.cell_number ? userDetails.cell_number : ''
         });
     });
   }
