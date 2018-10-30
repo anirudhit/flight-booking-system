@@ -38,9 +38,22 @@ exports.updateFlightSchedule = (req, res) => {
     let flightSchedule = req.body.value;
     let id = req.body.id;
 	FlightSchedule.update(flightSchedule,{
-        where: {id: id} 
+        where: {id: id}
     }).then(() => {
             res.status(200).json({message:"The flight schedule is updated"});
+    });
+};
+
+//Get selected flight schedules
+exports.getSelectedFlightSchedules = (req, res) => {
+    let flightScheduleIds = req.query;
+    let arrival_id = "`t_flight_schedules`.`arrival_id` = " + flightScheduleIds.arrivalId;
+    let departure_id = "`t_flight_schedules`.`departure_id` = " + flightScheduleIds.departureId;
+    let filerByArrivalDepartureId = " WHERE " + arrival_id + " AND " + departure_id + ";";
+    let query = flightQueries.FLIGHT_SELECTED_SCHEDULE_LIST + filerByArrivalDepartureId;
+    FlightSchedule.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
+    .then(selectedScheduleList => {
+            res.json(selectedScheduleList);
     });
 };
 
