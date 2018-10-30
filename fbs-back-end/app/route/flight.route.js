@@ -8,5 +8,5 @@ module.exports = function(app) {
     app.get('/api/flights/schedule/list', flights.getFlightSchedules);// Get the flight schedule list
     app.delete('/api/flights/schedule/:flightId', flights.deleteFlightSchedule);// Delete a flight schedule
     app.put('/api/flights/schedule', flights.updateFlightSchedule);// Update a flight schedule
-    
+    app.get('/api/flights/schedule/selected/list', flights.getSelectedFlightSchedules);// Get the selected flight schedule list
 }
