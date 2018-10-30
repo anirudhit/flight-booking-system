@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AppService } from './../app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightScheduleService } from './services/flight-schedule.service';
 @Component({
@@ -14,12 +15,12 @@ export class FlightScheduleComponent implements OnInit {
   flightsList             : any;
   departure_id            : number = 0;
   arrival_id              : number = 0;
-  duration                : string = "0hr 0min";
   flight_id               : number = 0;
 
   constructor(
     private fb      : FormBuilder,
     private snackBar: MatSnackBar,
+    private appService:  AppService,
     private flightScheduleService:  FlightScheduleService
   ) { }
 
@@ -78,28 +79,16 @@ export class FlightScheduleComponent implements OnInit {
     this.flight_id = flightObj.id;
   }
 
-  parseTime(cTime){
-    if (cTime == '') return null;
-    var d = new Date();
-    var time = cTime.match(/(\d+)(:(\d\d))?\s*(p?)/);
-    d.setHours( parseInt(time[1]) + ( ( parseInt(time[1]) < 12 && time[4] ) ? 12 : 0) );
-    d.setMinutes( parseInt(time[3]) || 0 );
-    d.setSeconds(0, 0);
-    return d;
-  }
-
   scheduledFlightToast(message: string, action: string) {
     this.snackBar.open(message, action);
   }
 
   scheduleFlight(){
     if(this.adminFlightScheduleForm.valid){
-      let tStart  : any = this.parseTime(this.adminFlightScheduleForm.value.departureTime);
-      let tStop   : any = this.parseTime(this.adminFlightScheduleForm.value.arrivalTime);
-      let minutes : any = Math.abs((tStop - tStart)/(1000*60));
-      let hrs = Math.floor(minutes/60);
-      let min = minutes%60;
-      this.duration = hrs + 'Hr ' + min + 'Min';
+      let d_time = this.adminFlightScheduleForm.value.departureTime;
+      let a_time = this.adminFlightScheduleForm.value.arrivalTime;
+      let duration = this.appService.getTimeDuration(d_time,a_time);
+      
       let req ={
         departure_id: this.departure_id,
         arrival_id  : this.arrival_id,
@@ -108,7 +97,7 @@ export class FlightScheduleComponent implements OnInit {
         departure_terminal  : this.adminFlightScheduleForm.value.departureTerminal,
         arrival_terminal    : this.adminFlightScheduleForm.value.arrivalTerminal,
         fare                : Number(this.adminFlightScheduleForm.value.flightFare),
-        duration            : this.duration,
+        duration            : duration,
         flight_id           : this.flight_id
       };
 
