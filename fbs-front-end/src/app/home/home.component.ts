@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   initMenu(){
     this.menuOptions.push({
       name: "Book a ticket",
-      page: "/profile"
+      page: "/flightsbooking"
     });
     this.menuOptions.push({
       name: "Booking history",
