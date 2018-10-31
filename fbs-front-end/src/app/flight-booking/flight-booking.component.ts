@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightBookingService } from './services/flight-booking.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class FlightBookingComponent implements OnInit {
   seletedFlightSchedule     : any = null;
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private flightBookingService: FlightBookingService
   ) {}
 
@@ -87,6 +89,14 @@ export class FlightBookingComponent implements OnInit {
         this.flightSelectionLoading = false;
         this.scheduleList = schedules;
       });
+    }
+  }
+
+  selectFlight(){
+    if(!this.flightSelectionFormGroup.valid){
+      this.snackBar.open("Please select a flight to continue","Ok",{
+        duration: 2000,
+      });   
     }
   }
 
