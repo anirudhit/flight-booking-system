@@ -20,7 +20,18 @@ export class FlightBookingService {
   }
 
   getAirportsArrivalList(arrivalId){
-    let url = this.airportsUrl + '/arrival/schedule/list?id='+arrivalId;
-    return this.http.get(url);
+    let url = this.airportsUrl + '/arrival/schedule/list';
+    return this.http.get(url,{
+      params:{
+        id: arrivalId
+      }
+    });
+  }
+
+  getFlightSchedules(scheduleObj){
+    let url = this.flightsUrl + '/schedule/selected/list';
+    return this.http.get(url,{
+      params: scheduleObj
+    });
   }
 }

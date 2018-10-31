@@ -15,6 +15,9 @@ export class FlightBookingComponent implements OnInit {
   departureAirportList      : any;
   departMinDate             : Date = new Date();
   departMaxDate             : Date;
+  departureId               : number;
+  arrivalId                 : number;
+  scheduleList              : any;
   constructor(
     private fb: FormBuilder,
     private flightBookingService: FlightBookingService
@@ -56,14 +59,27 @@ export class FlightBookingComponent implements OnInit {
   }
 
   selectArrival(arrivalObj){
-    //this.arrival_id = arrivalObj.id;
+    this.arrivalId = arrivalObj.id;
   }
 
   selectDeparture(departureObj){
     this.planTravelFormGroup.get('arrival').patchValue("");
     this.planTravelFormGroup.get('arrival').enable();
-    //this.departure_id = departureObj.id;
+    this.departureId = departureObj.id;
     this.loadAirportsArrivalList(departureObj.id);
+  }
+
+  searchFlights(){
+    if(this.planTravelFormGroup.valid){
+      let scheduleObj = {
+        departureId : this.departureId,
+        arrivalId   : this.arrivalId
+      };
+      this.flightBookingService.getFlightSchedules(scheduleObj)
+      .subscribe(schedules =>{
+        this.scheduleList = schedules;
+      });
+    }
   }
 
 }
