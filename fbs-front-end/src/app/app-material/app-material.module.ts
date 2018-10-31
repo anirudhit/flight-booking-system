@@ -16,6 +16,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { MatNativeDateModule } from '@angular/material';
     MatStepperModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
 ],
   exports: [
     MatToolbarModule,
@@ -52,7 +54,8 @@ import { MatNativeDateModule } from '@angular/material';
     MatStepperModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ]
 })
 export class AppMaterialModule {}
