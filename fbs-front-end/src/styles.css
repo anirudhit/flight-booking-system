@@ -15,6 +15,12 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+.reset-mr{
+    margin: 0;
+}
+.reset-mr-imp{
+    margin: 0 !important;
+}
 .mr-t-5{
     margin-top: 5px;
 }
@@ -71,6 +77,13 @@ body {
 }
 .mr-l-20{
     margin-left: 20px;
+}
+
+.pd-5{
+    padding: 5px;
+}
+.pd-5-imp{
+    padding: 5px !important;
 }
 
 .full-width{
