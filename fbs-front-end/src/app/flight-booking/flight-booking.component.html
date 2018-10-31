@@ -1,89 +1,92 @@
 <div class="clearfix mr-t-15 mr-b-15">
   <h2 class="mat-h2">Book ticket</h2>
 </div>
-<mat-card>
-  <mat-card-content>
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="planTravelFormGroup">
-        <form [formGroup]="planTravelFormGroup">
-          <ng-template matStepLabel>Plan your travel</ng-template>
-          <mat-grid-list cols="5" rowHeight="75px">
-            <div class="clearfix mr-t-15">
-              <mat-grid-tile>
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="Departure city" aria-label="Departure city" [matAutocomplete]="autoDeparture"
-                  formControlName="departure" required>
-                  <mat-autocomplete #autoDeparture="matAutocomplete">
-                  <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
-                    title="{{airport.name}}" (click)="selectDeparture(airport)">
-                    <span>{{airport.city}} ({{airport.code}})</span> |
-                    <small>({{airport.name}})</small>
-                  </mat-option>
-                  </mat-autocomplete>
-                  <mat-error>
-                    Please select the flight departure city
-                  </mat-error>
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile></mat-grid-tile>
-              <mat-grid-tile>
-                <mat-form-field class="full-width">
-                <input matInput placeholder="Arrival city" aria-label="Arrival city" [matAutocomplete]="autoArrival"
-                  formControlName="arrival" required>
-                <mat-autocomplete #autoArrival="matAutocomplete">
-                  <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
-                  title="{{airport.name}}"  (click)="selectArrival(airport)">
+
+
+<div class="clearfix">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="planTravelFormGroup">
+      <form [formGroup]="planTravelFormGroup">
+        <ng-template matStepLabel>Plan your travel</ng-template>
+        <mat-grid-list cols="5" rowHeight="75px">
+          <div class="clearfix mr-t-15">
+            <mat-grid-tile>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Departure city" aria-label="Departure city" [matAutocomplete]="autoDeparture"
+                formControlName="departure" required>
+                <mat-autocomplete #autoDeparture="matAutocomplete">
+                <mat-option *ngFor="let airport of departureAirportList" [value]="airport.city"
+                  title="{{airport.name}}" (click)="selectDeparture(airport)">
                   <span>{{airport.city}} ({{airport.code}})</span> |
-                  <small>{{airport.name}}</small>
-                  </mat-option>
+                  <small>({{airport.name}})</small>
+                </mat-option>
                 </mat-autocomplete>
                 <mat-error>
-                  Please select the flight arrival city
+                  Please select the flight departure city
                 </mat-error>
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile></mat-grid-tile>
-              <mat-grid-tile></mat-grid-tile>
-            </div>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="full-width">
+              <input matInput placeholder="Arrival city" aria-label="Arrival city" [matAutocomplete]="autoArrival"
+                formControlName="arrival" required>
+              <mat-autocomplete #autoArrival="matAutocomplete">
+                <mat-option *ngFor="let airport of arrivalAirportList" [value]="airport.city"
+                title="{{airport.name}}"  (click)="selectArrival(airport)">
+                <span>{{airport.city}} ({{airport.code}})</span> |
+                <small>{{airport.name}}</small>
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error>
+                Please select the flight arrival city
+              </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </div>
 
-            <div class="clearfix mr-t-15">
-              <mat-grid-tile>
-                <mat-form-field class="full-width">
-                  <input matInput [matDatepicker]="departDatePicker" placeholder="Depart date" 
-                    formControlName="departDate" required
-                    [min]="departMinDate" [max]="departMaxDate">
-                  <mat-datepicker-toggle matSuffix [for]="departDatePicker"></mat-datepicker-toggle>
-                  <mat-datepicker #departDatePicker></mat-datepicker>
-                </mat-form-field>
-              </mat-grid-tile>
-            </div>
-          </mat-grid-list>
-          <div class="clearfix mr-t-20">
-            <button mat-raised-button color="primary" matStepperNext
-              (click)="searchFlights()">Search flights</button>
+          <div class="clearfix mr-t-15">
+            <mat-grid-tile>
+              <mat-form-field class="full-width">
+                <input matInput [matDatepicker]="departDatePicker" placeholder="Depart date" 
+                  formControlName="departDate" required
+                  [min]="departMinDate" [max]="departMaxDate">
+                <mat-datepicker-toggle matSuffix [for]="departDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #departDatePicker></mat-datepicker>
+              </mat-form-field>
+            </mat-grid-tile>
           </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="flightSelectionFormGroup">
-        <form [formGroup]="flightSelectionFormGroup">
-          <ng-template matStepLabel>Select the flight</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Passenger details</ng-template>
-        You are now done.
+        </mat-grid-list>
+        <div class="clearfix mr-t-20">
+          <button mat-raised-button color="primary" matStepperNext
+            (click)="searchFlights()">Search flights</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="flightSelectionFormGroup">
+      <form [formGroup]="flightSelectionFormGroup">
+        <ng-template matStepLabel>Select the flight</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div class="clearfix">
+            <mat-card class="mr-t-15 mr-b-15" *ngFor="let schedule of scheduleList">Simple card</mat-card>
+        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-raised-button color="primary" matStepperNext>Continue</button>
         </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </mat-card-content>
-</mat-card>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Passenger details</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
