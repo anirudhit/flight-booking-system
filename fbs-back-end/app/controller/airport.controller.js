@@ -48,7 +48,7 @@ exports.airportsScheduledDepartureList = (req, res) => {
 //Send  scheduled arrival Airports list
 exports.airportsScheduledArrivalList = (req, res) => {
     let departureId = req.query.id;
-    let query = flightQueries.FLIGHT_ARRIVAL_SCHEDULE_LIST + '!='+departureId+');';
+    let query = flightQueries.FLIGHT_ARRIVAL_SCHEDULE_LIST + '='+departureId+');';
     FlightSchedule.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
     .then(departureArrivalList => {
             res.json(departureArrivalList);
