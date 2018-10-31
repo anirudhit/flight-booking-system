@@ -22,6 +22,6 @@ IN (select distinct departure_id from t_flight_schedules);
 
 -- To get scheduled arrivals
 select id,name,code,country_code,city from t_airports where id
-IN (select distinct arrival_id from t_flight_schedules where arrival_id != 4);
+IN (select distinct arrival_id from t_flight_schedules where departure_id = 1);
 
 
