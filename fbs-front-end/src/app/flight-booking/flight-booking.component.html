@@ -73,18 +73,15 @@
             <mat-progress-bar mode="query"></mat-progress-bar>
         </div>
 
-        <div class="clearfix" *ngIf="!flightSelectionLoading">
+        <div class="clearfix mr-t-20" *ngIf="!flightSelectionLoading">
             <p class="mat-h3">Choose a departure flight</p>
             <p class="mat-body">Flights from 
               <span class="mat-body-strong">{{this.planTravelFormGroup.value.departure}}</span> to
               <span class="mat-body-strong">{{this.planTravelFormGroup.value.arrival}}</span> on
               <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'fullDate'}}</span>
             </p>
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
     
-            <div class="clearfix">
+            <div class="clearfix mr-t-20">
                 <div class="clearfix mr-t-15 mat-body-strong flight-schedule-header">
                     <mat-grid-list cols="5" rowHeight="50px">
                       <mat-grid-tile>Flight</mat-grid-tile>
@@ -119,7 +116,13 @@
                             </mat-card-content>
                           </mat-grid-tile>
                           <mat-grid-tile>{{schedule.duration}}</mat-grid-tile>
-                          <mat-grid-tile>$ {{schedule.fare}}</mat-grid-tile>
+                          <mat-grid-tile>
+                              <mat-card-content class="reset-mr-imp">
+                                  <mat-radio-button (change)="selectFlightFare(schedule)">
+                                      $ {{schedule.fare}}
+                                  </mat-radio-button>
+                              </mat-card-content>
+                          </mat-grid-tile>
                         </mat-grid-list>
                     </div>
                 </mat-card>

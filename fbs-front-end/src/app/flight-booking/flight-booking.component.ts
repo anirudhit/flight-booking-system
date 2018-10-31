@@ -19,6 +19,7 @@ export class FlightBookingComponent implements OnInit {
   arrivalId                 : number;
   scheduleList              : any;
   flightSelectionLoading    : boolean = false;
+  seletedFlightSchedule     : any = null;
   constructor(
     private fb: FormBuilder,
     private flightBookingService: FlightBookingService
@@ -45,7 +46,7 @@ export class FlightBookingComponent implements OnInit {
 
   initFlightSelectionForm(){
     this.flightSelectionFormGroup = this.fb.group({
-      secondCtrl: ['', Validators.required]
+      selectFlight: ['', Validators.required]
     });
   }
 
@@ -85,6 +86,15 @@ export class FlightBookingComponent implements OnInit {
       .subscribe(schedules =>{
         this.flightSelectionLoading = false;
         this.scheduleList = schedules;
+      });
+    }
+  }
+
+  selectFlightFare(schedule){
+    if(schedule){
+      this.seletedFlightSchedule = schedule;
+      this.flightSelectionFormGroup.patchValue({
+        selectFlight : schedule.id
       });
     }
   }
