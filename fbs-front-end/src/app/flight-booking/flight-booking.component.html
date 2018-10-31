@@ -68,15 +68,67 @@
     <mat-step [stepControl]="flightSelectionFormGroup">
       <form [formGroup]="flightSelectionFormGroup">
         <ng-template matStepLabel>Select the flight</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div class="clearfix">
-            <mat-card class="mr-t-15 mr-b-15" *ngFor="let schedule of scheduleList">Simple card</mat-card>
+
+        <div class="clearfix mr-t-20" *ngIf="flightSelectionLoading">
+            <mat-progress-bar mode="query"></mat-progress-bar>
         </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary" matStepperNext>Continue</button>
+
+        <div class="clearfix" *ngIf="!flightSelectionLoading">
+            <p class="mat-h3">Choose a departure flight</p>
+            <p class="mat-body">Flights from 
+              <span class="mat-body-strong">{{this.planTravelFormGroup.value.departure}}</span> to
+              <span class="mat-body-strong">{{this.planTravelFormGroup.value.arrival}}</span> on
+              <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'fullDate'}}</span>
+            </p>
+            <mat-form-field>
+              <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+    
+            <div class="clearfix">
+                <div class="clearfix mr-t-15 mat-body-strong flight-schedule-header">
+                    <mat-grid-list cols="5" rowHeight="50px">
+                      <mat-grid-tile>Flight</mat-grid-tile>
+                      <mat-grid-tile>Depart</mat-grid-tile>
+                      <mat-grid-tile>Arrive</mat-grid-tile>
+                      <mat-grid-tile>Duration</mat-grid-tile>
+                      <mat-grid-tile>Total fare</mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+                <mat-card class="mr-b-15 pd-5-imp" *ngFor="let schedule of scheduleList">
+                    <div class="clearfix">
+                        <mat-grid-list cols="5" rowHeight="50px">
+                          <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
+                          <mat-grid-tile>
+                            <mat-card-content class="reset-mr-imp">
+                              <div matTooltip="{{schedule.departureAirportName}}">
+                                  {{schedule.departureAirportCity}} ({{schedule.departureAirportCode}})
+                              </div>
+                              <div class="mat-small">
+                                  {{schedule.departure_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                              </div>
+                            </mat-card-content>
+                          </mat-grid-tile>
+                          <mat-grid-tile>
+                            <mat-card-content class="reset-mr-imp">
+                              <div matTooltip="{{schedule.arrivalAirportName}}">
+                                  {{schedule.arrivalAirportCity}} ({{schedule.arrivalAirportCode}})
+                              </div>
+                              <div class="mat-small">
+                                  {{schedule.arrival_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                              </div>
+                            </mat-card-content>
+                          </mat-grid-tile>
+                          <mat-grid-tile>{{schedule.duration}}</mat-grid-tile>
+                          <mat-grid-tile>$ {{schedule.fare}}</mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div class="clearfix">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-raised-button color="primary" matStepperNext>Continue</button>
+            </div>
         </div>
       </form>
     </mat-step>

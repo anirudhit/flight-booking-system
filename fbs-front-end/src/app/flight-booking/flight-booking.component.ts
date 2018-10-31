@@ -18,6 +18,7 @@ export class FlightBookingComponent implements OnInit {
   departureId               : number;
   arrivalId                 : number;
   scheduleList              : any;
+  flightSelectionLoading    : boolean = false;
   constructor(
     private fb: FormBuilder,
     private flightBookingService: FlightBookingService
@@ -25,6 +26,7 @@ export class FlightBookingComponent implements OnInit {
 
   ngOnInit() {
     this.initFlightBookingForm();
+    this.initFlightSelectionForm();
     this.loadAirportsDepartureList();
   }
 
@@ -39,6 +41,9 @@ export class FlightBookingComponent implements OnInit {
       arrival           : [{ value: '', disabled:true }, Validators.required],
       departDate        : [null, Validators.required]
     });
+  }
+
+  initFlightSelectionForm(){
     this.flightSelectionFormGroup = this.fb.group({
       secondCtrl: ['', Validators.required]
     });
@@ -75,8 +80,10 @@ export class FlightBookingComponent implements OnInit {
         departureId : this.departureId,
         arrivalId   : this.arrivalId
       };
+      this.flightSelectionLoading = true;
       this.flightBookingService.getFlightSchedules(scheduleObj)
       .subscribe(schedules =>{
+        this.flightSelectionLoading = false;
         this.scheduleList = schedules;
       });
     }
