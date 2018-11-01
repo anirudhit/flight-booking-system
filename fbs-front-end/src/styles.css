@@ -8,6 +8,9 @@ html, body {
 body {
     margin: 0;
 }
+.body-wrapper{
+    padding: 8px;
+}
 .br-b-1{
     border-bottom: 1px solid #cacaca;
 }
