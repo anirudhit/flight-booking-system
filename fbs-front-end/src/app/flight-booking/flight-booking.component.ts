@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightBookingService } from './services/flight-booking.service';
 
@@ -12,11 +12,15 @@ export class FlightBookingComponent implements OnInit {
   isLinear = true;
   planTravelFormGroup       : FormGroup;
   flightSelectionFormGroup  : FormGroup;
+  passengerFormGroup        : FormGroup;
   arrivalAirportList        : any;
   departureAirportList      : any;
   passengers                : any[] = [1,2,3,4,5,6];
+  passengerTitle            : any[] = ["Mr","Ms","Mrs"];
   departMinDate             : Date = new Date();
   departMaxDate             : Date;
+  dateOfBirthMinDate        : Date = new Date(1910,0,1);
+  dateOfBirthMaxDate        : Date = new Date(2018,31,4);
   departureId               : number;
   arrivalId                 : number;
   scheduleList              : any;
@@ -38,6 +42,7 @@ export class FlightBookingComponent implements OnInit {
     this.initFlightBookingForm();
     this.initFlightSelectionForm();
     this.loadAirportsDepartureList();
+    this.initPassengerForm();
   }
 
   initFlightBookingForm(){
@@ -58,6 +63,32 @@ export class FlightBookingComponent implements OnInit {
     this.flightSelectionFormGroup = this.fb.group({
       selectFlight: ['', Validators.required]
     });
+  }
+
+  initPassengerForm(){
+    this.passengerFormGroup = this.fb.group({
+      passengers: this.fb.array([
+          this.initPassenger(),
+      ])
+      // first_name          : ['',Validators.required],
+      // last_name           : ['',Validators.required],
+      // middle_name         : [''],
+      // date_of_birth       : [null, Validators.required]
+    });
+  }
+
+  initPassenger() {
+    return this.fb.group({
+      first_name          : ['',Validators.required],
+      last_name           : ['',Validators.required],
+      middle_name         : [''],
+      date_of_birth       : [null, Validators.required]
+    });
+  }
+
+  addPassenger() {
+    const control = <FormArray>this.passengerFormGroup.controls['passengers'];
+    control.push(this.initPassenger());
   }
 
   loadAirportsDepartureList(){
@@ -83,6 +114,15 @@ export class FlightBookingComponent implements OnInit {
     this.planTravelFormGroup.get('arrival').enable();
     this.departureId = departureObj.id;
     this.loadAirportsArrivalList(departureObj.id);
+  }
+
+  selectPassenger(passengerCount){
+    if(passengerCount > 1){
+      let i=0, pCount = passengerCount-1;
+      for(i = 0; i<pCount; i++){
+        this.addPassenger();
+      }
+    }
   }
 
   searchFlights(){

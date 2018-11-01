@@ -53,7 +53,8 @@
                 <input matInput placeholder="Passengers" aria-label="Passengers" [matAutocomplete]="autoPassenger"
                 formControlName="passengers" required>
                 <mat-autocomplete #autoPassenger="matAutocomplete">
-                <mat-option *ngFor="let passenger of passengers" [value]="passenger">
+                <mat-option *ngFor="let passenger of passengers" [value]="passenger"
+                  (click)="selectPassenger(passenger)">
                   <span>{{passenger}}</span>
                 </mat-option>
                 </mat-autocomplete>
@@ -95,7 +96,7 @@
                 <p class="mat-body">Flights from 
                   <span class="mat-body-strong">{{this.planTravelFormGroup.value.departure}}</span> to
                   <span class="mat-body-strong">{{this.planTravelFormGroup.value.arrival}}</span> on
-                  <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'fullDate'}}</span>
+                  <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'EEE MMM d, y'}}</span>
                 </p>
             </div>
             <div class="pull-right mr-r-10" *ngIf="seletedFlightSchedule">
@@ -120,7 +121,7 @@
 
               <mat-card class="mr-b-15 pd-5-imp" *ngFor="let schedule of scheduleList">
                   <div class="clearfix">
-                      <mat-grid-list cols="5" rowHeight="50px">
+                      <mat-grid-list cols="5" rowHeight="50px" gu>
                         <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
                         <mat-grid-tile>
                           <mat-card-content class="reset-mr-imp">
@@ -231,8 +232,90 @@
         </div>
       </form>
     </mat-step>
+    <mat-step [stepControl]="passengerFormGroup">
+      <form [formGroup]="passengerFormGroup">
+        <ng-template matStepLabel>Passenger details</ng-template>
+        <div class="clearfix mr-t-20" *ngIf="seletedFlightSchedule">
+            <p class="mat-h3">Fill the passenger details</p>
+            <div class="mat-body">
+              <span class="mat-body-strong">
+                {{seletedFlightSchedule.departureAirportCity}} ({{seletedFlightSchedule.departureAirportCode}})
+              </span> to
+              <span class="mat-body-strong">
+                {{seletedFlightSchedule.arrivalAirportCity}} ({{seletedFlightSchedule.arrivalAirportCode}})
+              </span> on
+              <span class="mat-caption">{{this.planTravelFormGroup.value.departDate | date : 'EEE MMM d, y'}}</span>
+            </div>
+        </div>
+
+        <div class="flight-passenger-list" formArrayName="passengers">
+          <div class="clearfix mr-t-15 mat-body-strong flight-passenger-header">
+              PASSENGER DETAILS
+          </div>
+
+          <div class="celarfix passenger-info" 
+            *ngFor="let passengerInfo of passengerFormGroup.controls.passengers.controls; let i=index">
+            <mat-card class="mr-b-15 pd-5-imp" [formGroupName]="i">
+              <div class="clearfix">
+                <mat-grid-list cols="5" rowHeight="75px" gutterSize="20px">
+                  <mat-grid-tile>Passenger</mat-grid-tile>
+  
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width" hintLabel="Max 45 characters">
+                      <input matInput placeholder="First name" maxlength="45" aria-label="first name"
+                        formControlName="first_name" required>
+                        <mat-hint align="end">{{passengerFormGroup.value.passengers[i].first_name.length || 0}}/45</mat-hint>
+                        <mat-error>
+                            Please enter your first name
+                        </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+  
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width" hintLabel="Max 45 characters">
+                      <input matInput placeholder="Last name" maxlength="45" aria-label="last name"
+                        formControlName="last_name" required>
+                        <mat-hint align="end">{{passengerFormGroup.value.passengers[i].last_name.length || 0}}/45</mat-hint>
+                        <mat-error>
+                            Please enter your last name
+                        </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+  
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width" hintLabel="Max 45 characters">
+                      <input matInput placeholder="Middle name" maxlength="45" aria-label="middle name"
+                        formControlName="middle_name">
+                        <mat-hint align="end">{{passengerFormGroup.value.passengers[i].middle_name.length || 0}}/45</mat-hint>
+                    </mat-form-field>
+                  </mat-grid-tile>
+  
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                      <input matInput [matDatepicker]="passengerDatePicker" placeholder="Date of birth" 
+                        formControlName="date_of_birth" required
+                        [min]="dateOfBirthMinDate" [max]="dateOfBirthMaxDate">
+                      <mat-datepicker-toggle matSuffix [for]="passengerDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #passengerDatePicker></mat-datepicker>
+                    </mat-form-field>
+                  </mat-grid-tile>
+                  
+                </mat-grid-list>
+              </div>
+            </mat-card>
+          </div>
+  
+          <div class="clearfix">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Continue</button>
+          </div>
+        </div>
+
+      </form>
+    </mat-step>
+
     <mat-step>
-      <ng-template matStepLabel>Passenger details</ng-template>
+      <ng-template matStepLabel>Review and Payment</ng-template>
       You are now done.
       <div>
         <button mat-button matStepperPrevious>Back</button>
