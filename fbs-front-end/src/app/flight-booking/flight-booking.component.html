@@ -74,65 +74,144 @@
         </div>
 
         <div class="clearfix mr-t-20" *ngIf="!flightSelectionLoading">
-            <p class="mat-h3">Choose a departure flight</p>
-            <p class="mat-body">Flights from 
-              <span class="mat-body-strong">{{this.planTravelFormGroup.value.departure}}</span> to
-              <span class="mat-body-strong">{{this.planTravelFormGroup.value.arrival}}</span> on
-              <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'fullDate'}}</span>
-            </p>
+          <div class="clearfix">
+            <div class="pull-left">
+                <p class="mat-h3">Choose a departure flight</p>
+                <p class="mat-body">Flights from 
+                  <span class="mat-body-strong">{{this.planTravelFormGroup.value.departure}}</span> to
+                  <span class="mat-body-strong">{{this.planTravelFormGroup.value.arrival}}</span> on
+                  <span class="mat-body-strong">{{this.planTravelFormGroup.value.departDate | date : 'fullDate'}}</span>
+                </p>
+            </div>
+            <div class="pull-right mr-r-10" *ngIf="seletedFlightSchedule">
+              <p class="mat-title">
+                Total Amount:&nbsp;&nbsp;&nbsp;
+                <span class="mat-body">$ {{seletedFlightSchedule.fare}}</span>
+              </p>
+            </div>
+          </div>
     
-            <div class="clearfix mr-t-20">
-                <div class="clearfix mr-t-15 mat-body-strong flight-schedule-header">
-                    <mat-grid-list cols="5" rowHeight="50px">
-                      <mat-grid-tile>Flight</mat-grid-tile>
-                      <mat-grid-tile>Depart</mat-grid-tile>
-                      <mat-grid-tile>Arrive</mat-grid-tile>
-                      <mat-grid-tile>Duration</mat-grid-tile>
-                      <mat-grid-tile>Total fare</mat-grid-tile>
-                    </mat-grid-list>
-                </div>
-                <mat-card class="mr-b-15 pd-5-imp" *ngFor="let schedule of scheduleList">
-                    <div class="clearfix">
-                        <mat-grid-list cols="5" rowHeight="50px">
-                          <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
-                          <mat-grid-tile>
+          <div class="clearfix mr-t-20">
+            <div class="flight-booking-list">
+              <div class="clearfix mr-t-15 mat-body-strong flight-schedule-header">
+                  <mat-grid-list cols="5" rowHeight="50px">
+                    <mat-grid-tile>Flight</mat-grid-tile>
+                    <mat-grid-tile>Depart</mat-grid-tile>
+                    <mat-grid-tile>Arrive</mat-grid-tile>
+                    <mat-grid-tile>Duration</mat-grid-tile>
+                    <mat-grid-tile>Fare</mat-grid-tile>
+                  </mat-grid-list>
+              </div>
+
+              <mat-card class="mr-b-15 pd-5-imp" *ngFor="let schedule of scheduleList">
+                  <div class="clearfix">
+                      <mat-grid-list cols="5" rowHeight="50px">
+                        <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
+                        <mat-grid-tile>
+                          <mat-card-content class="reset-mr-imp">
+                            <div matTooltip="{{schedule.departureAirportName}}">
+                                {{schedule.departureAirportCity}} ({{schedule.departureAirportCode}})
+                            </div>
+                            <div class="mat-small">
+                                {{schedule.departure_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                            </div>
+                          </mat-card-content>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                          <mat-card-content class="reset-mr-imp">
+                            <div matTooltip="{{schedule.arrivalAirportName}}">
+                                {{schedule.arrivalAirportCity}} ({{schedule.arrivalAirportCode}})
+                            </div>
+                            <div class="mat-small">
+                                {{schedule.arrival_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                            </div>
+                          </mat-card-content>
+                        </mat-grid-tile>
+                        <mat-grid-tile>{{schedule.duration}}</mat-grid-tile>
+                        <mat-grid-tile>
                             <mat-card-content class="reset-mr-imp">
-                              <div matTooltip="{{schedule.departureAirportName}}">
-                                  {{schedule.departureAirportCity}} ({{schedule.departureAirportCode}})
-                              </div>
-                              <div class="mat-small">
-                                  {{schedule.departure_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
-                              </div>
+                                <mat-radio-button (change)="selectFlightFare(schedule)">
+                                    $ {{schedule.fare}}
+                                </mat-radio-button>
                             </mat-card-content>
-                          </mat-grid-tile>
-                          <mat-grid-tile>
-                            <mat-card-content class="reset-mr-imp">
-                              <div matTooltip="{{schedule.arrivalAirportName}}">
-                                  {{schedule.arrivalAirportCity}} ({{schedule.arrivalAirportCode}})
-                              </div>
-                              <div class="mat-small">
-                                  {{schedule.arrival_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
-                              </div>
-                            </mat-card-content>
-                          </mat-grid-tile>
-                          <mat-grid-tile>{{schedule.duration}}</mat-grid-tile>
-                          <mat-grid-tile>
-                              <mat-card-content class="reset-mr-imp">
-                                  <mat-radio-button (change)="selectFlightFare(schedule)">
-                                      $ {{schedule.fare}}
-                                  </mat-radio-button>
-                              </mat-card-content>
-                          </mat-grid-tile>
-                        </mat-grid-list>
-                    </div>
-                </mat-card>
+                        </mat-grid-tile>
+                      </mat-grid-list>
+                  </div>
+              </mat-card>
+
+              <div class="clearfix">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperNext
+                  (click)="selectFlight()">Continue</button>
+              </div>
             </div>
 
-            <div class="clearfix">
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-raised-button color="primary" matStepperNext
-                (click)="selectFlight()">Continue</button>
+            <div class="flight-trip-summary" *ngIf="seletedFlightSchedule">
+              <div class="clearfix mr-t-15 mat-body-strong flight-schedule-header">
+                  <mat-grid-list cols="1" rowHeight="50px">
+                    <mat-grid-tile>Your trip summary</mat-grid-tile>
+                  </mat-grid-list>
+              </div>
+              <mat-card class="mr-b-15 pd-5-imp">
+                <mat-card-header class="br-b-1">
+                  <mat-card-title>{{seletedFlightSchedule.departureAirportCity}} - {{seletedFlightSchedule.arrivalAirportCity}}</mat-card-title>
+                  <mat-card-subtitle class="mr-b-5-imp">
+                    Flight date and time: {{this.planTravelFormGroup.value.departDate | date : 'EEE MMM d, y'}} [{{seletedFlightSchedule.departure_time}} Hrs]
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="mr-t-5">
+                  <div class="mat-small text-right">
+                    All Amounts in $
+                  </div>
+                  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="faredetail">
+                      <tr>
+                          <td colspan="3" class="mat-body-strong">Base Fare + Fuel Charge:</td>
+                      </tr>
+                      <tr>
+                          <td class="yts-l">5 Adult @ INR 3049.00</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-r text-right">15245.00</td>
+                      </tr>
+                      <tr>
+                          <td colspan="3" class="mat-body-strong yts-l" class="pd-t-20">Taxes and Fees:</td>
+                          <!-- <td class="yts-m"></td>
+                          <td class="yts-r text-right"></td> -->
+                      </tr>
+                      <tr>
+                          <td class="yts-l">Cute Fee(YF)</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-l text-right">250.00</td>
+                      </tr>
+                      <tr>
+                          <td class="yts-l">Passenger Service Fee(WO)</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-r text-right">1180.00</td>
+                      </tr>
+                      <tr>
+                          <td class="yts-l">User Development Fee(IN)</td>
+                          <td class="yts-m">:</td>
+                          <td style="width:40%" class="text-right">2540.00</td>
+                      </tr>
+                      <tr>
+                          <td class="yts-l">Central Goods &amp; service tax(K2)</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-r text-right">385.00</td>
+                      </tr>
+                      <tr>
+                          <td class="yts-l">State Goods &amp; service tax(K1)</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-r text-right">385.00</td>
+                      </tr>
+                      <tr class="mat-body-strong">
+                          <td class="yts-l">Sub Total [OUTBOUND]</td>
+                          <td class="yts-m">:</td>
+                          <td class="yts-r text-right">$ 19985.00</td>
+                      </tr>
+                  </table>
+                </mat-card-content>
+              </mat-card>
             </div>
+          </div>
         </div>
       </form>
     </mat-step>
