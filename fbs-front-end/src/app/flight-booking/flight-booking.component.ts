@@ -14,6 +14,7 @@ export class FlightBookingComponent implements OnInit {
   flightSelectionFormGroup  : FormGroup;
   arrivalAirportList        : any;
   departureAirportList      : any;
+  passengers                : any[] = [1,2,3,4,5,6];
   departMinDate             : Date = new Date();
   departMaxDate             : Date;
   departureId               : number;
@@ -21,6 +22,12 @@ export class FlightBookingComponent implements OnInit {
   scheduleList              : any;
   flightSelectionLoading    : boolean = false;
   seletedFlightSchedule     : any = null;
+  baseFare                  : number = 0;
+  passengerFacilityCharge   : number = 0;
+  segmentTax                : number = 0;
+  transportaionTax          : number = 0;
+  securityFee               : number = 0;
+  subTotalFare              : number = 0;
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -42,6 +49,7 @@ export class FlightBookingComponent implements OnInit {
     this.planTravelFormGroup = this.fb.group({
       departure         : ['', Validators.required],
       arrival           : [{ value: '', disabled:true }, Validators.required],
+      passengers        : ['', Validators.required],
       departDate        : [null, Validators.required]
     });
   }
@@ -106,6 +114,12 @@ export class FlightBookingComponent implements OnInit {
       this.flightSelectionFormGroup.patchValue({
         selectFlight : schedule.id
       });
+      this.baseFare         = this.planTravelFormGroup.value.passengers * this.seletedFlightSchedule.fare;
+      this.passengerFacilityCharge = (4.50) * this.planTravelFormGroup.value.passengers;
+      this.segmentTax       = (4.10) * this.planTravelFormGroup.value.passengers;
+      this.transportaionTax = (27.63) * this.planTravelFormGroup.value.passengers;
+      this.securityFee      = (5.60) * this.planTravelFormGroup.value.passengers;
+      this.subTotalFare     = this.baseFare + this.passengerFacilityCharge + this.segmentTax + this.transportaionTax + this.securityFee;
     }
   }
 

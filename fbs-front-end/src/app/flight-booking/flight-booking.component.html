@@ -50,6 +50,21 @@
           <div class="clearfix mr-t-15">
             <mat-grid-tile>
               <mat-form-field class="full-width">
+                <input matInput placeholder="Passengers" aria-label="Passengers" [matAutocomplete]="autoPassenger"
+                formControlName="passengers" required>
+                <mat-autocomplete #autoPassenger="matAutocomplete">
+                <mat-option *ngFor="let passenger of passengers" [value]="passenger">
+                  <span>{{passenger}}</span>
+                </mat-option>
+                </mat-autocomplete>
+                <mat-error>
+                  Please select the passenger
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="full-width">
                 <input matInput [matDatepicker]="departDatePicker" placeholder="Depart date" 
                   formControlName="departDate" required
                   [min]="departMinDate" [max]="departMaxDate">
@@ -167,43 +182,46 @@
                       <tr>
                         <td colspan="3" class="mat-body-strong">Base Fare + Fuel Charge:</td>
                       </tr>
-                      <tr>
-                        <td class="yts-l">5 Adult @ INR 3049.00</td>
+                      <tr *ngIf="seletedFlightSchedule">
+                        <td class="yts-l">{{planTravelFormGroup.value.passengers}}
+                          <span [ngPlural]="planTravelFormGroup.value.passengers">
+                            <ng-template ngPluralCase="other">passengers</ng-template>
+                            <ng-template ngPluralCase="1">passenger</ng-template>
+                          </span>
+                          <span>@ $ {{seletedFlightSchedule.fare}}</span>
+                        </td>
                         <td class="yts-m">:</td>
-                        <td class="yts-r text-right">15245.00</td>
+                        <td class="yts-r text-right">
+                          {{baseFare | number : '.2'}}
+                        </td>
                       </tr>
                       <tr>
                         <td colspan="3" class="mat-body-strong yts-l" class="pd-t-20">Taxes and Fees:</td>
                       </tr>
                       <tr>
-                        <td class="yts-l">Cute Fee(YF)</td>
+                        <td class="yts-l">Passenger facility charge (US)</td>
                         <td class="yts-m">:</td>
-                        <td class="yts-l text-right">250.00</td>
+                        <td class="yts-l text-right">{{passengerFacilityCharge | number : '.2'}}</td>
                       </tr>
                       <tr>
-                        <td class="yts-l">Passenger Service Fee(WO)</td>
+                        <td class="yts-l">Segment tax (US)</td>
                         <td class="yts-m">:</td>
-                        <td class="yts-r text-right">1180.00</td>
+                        <td class="yts-r text-right">{{segmentTax | number : '.2'}}</td>
                       </tr>
                       <tr>
-                        <td class="yts-l">User Development Fee(IN)</td>
+                        <td class="yts-l">Transportation tax (US)</td>
                         <td class="yts-m">:</td>
-                        <td style="width:40%" class="text-right">2540.00</td>
+                        <td style="width:40%" class="text-right">{{transportaionTax | number : '.2'}}</td>
                       </tr>
                       <tr>
-                        <td class="yts-l">Central Goods &amp; service tax(K2)</td>
+                        <td class="yts-l">Security fee (US)</td>
                         <td class="yts-m">:</td>
-                        <td class="yts-r text-right">385.00</td>
-                      </tr>
-                      <tr>
-                        <td class="yts-l">State Goods &amp; service tax(K1)</td>
-                        <td class="yts-m">:</td>
-                        <td class="yts-r text-right">385.00</td>
+                        <td class="yts-r text-right">{{securityFee | number : '.2'}}</td>
                       </tr>
                       <tr class="mat-body-strong">
                         <td class="yts-l">Sub Total [OUTBOUND]</td>
                         <td class="yts-m">:</td>
-                        <td class="yts-r text-right">$ 19985.00</td>
+                        <td class="yts-r text-right">$ {{subTotalFare | number : '.2'}}</td>
                       </tr>
                   </table>
                 </mat-card-content>
