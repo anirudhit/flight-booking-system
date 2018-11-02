@@ -102,7 +102,7 @@
             <div class="pull-right mr-r-10" *ngIf="seletedFlightSchedule">
               <p class="mat-title">
                 Total Amount:&nbsp;&nbsp;&nbsp;
-                <span class="mat-body">$ {{seletedFlightSchedule.fare}}</span>
+                <span class="mat-body">$ {{subTotalFare}}</span>
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@
 
               <mat-card class="mr-b-15 pd-5-imp" *ngFor="let schedule of scheduleList">
                   <div class="clearfix">
-                      <mat-grid-list cols="5" rowHeight="50px" gu>
+                      <mat-grid-list cols="5" rowHeight="50px">
                         <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
                         <mat-grid-tile>
                           <mat-card-content class="reset-mr-imp">
@@ -258,7 +258,7 @@
             <mat-card class="mr-b-15 pd-5-imp" [formGroupName]="i">
               <div class="clearfix">
                 <mat-grid-list cols="5" rowHeight="75px" gutterSize="20px">
-                  <mat-grid-tile>Passenger</mat-grid-tile>
+                  <mat-grid-tile>Passenger {{i+1}}</mat-grid-tile>
   
                   <mat-grid-tile>
                     <mat-form-field class="full-width" hintLabel="Max 45 characters">
@@ -307,7 +307,8 @@
   
           <div class="clearfix">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" matStepperNext>Continue</button>
+            <button mat-raised-button color="primary" 
+              matStepperNext (click)="addPassengers()">Continue</button>
           </div>
         </div>
 
@@ -315,11 +316,156 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Review and Payment</ng-template>
-      You are now done.
+      <form [formGroup]="passengerFormGroup">
+        <ng-template matStepLabel>Review and Payment</ng-template>
+        <div class="clearfix mr-t-20">
+          <p class="mat-h3">Please review your trip summary and pay</p>
+        </div>
+        <div class="flight-summary-wrapper" *ngIf="seletedFlightSchedule">
+          <div class="flight-details-wrapper mr-b-20">
+              <div class="clearfix mr-t-15 mat-body-strong flight-passenger-header">
+                FLIGHT DETAILS
+              </div>
+              <mat-card class="mr-b-15">
+                <mat-grid-list cols="4" rowHeight="50px">
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">Flight</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">Depart</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">Arrive</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1 br-r-1">Duration</mat-grid-tile>
+                </mat-grid-list>
+
+                <mat-grid-list cols="4" rowHeight="50px">
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    {{seletedFlightSchedule.flightCode}}
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    <mat-card-content class="reset-mr-imp">
+                      <div matTooltip="{{seletedFlightSchedule.departureAirportName}}">
+                          {{seletedFlightSchedule.departureAirportCity}} ({{seletedFlightSchedule.departureAirportCode}})
+                      </div>
+                      <div class="mat-small">
+                          {{seletedFlightSchedule.departure_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                      </div>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    <mat-card-content class="reset-mr-imp">
+                      <div matTooltip="{{seletedFlightSchedule.arrivalAirportName}}">
+                          {{seletedFlightSchedule.arrivalAirportCity}} ({{seletedFlightSchedule.arrivalAirportCode}})
+                      </div>
+                      <div class="mat-small">
+                          {{seletedFlightSchedule.arrival_time}} | {{this.planTravelFormGroup.value.departDate | date : 'EEE, MMM d'}}
+                      </div>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1 br-r-1">
+                    {{seletedFlightSchedule.duration}}
+                  </mat-grid-tile>
+                </mat-grid-list>
+
+              </mat-card>
+            </div>
+
+            <div class="flight-details-wrapper mr-b-20">
+              <div class="clearfix mr-t-15 mat-body-strong flight-passenger-header">
+                PASSENGER DETAILS
+              </div>
+              <mat-card class="mr-b-15">
+                <mat-grid-list cols="5" rowHeight="50px">
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">Passenger #</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">First name</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1">Last name</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1 br-r-1">Middle name</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong br-t-1 br-l-1 br-r-1">Date of birth</mat-grid-tile>
+                </mat-grid-list>
+
+                <mat-grid-list cols="5" rowHeight="50px"
+                  *ngFor="let passengerInfo of passengerFormGroup.value.passengers; let i=index">
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    {{i+1}}
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    {{passengerInfo.first_name}}
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    {{passengerInfo.last_name}}
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1">
+                    {{passengerInfo.middle_name?passengerInfo.middle_name:"-"}}
+                  </mat-grid-tile>
+                  <mat-grid-tile class="br-t-1 br-l-1 br-b-1 br-r-1">
+                    {{passengerInfo.date_of_birth | date : 'M-d-yyyy'}}
+                  </mat-grid-tile>
+                </mat-grid-list>
+
+              </mat-card>
+            </div>
+
+            <div class="flight-details-wrapper mr-b-20">
+              <div class="clearfix mr-t-15 mat-body-strong flight-passenger-header">
+                FARE DETAILS
+              </div>
+              <mat-card class="mr-b-15">
+                <mat-card-content class="mr-t-5">
+                  <div class="mat-small text-right">
+                    All Amounts in $
+                  </div>
+                  <table cellpadding="0" cellspacing="0" border="0" width="100%" class="faredetail">
+                      <tr>
+                        <td colspan="3" class="mat-body-strong">Base Fare + Fuel Charge:</td>
+                      </tr>
+                      <tr *ngIf="seletedFlightSchedule">
+                        <td class="yts-l">{{planTravelFormGroup.value.passengers}}
+                          <span [ngPlural]="planTravelFormGroup.value.passengers">
+                            <ng-template ngPluralCase="other">passengers</ng-template>
+                            <ng-template ngPluralCase="1">passenger</ng-template>
+                          </span>
+                          <span>@ $ {{seletedFlightSchedule.fare}}</span>
+                        </td>
+                        <td class="yts-m">:</td>
+                        <td class="yts-r text-right">
+                          {{baseFare | number : '.2'}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="mat-body-strong yts-l" class="pd-t-20">Taxes and Fees:</td>
+                      </tr>
+                      <tr>
+                        <td class="yts-l">Passenger facility charge (US)</td>
+                        <td class="yts-m">:</td>
+                        <td class="yts-l text-right">{{passengerFacilityCharge | number : '.2'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="yts-l">Segment tax (US)</td>
+                        <td class="yts-m">:</td>
+                        <td class="yts-r text-right">{{segmentTax | number : '.2'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="yts-l">Transportation tax (US)</td>
+                        <td class="yts-m">:</td>
+                        <td style="width:40%" class="text-right">{{transportaionTax | number : '.2'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="yts-l">Security fee (US)</td>
+                        <td class="yts-m">:</td>
+                        <td class="yts-r text-right">{{securityFee | number : '.2'}}</td>
+                      </tr>
+                      <tr class="mat-body-strong">
+                        <td class="yts-l">Sub Total [OUTBOUND]</td>
+                        <td class="yts-m">:</td>
+                        <td class="yts-r text-right">$ {{subTotalFare | number : '.2'}}</td>
+                      </tr>
+                  </table>
+                </mat-card-content>
+              </mat-card>
+            </div>
+
+
+          </div>
+        </form>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious class="mr-r-10">Back</button>
+        <div class="pull-left" mat-button id="paypal-checkout-btn"></div>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

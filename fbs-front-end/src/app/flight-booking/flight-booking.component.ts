@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightBookingService } from './services/flight-booking.service';
+
+declare let paypal: any;
 
 @Component({
   selector: 'app-flight-booking',
   templateUrl: './flight-booking.component.html',
   styleUrls: ['./flight-booking.component.css']
 })
-export class FlightBookingComponent implements OnInit {
+export class FlightBookingComponent implements OnInit,AfterViewChecked {
   isLinear = true;
   planTravelFormGroup       : FormGroup;
   flightSelectionFormGroup  : FormGroup;
@@ -148,6 +150,15 @@ export class FlightBookingComponent implements OnInit {
     }
   }
 
+  addPassengers(){
+    console.log(this.passengerFormGroup.value);
+    if(!this.passengerFormGroup.valid){
+      this.snackBar.open("Please fill passenger details","Ok",{
+        duration: 2000,
+      }); 
+    }
+  }
+
   selectFlightFare(schedule){
     if(schedule){
       this.seletedFlightSchedule = schedule;
@@ -161,6 +172,51 @@ export class FlightBookingComponent implements OnInit {
       this.securityFee      = (5.60) * this.planTravelFormGroup.value.passengers;
       this.subTotalFare     = this.baseFare + this.passengerFacilityCharge + this.segmentTax + this.transportaionTax + this.securityFee;
     }
+  }
+
+  addScript: boolean = false;
+  paypalLoad: boolean = true;
+
+  paypalConfig = {
+    env: 'sandbox',
+    client: {
+      sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+      production: '<your-production-key here>'
+    },
+    commit: true,
+    payment: (data, actions) => {
+      return actions.payment.create({
+        payment: {
+          transactions: [
+            { amount: { total: this.subTotalFare.toFixed(2), currency: 'USD' } }
+          ]
+        }
+      });
+    },
+    onAuthorize: (data, actions) => {
+      return actions.payment.execute().then((payment) => {
+        //Do something when payment is successful.
+      })
+    }
+  };
+
+  ngAfterViewChecked(): void {
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
+        this.paypalLoad = false;
+      })
+    }
+  }
+  
+  addPaypalScript() {
+    this.addScript = true;
+    return new Promise((resolve, reject) => {
+      let scripttagElement = document.createElement('script');    
+      scripttagElement.src = 'https://www.paypalobjects.com/api/checkout.js';
+      scripttagElement.onload = resolve;
+      document.body.appendChild(scripttagElement);
+    })
   }
 
 }
