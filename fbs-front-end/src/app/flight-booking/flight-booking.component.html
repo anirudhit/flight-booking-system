@@ -102,7 +102,7 @@
             <div class="pull-right mr-r-10" *ngIf="seletedFlightSchedule">
               <p class="mat-title">
                 Total Amount:&nbsp;&nbsp;&nbsp;
-                <span class="mat-body">$ {{subTotalFare}}</span>
+                <span class="mat-body">$ {{subTotalFare | number : '.2'}}</span>
               </p>
             </div>
           </div>
