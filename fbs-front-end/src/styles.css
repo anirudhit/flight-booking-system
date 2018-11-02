@@ -11,10 +11,18 @@ body {
 .body-wrapper{
     padding: 8px;
 }
+.br-t-1{
+    border-top: 1px solid #cacaca;
+}
+.br-r-1{
+    border-right: 1px solid #cacaca;
+}
 .br-b-1{
     border-bottom: 1px solid #cacaca;
 }
-
+.br-l-1{
+    border-left: 1px solid #cacaca;
+}
 .clearfix{
     clear: both;
 }
@@ -75,8 +83,14 @@ body {
 .mr-l-5{
     margin-left: 5px;
 }
+.mr-l-5-imp{
+    margin-left: 5px !important;
+}
 .mr-l-10{
     margin-left: 10px;
+}
+.mr-l-10-imp{
+    margin-left: 10px !important;
 }
 .mr-l-15{
     margin-left: 15px;
