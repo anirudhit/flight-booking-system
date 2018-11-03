@@ -59,8 +59,6 @@ export class FlightHistoryComponent implements OnInit {
       if(result){
         this.loadFlightSchedulesList();
         this.scheduledHistoryToast(result.message,"Ok");
-      }else{
-        this.scheduledHistoryToast("Sorry. Some error occured","Ok");
       }
     });
   }
