@@ -151,7 +151,6 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   }
 
   addPassengers(){
-    console.log(this.passengerFormGroup.value);
     if(!this.passengerFormGroup.valid){
       this.snackBar.open("Please fill passenger details","Ok",{
         duration: 2000,
