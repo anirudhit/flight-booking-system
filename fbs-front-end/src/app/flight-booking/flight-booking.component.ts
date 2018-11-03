@@ -19,6 +19,7 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   departureAirportList      : any;
   passengers                : any[] = [1,2,3,4,5,6];
   passengerTitle            : any[] = ["Mr","Ms","Mrs"];
+  passengerGender           : any[] = ["Female", "Male", "Other"];
   departMinDate             : Date = new Date();
   departMaxDate             : Date;
   dateOfBirthMinDate        : Date = new Date(1910,0,1);

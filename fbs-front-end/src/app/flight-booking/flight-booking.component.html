@@ -6,7 +6,7 @@
 <div class="clearfix">
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="planTravelFormGroup">
-      <form [formGroup]="planTravelFormGroup">
+      <form [formGroup]="planTravelFormGroup" autocomplete="off">
         <ng-template matStepLabel>Plan your travel</ng-template>
         <mat-grid-list cols="5" rowHeight="75px">
           <div class="clearfix mr-t-15">
@@ -233,7 +233,7 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="passengerFormGroup">
-      <form [formGroup]="passengerFormGroup">
+      <form [formGroup]="passengerFormGroup" autocomplete="off">
         <ng-template matStepLabel>Passenger details</ng-template>
         <div class="clearfix mr-t-20" *ngIf="seletedFlightSchedule">
             <p class="mat-h3">Fill the passenger details</p>
