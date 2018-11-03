@@ -29,6 +29,24 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+.disp-i{
+    display: inline;
+};
+.disp-i-imp{
+    display: inline !important;
+};
+.disp-ib{
+    display: inline-block;
+};
+.disp-ib-imp{
+    display: inline-block !important;
+};
+.disp-b{
+    display: block;
+};
+.disp-b-imp{
+    display: block !important;
+};
 .reset-mr{
     margin: 0;
 }
