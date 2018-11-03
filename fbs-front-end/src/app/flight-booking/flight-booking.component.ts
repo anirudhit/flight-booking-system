@@ -82,10 +82,11 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
 
   initPassenger() {
     return this.fb.group({
-      first_name          : ['',Validators.required],
-      last_name           : ['',Validators.required],
-      middle_name         : [''],
-      date_of_birth       : [null, Validators.required]
+      first_name    : ['',Validators.required],
+      last_name     : ['',Validators.required],
+      middle_name   : [''],
+      date_of_birth : [null, Validators.required],
+      gender        : ['',Validators.required]
     });
   }
 

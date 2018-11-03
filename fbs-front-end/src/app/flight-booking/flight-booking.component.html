@@ -8,6 +8,9 @@
     <mat-step [stepControl]="planTravelFormGroup">
       <form [formGroup]="planTravelFormGroup" autocomplete="off">
         <ng-template matStepLabel>Plan your travel</ng-template>
+        <div class="clearfix mat-body-strong">
+          <p class="mat-small">(<span class="mat-error disp-i-imp" style="display: inline;">*</span> Required)</p>
+        </div>
         <mat-grid-list cols="5" rowHeight="75px">
           <div class="clearfix mr-t-15">
             <mat-grid-tile>
@@ -236,6 +239,9 @@
       <form [formGroup]="passengerFormGroup" autocomplete="off">
         <ng-template matStepLabel>Passenger details</ng-template>
         <div class="clearfix mr-t-20" *ngIf="seletedFlightSchedule">
+            <div class="clearfix mat-body-strong">
+              <p class="mat-small">(<span class="mat-error disp-i-imp" style="display: inline;">*</span> Required)</p>
+            </div>
             <p class="mat-h3">Fill the passenger details</p>
             <div class="mat-body">
               <span class="mat-body-strong">
@@ -257,7 +263,7 @@
             *ngFor="let passengerInfo of passengerFormGroup.controls.passengers.controls; let i=index">
             <mat-card class="mr-b-15 pd-5-imp" [formGroupName]="i">
               <div class="clearfix">
-                <mat-grid-list cols="5" rowHeight="75px" gutterSize="20px">
+                <mat-grid-list cols="6" rowHeight="75px" gutterSize="20px">
                   <mat-grid-tile>Passenger {{i+1}}</mat-grid-tile>
   
                   <mat-grid-tile>
@@ -297,6 +303,22 @@
                         [min]="dateOfBirthMinDate" [max]="dateOfBirthMaxDate">
                       <mat-datepicker-toggle matSuffix [for]="passengerDatePicker"></mat-datepicker-toggle>
                       <mat-datepicker #passengerDatePicker></mat-datepicker>
+                    </mat-form-field>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Gender" aria-label="Gender" 
+                        [matAutocomplete]="autoGender"
+                      formControlName="gender" required>
+                      <mat-autocomplete #autoGender="matAutocomplete">
+                      <mat-option *ngFor="let gender of passengerGender" [value]="gender">
+                        <span>{{gender}}</span>
+                      </mat-option>
+                      </mat-autocomplete>
+                      <mat-error>
+                        Please select the gender
+                      </mat-error>
                     </mat-form-field>
                   </mat-grid-tile>
                   
@@ -464,7 +486,7 @@
           </div>
         </form>
       <div>
-        <button mat-button matStepperPrevious class="mr-r-10">Back</button>
+        <button mat-button matStepperPrevious class="mr-l-10-imp">Back</button>
         <div class="pull-left" mat-button id="paypal-checkout-btn"></div>
       </div>
     </mat-step>
