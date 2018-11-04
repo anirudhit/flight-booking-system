@@ -18,9 +18,10 @@ export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginFbComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
-  { path: 'user', component: UserComponent, resolve: { data: UserResolver}},
-  { path: 'home', component: HomeComponent, resolve: { data: UserResolver}},
-  { path: 'flightschedule', component: FlightScheduleComponent, resolve: { data: UserResolver}},
-  { path: 'flightshistory', component: FlightHistoryComponent, resolve: { data: UserResolver}},
-  { path: 'flightsbooking', component: FlightBookingComponent, resolve: { data: UserResolver}}
+  { path: 'user', component: UserComponent, resolve: {data: UserResolver}},
+  { path: 'home', component: HomeComponent, resolve: {data: UserResolver}},
+  { path: 'profile', component: ProfileComponent, resolve: {data: UserResolver}},
+  { path: 'flightschedule', component: FlightScheduleComponent, resolve: {data: UserResolver}},
+  { path: 'flightshistory', component: FlightHistoryComponent, resolve: {data: UserResolver}},
+  { path: 'flightsbooking', component: FlightBookingComponent, resolve: {data: UserResolver}}
 ];

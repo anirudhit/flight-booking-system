@@ -23,6 +23,7 @@ import { AppComponent } from './app.component-fb';
 
 import { HeaderFbComponent } from './header-fb/header-fb.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
@@ -44,6 +45,7 @@ import { UpdateScheduleDialog } from './flight-history/flight-history.component'
     RegisterComponent,
     HeaderFbComponent,
     HomeComponent,
+    ProfileComponent,
     FlightScheduleComponent,
     FlightHistoryComponent,
     FlightBookingComponent,
