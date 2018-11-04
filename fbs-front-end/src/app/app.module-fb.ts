@@ -1,7 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { HttpClientModule }    from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes-fb';
+import { AppMaterialModule } from './app-material/app-material.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -13,24 +18,50 @@ import { UserResolver } from './user-fb/user.resolver';
 import { AuthGuard } from './auth-fb/auth.guard';
 import { AuthService } from './auth-fb/auth.service';
 import { UserService } from './auth-fb/user.service';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component-fb';
 
+import { HeaderFbComponent } from './header-fb/header-fb.component';
+import { HomeComponent } from './home/home.component';
+import { FlightScheduleComponent } from './flight-schedule/flight-schedule.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FlightHistoryComponent } from './flight-history/flight-history.component';
+import { MatDialogModule }  from '@angular/material/dialog';
+import { FlightBookingComponent } from './flight-booking/flight-booking.component';
+
+import { DeleteScheduleDialog } from './flight-history/flight-history.component';
+import { UpdateScheduleDialog } from './flight-history/flight-history.component';
+
 @NgModule({
+  entryComponents:[
+    DeleteScheduleDialog,
+    UpdateScheduleDialog
+  ],
   declarations: [
     AppComponent,
     LoginFbComponent,
     UserComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderFbComponent,
+    HomeComponent,
+    FlightScheduleComponent,
+    FlightHistoryComponent,
+    FlightBookingComponent,
+    DeleteScheduleDialog,
+    UpdateScheduleDialog
   ],
   imports: [
-    BrowserModule,
     ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    AppMaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
