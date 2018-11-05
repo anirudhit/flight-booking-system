@@ -69,8 +69,14 @@ body {
 .mr-r-5{
     margin-right: 5px;
 }
+.mr-r-5-imp{
+    margin-right: 5px !important;
+}
 .mr-r-10{
     margin-right: 10px;
+}
+.mr-r-10-imp{
+    margin-right: 10px !important;
 }
 .mr-r-15{
     margin-right: 15px;
