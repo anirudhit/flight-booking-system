@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileService } from './services/profile.service';
+
+import { ActivatedRoute } from '@angular/router';
+import { FirebaseUserModel } from '../auth-fb/user.model';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  user: FirebaseUserModel = new FirebaseUserModel();
 
   profileForm: FormGroup;
   userName: any;
@@ -17,7 +23,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -26,11 +33,18 @@ export class ProfileComponent implements OnInit {
   }
 
   initUserDetails(){
-    this.userName = localStorage.getItem('token');
-    this.userId = localStorage.getItem('id');
-    this.imageUrl = localStorage.getItem('image_url');
-    this.userRole = "User";
-    this.loadUserProfile();
+    this.route.data.subscribe(routeData => {
+      let data = routeData['data'];
+      if (data) {
+        this.user = data;
+        console.log(this.user);
+      }
+    })
+    // this.userName = localStorage.getItem('token');
+    // this.userId = localStorage.getItem('id');
+    // this.imageUrl = localStorage.getItem('image_url');
+    // this.userRole = "User";
+    // this.loadUserProfile();
   }
 
   createProfileForm(){

@@ -4,12 +4,13 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{userName}} <span class="muted-text">(Github username)</span></mat-card-title>
-    <mat-card-subtitle>{{userRole}} <span class="muted-text">(Role)</span></mat-card-subtitle>
+    <div mat-card-avatar>
+        <img class="profile-user-img" [src]="user.image" alt="User image">
+    </div>
+    <mat-card-title class="mr-b-10-imp">{{user.name}} <span class="muted-text">(Username)</span></mat-card-title>
+    <mat-card-subtitle>{{user.role}} <span class="muted-text">(Role)</span></mat-card-subtitle>
   </mat-card-header>
-  <div class="clearfix" mat-card-image>
-    <img class="profile-bg-img" src="assets/img/user-profile-bg.jpg" alt="Photo of a background">
-  </div>
+  
   <mat-card-content>
     <form [formGroup]="profileForm">
       <mat-grid-list cols="5" rowHeight="75px">
