@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  FlightBookingService } from './services/flight-booking.service';
 
+import { ActivatedRoute } from '@angular/router';
+import { FirebaseUserModel } from '../auth-fb/user.model';
+
 declare let paypal: any;
 
 @Component({
@@ -12,9 +15,12 @@ declare let paypal: any;
 })
 export class FlightBookingComponent implements OnInit,AfterViewChecked {
   isLinear = true;
+  user: FirebaseUserModel   = new FirebaseUserModel();
+
   planTravelFormGroup       : FormGroup;
   flightSelectionFormGroup  : FormGroup;
   passengerFormGroup        : FormGroup;
+
   arrivalAirportList        : any;
   departureAirportList      : any;
   passengers                : any[] = [1,2,3,4,5,6];
@@ -36,12 +42,14 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   securityFee               : number = 0;
   subTotalFare              : number = 0;
   constructor(
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private flightBookingService: FlightBookingService
   ) {}
 
   ngOnInit() {
+    this.initUserDetails();
     this.initFlightBookingForm();
     this.initFlightSelectionForm();
     this.loadAirportsDepartureList();
@@ -49,7 +57,13 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   }
 
   initUserDetails(){
-
+    this.route.data.subscribe(routeData => {
+      let data = routeData['data'];
+      if (data) {
+        this.user = data;
+        console.log(this.user);
+      }
+    })
   }
 
   initFlightBookingForm(){
@@ -79,6 +93,9 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       ]),
       email:  ['',[Validators.required,Validators.email]],
       cell_number: ['',Validators.required]
+    });
+    this.passengerFormGroup.patchValue({
+      email: this.user.email
     });
   }
 
