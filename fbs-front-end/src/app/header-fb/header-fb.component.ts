@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth-fb/auth.service';
 import { FirebaseUserModel } from '../auth-fb/user.model';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header-fb',
   templateUrl: './header-fb.component.html',
@@ -10,6 +11,7 @@ import { FirebaseUserModel } from '../auth-fb/user.model';
 })
 export class HeaderFbComponent implements OnInit {
   user: FirebaseUserModel = new FirebaseUserModel();
+  isLoggedIn$: Observable<boolean>;
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
@@ -17,6 +19,7 @@ export class HeaderFbComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoggedIn$ = this.authService.isLoggedIn;
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
