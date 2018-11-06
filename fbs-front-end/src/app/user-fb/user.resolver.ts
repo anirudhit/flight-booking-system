@@ -22,8 +22,10 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
           return resolve(user);
         }
         else{
+          user.id = res.uid;
           user.image = res.photoURL;
           user.name = res.displayName;
+          user.email = res.email;
           user.provider = res.providerData[0].providerId;
           return resolve(user);
         }
