@@ -10,6 +10,7 @@ const httpOptions = {
 export class FlightBookingService {
   private airportsUrl = '/api/airports';
   private flightsUrl = '/api/flights';
+  private bookingUrl = '/api/booking';
   constructor(
     private http: HttpClient
   ) { }
@@ -33,5 +34,10 @@ export class FlightBookingService {
     return this.http.get(url,{
       params: scheduleObj
     });
+  }
+
+  confirmBooking(bookingObj){
+    let url = this.bookingUrl;
+    return this.http.post(url, bookingObj, httpOptions);
   }
 }
