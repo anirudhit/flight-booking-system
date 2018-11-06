@@ -61,7 +61,6 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       let data = routeData['data'];
       if (data) {
         this.user = data;
-        console.log(this.user);
       }
     })
   }
