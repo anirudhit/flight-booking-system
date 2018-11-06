@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {  FlightBookingService } from './services/flight-booking.service';
+import { FlightBookingService } from './services/flight-booking.service';
+import { formatDate } from '@angular/common';
 
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseUserModel } from '../auth-fb/user.model';
@@ -41,6 +42,10 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   transportaionTax          : number = 0;
   securityFee               : number = 0;
   subTotalFare              : number = 0;
+
+  //Variable for the tickect capture
+  payment_id                : string;
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -219,6 +224,8 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
         if(payment.state === "approved"){
           console.log("payment");
           console.log(payment);
+          this.payment_id = payment.id;
+          this.confirmBooking();
         }
       })
     }
@@ -241,6 +248,28 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       scripttagElement.onload = resolve;
       document.body.appendChild(scripttagElement);
     })
+  }
+
+  confirmBooking(){
+    let dateOfJourney = formatDate(this.planTravelFormGroup.value.departDate, 'yyyy-MM-dd', 'en');
+    let passengers = [];
+    let seatSeries = Math.floor(Math.random() * 16) + 1;
+    let seatSequence = ['A','B','C','D','E','F','G'];
+    this.passengerFormGroup.value.passengers.forEach((passenger, passengerIndex) => {
+      passenger.date_of_birth = formatDate(passenger.date_of_birth, 'yyyy-MM-dd', 'en');
+      passenger.seat_number = seatSeries + seatSequence[passengerIndex];
+      passengers.push(passenger);
+    });
+    let req = {
+      flight_schedule_id: this.flightSelectionFormGroup.value.selectFlight,
+      user_id: this.user.id,
+      date_of_journey: dateOfJourney,
+      payment_id: this.payment_id,
+      email: this.passengerFormGroup.value.email,
+      cell_number: this.passengerFormGroup.value.cell_number,
+      passengers: passengers
+    };
+    console.log(req);
   }
 
 }
