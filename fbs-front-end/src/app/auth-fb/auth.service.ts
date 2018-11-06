@@ -2,9 +2,19 @@ import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  setLoginHeader(){
+    this.loggedIn.next(true);
+  }
 
   constructor(
    public afAuth: AngularFireAuth
@@ -47,6 +57,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(res => {
         resolve(res);
+        this.setLoginHeader();
       }, err => {
         console.log(err);
         reject(err);
@@ -75,6 +86,7 @@ export class AuthService {
   doLogout(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
+        this.loggedIn.next(false);
         this.afAuth.auth.signOut()
         resolve();
       }
