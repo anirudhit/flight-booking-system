@@ -48,6 +48,10 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
     this.initPassengerForm();
   }
 
+  initUserDetails(){
+
+  }
+
   initFlightBookingForm(){
     let dayMs           : number = 24*60*60*1000;
     let nextThreeMonths : number = dayMs*90;
@@ -72,11 +76,9 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
     this.passengerFormGroup = this.fb.group({
       passengers: this.fb.array([
           this.initPassenger(),
-      ])
-      // first_name          : ['',Validators.required],
-      // last_name           : ['',Validators.required],
-      // middle_name         : [''],
-      // date_of_birth       : [null, Validators.required]
+      ]),
+      email:  ['',[Validators.required,Validators.email]],
+      cell_number: ['',Validators.required]
     });
   }
 

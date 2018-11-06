@@ -259,12 +259,12 @@
               PASSENGER DETAILS
           </div>
 
-          <div class="celarfix passenger-info" 
+          <div class="clearfix passenger-info" 
             *ngFor="let passengerInfo of passengerFormGroup.controls.passengers.controls; let i=index">
             <mat-card class="mr-b-15 pd-5-imp" [formGroupName]="i">
               <div class="clearfix">
                 <mat-grid-list cols="6" rowHeight="75px" gutterSize="20px">
-                  <mat-grid-tile>Passenger {{i+1}}</mat-grid-tile>
+                  <mat-grid-tile class="mat-body-strong">Passenger {{i+1}}</mat-grid-tile>
   
                   <mat-grid-tile>
                     <mat-form-field class="full-width" hintLabel="Max 45 characters">
@@ -326,12 +326,49 @@
               </div>
             </mat-card>
           </div>
-  
-          <div class="clearfix">
-            <button mat-button matStepperPrevious class="mr-r-15-imp">Back</button>
-            <button mat-raised-button color="primary" 
-              matStepperNext (click)="addPassengers()">Continue</button>
+        </div>
+
+        <div class="clearfix trip-contact-info-wrapper mr-t-15">
+          <div class="clearfix mat-body-strong flight-passenger-header">
+              Trip contact
           </div>
+
+          <div class="clearfix trip-contact-info">
+            <mat-card class="mr-b-15 pd-5-imp">
+              <div class="clearfix">
+                <mat-grid-list cols="6" rowHeight="75px" gutterSize="20px">
+                  <mat-grid-tile></mat-grid-tile>
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width-input" hintLabel="Max 75 characters">
+                      <input matInput placeholder="Email" maxlength="75" formControlName="email" required>
+                      <mat-hint align="end">{{passengerFormGroup.value.email.length || 0}}/100</mat-hint>
+                      <mat-error>
+                          Please enter valid email address
+                      </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+
+                  <mat-grid-tile></mat-grid-tile>
+                  <mat-grid-tile>
+                    <mat-form-field class="full-width-input" hintLabel="Max 10 characters">
+                      <input matInput placeholder="Cell number" maxlength="10" formControlName="cell_number" required>
+                      <mat-hint align="end">{{passengerFormGroup.value.cell_number.length || 0}}/10</mat-hint>
+                      <mat-error>
+                          Please enter your cell number
+                      </mat-error>
+                    </mat-form-field>
+                  </mat-grid-tile>
+                  
+                </mat-grid-list>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+
+        <div class="clearfix mr-t-15">
+          <button mat-button matStepperPrevious class="mr-r-15-imp">Back</button>
+          <button mat-raised-button color="primary" 
+            matStepperNext (click)="addPassengers()">Continue</button>
         </div>
 
       </form>
