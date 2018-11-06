@@ -97,11 +97,20 @@ body {
 .mr-b-10{
     margin-bottom: 10px;
 }
+.mr-b-10-imp{
+    margin-bottom: 10px !important;
+}
 .mr-b-15{
     margin-bottom: 15px;
 }
+.mr-b-15-imp{
+    margin-bottom: 15px !important;
+}
 .mr-b-20{
     margin-bottom: 20px;
+}
+.mr-b-20-imp{
+    margin-bottom: 20px !important;
 }
 
 .mr-l-5{
