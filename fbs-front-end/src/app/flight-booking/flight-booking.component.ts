@@ -270,6 +270,19 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       passengers: passengers
     };
     console.log(req);
+    this.flightBookingService.confirmBooking(req)
+    .subscribe(bookingResponse => {
+        if(bookingResponse){
+          console.log(bookingResponse);
+          this.snackBar.open("Your booking is confirmed","Ok",{
+            duration: 2000,
+          });
+        }else{
+          this.snackBar.open("Sorry. Some error occured","Ok",{
+            duration: 2000,
+          });
+        }
+    });
   }
 
 }
