@@ -1,4 +1,38 @@
-<h1 class="header">Create an account with Firebase or Social Providers</h1>
+<mat-toolbar color="primary">
+    <span>
+      <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
+      AL Air
+    </span>
+    <span class="fill-remaining-space"></span>
+    <a mat-button routerLink="/login">Login</a>
+  </mat-toolbar>
+    
+  <div class="user-card-content">
+    <mat-card class="user-mat-card">
+      <mat-card-content>
+        <p class="mat-title">
+            Register with Social providers
+        </p>
+        <br/>
+        <br/>
+        <p>
+          <button mat-raised-button color="primary"
+            (click)="tryGoogleLogin()">Register with Google</button>
+        </p>
+        <p>
+          <button mat-raised-button color="primary"
+            (click)="tryFacebookLogin()">Register with Facebook</button>
+        </p>
+        <p>
+          <button mat-raised-button color="primary"
+            (click)="tryTwitterLogin()">Register with Twitter</button>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+<!-- <h1 class="header">Create an account with Firebase or Social Providers</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -37,4 +71,4 @@
       <p>Already have an account? <a href="/login">Login</a></p>
     </div>
   </div>
-</div>
+</div> -->
