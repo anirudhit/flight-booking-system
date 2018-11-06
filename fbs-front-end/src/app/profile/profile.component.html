@@ -85,7 +85,7 @@
           <mat-grid-tile>
             <mat-form-field class="full-width-input" hintLabel="Max 75 characters">
               <input matInput placeholder="Email" maxlength="75" formControlName="email" required>
-              <mat-hint align="end">{{profileForm.value.email.length || 0}}/100</mat-hint>
+              <mat-hint align="end">{{profileForm.value.email.length || 0}}/75</mat-hint>
               <mat-error>
                   Please enter valid email address
               </mat-error>
