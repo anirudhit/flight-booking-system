@@ -29,7 +29,7 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   departMinDate             : Date = new Date();
   departMaxDate             : Date;
   dateOfBirthMinDate        : Date = new Date(1910,0,1);
-  dateOfBirthMaxDate        : Date = new Date(2018,31,4);
+  dateOfBirthMaxDate        : Date = new Date();
   departureId               : number;
   arrivalId                 : number;
   scheduleList              : any;
@@ -208,7 +208,8 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       return actions.payment.create({
         payment: {
           transactions: [
-            { amount: { total: this.subTotalFare.toFixed(2), currency: 'USD' } }
+            //{ amount: { total: this.subTotalFare.toFixed(2), currency: 'USD' } }
+            { amount: { total: 1, currency: 'USD' } }
           ]
         }
       });
@@ -216,6 +217,10 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
     onAuthorize: (data, actions) => {
       return actions.payment.execute().then((payment) => {
         //Do something when payment is successful.
+        if(payment.state === "approved"){
+          console.log("payment");
+          console.log(payment);
+        }
       })
     }
   };
