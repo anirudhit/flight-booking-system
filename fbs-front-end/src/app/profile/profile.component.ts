@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
       let data = routeData['data'];
       if (data) {
         this.user = data;
-        console.log(this.user);
       }
     })
     // this.userName = localStorage.getItem('token');
