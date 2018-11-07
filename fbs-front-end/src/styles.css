@@ -57,14 +57,26 @@ body {
 .mr-t-5{
     margin-top: 5px;
 }
+.mr-t-5-imp{
+    margin-top: 5px !important;
+}
 .mr-t-10{
     margin-top: 10px;
+}
+.mr-t-10-imp{
+    margin-top: 10px !important;
 }
 .mr-t-15{
     margin-top: 15px;
 }
+.mr-t-15-imp{
+    margin-top: 15px !important;
+}
 .mr-t-20{
     margin-top: 20px;
+}
+.mr-t-20-imp{
+    margin-top: 20px !important;
 }
 
 .mr-r-5{
@@ -208,8 +220,9 @@ body {
 
 /* Styles for the user card login and register */
 .user-mat-card {
-    max-width: 400px;
     margin: 2em auto;
+    max-width: 400px;
+    min-height: 325px;
     text-align: center;
 }
 .user-card-content {
