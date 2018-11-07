@@ -2,7 +2,20 @@
     <h2 class="mat-h2">Home</h2>
 </div>
 
-<mat-card>
+<a class="home-component-list" 
+    [routerLink]="tile.page"
+    *ngFor="let tile of menuOptions">
+    <mat-card class="docs-component-category-list-card mat-card">
+        <mat-card-title class="mat-card-title">
+            {{tile.name}}
+        </mat-card-title>
+        <mat-card-content class="home-component-card-summary mat-card-content">
+            Card content come here
+        </mat-card-content>
+    </mat-card>
+</a>
+
+<!-- <mat-card>
     <mat-card-content>
         <div class="home-ripple-wrapper">
             <mat-grid-list cols="4" rowHeight="80px" gutterSize="25px">
@@ -23,4 +36,4 @@
             </mat-grid-list>
         </div>
     </mat-card-content>
-</mat-card>
+</mat-card> -->

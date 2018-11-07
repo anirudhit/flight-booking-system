@@ -1,5 +1,5 @@
 .home-ripple-container {
-    background-color: #EFEFEF;
+    /* background-color: #EFEFEF; */
     cursor: pointer;
     text-align: center;
   
@@ -14,4 +14,20 @@
   
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+
+.home-component-list{
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none;
+    vertical-align: top;
+    width: 260px;
+}
+.home-component-list .mat-card-title{
+    font-size: 20px;
+}
+.home-component-card-summary{
+    color: rgba(0,0,0,.54);
+    min-height: 2.4em;
 }
