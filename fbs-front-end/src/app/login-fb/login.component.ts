@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginFbComponent {
 
@@ -19,6 +19,13 @@ export class LoginFbComponent {
     private fb: FormBuilder
   ) {
     this.createForm();
+  }
+
+  isFieldInvalid(field: string) {
+    return (
+      (!this.loginForm.get(field).valid && this.loginForm.get(field).touched) ||
+      (this.loginForm.get(field).untouched && this.loginForm)
+    );
   }
 
   createForm() {

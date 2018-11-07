@@ -10,23 +10,48 @@
 <div class="user-card-content">
   <mat-card class="user-mat-card">
     <mat-card-content>
-      <p class="mat-title">
-          Login with Social providers
-      </p>
-      <br/>
-      <br/>
-      <p>
-        <button mat-raised-button color="primary"
-          (click)="tryGoogleLogin()">Login with Google</button>
-      </p>
-      <p>
-        <button mat-raised-button color="primary"
-          (click)="tryFacebookLogin()">Login with Facebook</button>
-      </p>
-      <p>
-        <button mat-raised-button color="primary"
-          (click)="tryTwitterLogin()">Login with Twitter</button>
-      </p>
+        <mat-tab-group>
+          <mat-tab label="User login">
+            <p class="mat-title mr-t-20-imp">
+                Login with Social providers
+            </p>
+            <br/>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryGoogleLogin()">Login with Google</button>
+            </p>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryFacebookLogin()">Login with Facebook</button>
+            </p>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryTwitterLogin()">Login with Twitter</button>
+            </p>
+          </mat-tab>
+          <mat-tab label="Admin login">
+            <form [formGroup]="loginForm">
+              <p class="mat-title mr-t-20-imp">
+                  Please login to continue
+              </p>
+              <br/>
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Email address" type="email" formControlName="email" required>
+                <mat-error *ngIf="isFieldInvalid('email')">
+                  Please enter your email address
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="isFieldInvalid('password')">
+                  Please enter your password
+                </mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="mr-t-20-imp"
+                (click)="tryLogin(loginForm.value)">Login</button>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
     </mat-card-content>
   </mat-card>
 </div>
