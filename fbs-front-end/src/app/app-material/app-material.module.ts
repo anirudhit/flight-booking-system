@@ -17,6 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatProgressBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTabsModule
 ],
   exports: [
     MatToolbarModule,
@@ -55,7 +57,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatProgressBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTabsModule
   ]
 })
 export class AppMaterialModule {}
