@@ -4,6 +4,7 @@ export class FirebaseUserModel {
   name: string;
   email: string;
   provider: string;
+  isAdmin: boolean;
 
   constructor(){
     this.id = "";
@@ -11,5 +12,6 @@ export class FirebaseUserModel {
     this.name = "";
     this.email = "";
     this.provider = "";
+    this.isAdmin = false;
   }
 }
