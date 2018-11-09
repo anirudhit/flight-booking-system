@@ -26,6 +26,8 @@ db.t_user_passwords = require('../model/userPasswords.model.js')(sequelize, Sequ
 db.t_airports = require('../model/airport.model.js')(sequelize, Sequelize);
 db.t_flights = require('../model/flight.model.js')(sequelize, Sequelize);
 db.t_flight_schedules = require('../model/flightSchedule.model.js')(sequelize, Sequelize);
+db.t_flight_bookings = require('../model/flightBooking.model.js')(sequelize, Sequelize);
+db.t_passengers = require('../model/passenger.model.js')(sequelize, Sequelize);
 
 //Relations
 //db.t_flight_schedules.belongsTo(db.t_airports);  
