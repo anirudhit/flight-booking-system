@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   initUserMenu(){
     this.menuOptions.push({
       name: "Book a ticket",
-      page: "/flightsbooking"
+      page: "/booking"
     });
     this.menuOptions.push({
       name: "My trips",
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   initAdminMenu(){
     this.menuOptions.push({
       name: "Book a ticket",
-      page: "/flightsbooking"
+      page: "/booking"
     });
     this.menuOptions.push({
       name: "My trips",
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
     });
     this.menuOptions.push({
       name: "Schedule a flight",
-      page: "/flightschedule"
+      page: "/schedule"
     });
     this.menuOptions.push({
       name: "Flight schedules",
