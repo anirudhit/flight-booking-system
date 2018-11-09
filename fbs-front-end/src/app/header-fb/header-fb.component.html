@@ -16,14 +16,14 @@
       <mat-icon>person</mat-icon>
       <span>Profile</span>
     </a>
-    <a mat-menu-item routerLink="/flightsbooking">
+    <a mat-menu-item routerLink="/booking">
       <mat-icon>flight</mat-icon>
       <span>Book a ticket</span>
     </a>
-    <button mat-menu-item>
-      <mat-icon>history</mat-icon>
-      <span>Booking history</span>
-    </button>
+    <a mat-menu-item routerLink="/trips">
+      <mat-icon>card_travel</mat-icon>
+      <span>My trips</span>
+    </a>
     <button mat-menu-item (click)="onLogout()">
       <mat-icon>exit_to_app</mat-icon>
       <span>Logout</span>
