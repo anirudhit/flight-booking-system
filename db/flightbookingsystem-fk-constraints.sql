@@ -17,3 +17,11 @@ FOREIGN KEY (departure_id) REFERENCES t_airports(id);
 
 ALTER TABLE t_flight_schedule ADD CONSTRAINT t_flight_schedule_flight_id_fk
 FOREIGN KEY (flight_id) REFERENCES t_flights(id);
+
+-- (t_flight_booking)
+ALTER TABLE t_flight_bookings ADD CONSTRAINT t_flight_booking_schedule_id_fk
+FOREIGN KEY (flight_schedule_id) REFERENCES t_flight_schedules(id);
+
+-- (t_passenger)
+ALTER TABLE t_passengers ADD CONSTRAINT t_passenger_booking_id_fk
+FOREIGN KEY (flight_booking_id) REFERENCES t_flight_bookings(id);
