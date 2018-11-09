@@ -29,6 +29,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { MatDialogModule }  from '@angular/material/dialog';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
+import { MyTripsComponent } from './my-trips/my-trips.component';
 
 import { DeleteScheduleDialog } from './flight-history/flight-history.component';
 import { UpdateScheduleDialog } from './flight-history/flight-history.component';
@@ -49,6 +50,7 @@ import { UpdateScheduleDialog } from './flight-history/flight-history.component'
     FlightScheduleComponent,
     FlightHistoryComponent,
     FlightBookingComponent,
+    MyTripsComponent,
     DeleteScheduleDialog,
     UpdateScheduleDialog
   ],
