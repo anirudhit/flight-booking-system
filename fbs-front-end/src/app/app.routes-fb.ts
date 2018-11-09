@@ -13,6 +13,7 @@ import { FlightScheduleComponent } from './flight-schedule/flight-schedule.compo
 import { FlightHistoryComponent } from './flight-history/flight-history.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
+import { MyTripsComponent } from './my-trips/my-trips.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,5 +24,6 @@ export const rootRouterConfig: Routes = [
   { path: 'profile', component: ProfileComponent, resolve: {data: UserResolver}},
   { path: 'flightschedule', component: FlightScheduleComponent, resolve: {data: UserResolver}},
   { path: 'flightshistory', component: FlightHistoryComponent, resolve: {data: UserResolver}},
-  { path: 'flightsbooking', component: FlightBookingComponent, resolve: {data: UserResolver}}
+  { path: 'flightsbooking', component: FlightBookingComponent, resolve: {data: UserResolver}},
+  { path: 'trips', component: MyTripsComponent, resolve: {data: UserResolver}}
 ];
