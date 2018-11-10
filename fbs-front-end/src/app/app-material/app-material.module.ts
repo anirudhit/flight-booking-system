@@ -18,6 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -38,7 +40,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
+    MatChipsModule
 ],
   exports: [
     MatToolbarModule,
@@ -58,7 +62,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule,
+    MatChipsModule
   ]
 })
 export class AppMaterialModule {}
