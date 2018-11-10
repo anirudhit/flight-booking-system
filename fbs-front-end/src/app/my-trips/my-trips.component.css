@@ -1,0 +1,9 @@
+.trips-wrapper{
+    margin: 15px auto;
+    width: 85%;
+}
+.trip-card-wrapper{
+    display: inline-block;
+    margin: 20px 2%;
+    width: 40%;
+}
