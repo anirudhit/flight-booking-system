@@ -42,9 +42,11 @@ exports.bookATicket = (req, res) => {
 
 exports.userUpcomingTrips = (req, res) => {
     let userId = req.query.userId;
-    let query = bookingQueries.BOOKING_MY_TRIPS + '\''+userId+ '\'';
+    let query = bookingQueries.BOOKING_UPCOMING_TRIPS + '\''+userId+ '\'';
+    let orderBy = 'ORDER BY `t_flight_bookings`.`date_of_journey`';
+    let finalQuery = query + orderBy;
     console.log(userId);
-    FlightBooking.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
+    FlightBooking.sequelize.query(finalQuery,{ type: Sequelize.QueryTypes.SELECT})
     .then(ticketList => {
         res.json(ticketList);
     });
@@ -92,4 +94,22 @@ exports.userUpcomingTrips = (req, res) => {
     //     res.json(tickets);
     // });
     
+};
+
+exports.userCancelledTrips = (req, res) => {
+    let userId = req.query.userId;
+    let query = bookingQueries.BOOKING_CANCELLED_TRIPS + '\''+userId+ '\'';
+    FlightBooking.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
+    .then(ticketList => {
+        res.json(ticketList);
+    });    
+};
+
+exports.userHistoryTrips = (req, res) => {
+    let userId = req.query.userId;
+    let query = bookingQueries.BOOKING_HISTORY_TRIPS + '\''+userId+ '\'';
+    FlightBooking.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
+    .then(ticketList => {
+        res.json(ticketList);
+    });    
 };
