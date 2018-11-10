@@ -53,10 +53,6 @@ export class HomeComponent implements OnInit {
       page: "/trips"
     });
     this.menuOptions.push({
-      name: "Booking history",
-      page: "/profile"
-    });
-    this.menuOptions.push({
       name: "Profile",
       page: "/profile"
     });
@@ -70,10 +66,6 @@ export class HomeComponent implements OnInit {
     this.menuOptions.push({
       name: "My trips",
       page: "/trips"
-    });
-    this.menuOptions.push({
-      name: "Booking history",
-      page: "/profile"
     });
     this.menuOptions.push({
       name: "Profile",
