@@ -13,7 +13,9 @@ export class MyTripsComponent implements OnInit {
 
   user: FirebaseUserModel = new FirebaseUserModel();
   tripIndex : number = 0;
-  myUpcomingTripsList : any;
+  myUpcomingTripsList : any = [];
+  myCancelledTripsList : any = [];
+  myHistoryTripsList : any = [];
   myTripsLoading : boolean = true;
   upcomingTripsLoading : boolean = true;
   cancelledTripsLoading : boolean = true;
@@ -49,9 +51,33 @@ export class MyTripsComponent implements OnInit {
     
   }
 
+  loadCancelledTripsList(){
+    this.cancelledTripsLoading = true;
+    this.myTripsService.getCancelledTripsList(this.user.id)
+    .subscribe(cancelledTripsList => {
+        this.myCancelledTripsList = cancelledTripsList;
+        this.cancelledTripsLoading = false;
+    });
+    
+  }
+
+  loadHistoryTripsList(){
+    this.historyTripsLoading = true;
+    this.myTripsService.getHistoryTripsList(this.user.id)
+    .subscribe(historyTripsList => {
+        this.myHistoryTripsList = historyTripsList;
+        this.historyTripsLoading = false;
+    });
+    
+  }
+
   selectedTabIndex(loadingTabIndex){
     if(loadingTabIndex === 0){
       this.loadUpcomingTripsList();
+    }else if(loadingTabIndex === 1){
+      this.loadCancelledTripsList();
+    }else if(loadingTabIndex === 2){
+      this.loadHistoryTripsList();
     }
   }
 

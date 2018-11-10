@@ -25,6 +25,9 @@
             <div class="clearfix mr-t-10-imp" *ngIf="upcomingTripsLoading">
                 <mat-progress-bar mode="query"></mat-progress-bar>
             </div>
+            <div class="clearfix mr-t-15" *ngIf="!myUpcomingTripsList.length && !upcomingTripsLoading">
+              <p class="trip-exception-message text-center">You do not have any upcoming bookings.</p>
+            </div>
             <mat-card class="mat-card mr-b-20 trip-card-wrapper"
               *ngFor="let trip of myUpcomingTripsList">
               <mat-card-title>
@@ -85,8 +88,136 @@
             </mat-card-actions>
           </mat-card>
         </mat-tab>
-        <mat-tab label="Cancelled trips" > Content 2 </mat-tab>
-        <mat-tab label="History"> Content 3 </mat-tab>
+        <mat-tab label="Cancelled trips">
+          <div class="clearfix mr-t-10-imp" *ngIf="cancelledTripsLoading">
+            <mat-progress-bar mode="query"></mat-progress-bar>
+          </div>
+          <div class="clearfix mr-t-15" *ngIf="!myCancelledTripsList.length && !cancelledTripsLoading">
+            <p class="trip-exception-message text-center">You do not have any cancelled bookings.</p>
+          </div>
+          <mat-card class="mat-card mr-b-20 trip-card-wrapper"
+              *ngFor="let trip of myCancelledTripsList">
+              <mat-card-title>
+                <span matTooltip="{{trip.departureAirportName}}" class="cursor-default">
+                  {{trip.departureAirportCity}}({{trip.departureAirportCode}})
+                </span> - 
+                <span matTooltip="{{trip.arrivalAirportName}}" class="cursor-default">
+                  {{trip.arrivalAirportCity}}({{trip.arrivalAirportCode}})
+                </span>
+              </mat-card-title>
+              <mat-card-content class="home-component-card-summary mat-card-content mr-b-5-imp">
+                <mat-grid-list cols="2" rowHeight="105px">
+                  <mat-grid-tile>
+                    <mat-card-content class="mr-b-5-imp">
+                      <mat-list>
+                        <h3 mat-subheader class="height-auto reset-pd-imp reset-mr-imp">
+                          Date of journey
+                        </h3>
+                        <mat-list-item>
+                          <div class="pull-left mr-r-10 mat-card-title">
+                              {{trip.date_of_journey | date:'d'}}
+                          </div>
+                          <div class="disp-ib">
+                            <h4 mat-line class="height-auto reset-pd-imp reset-mr-imp">
+                              {{trip.date_of_journey | date:'EEE'}}
+                            </h4>
+                            <p mat-line>{{trip.date_of_journey | date:'MMM`yy' }}</p>
+                          </div>
+                        </mat-list-item>                       
+                      </mat-list>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <mat-card-content>
+                      <p class="mr-b-5-imp">
+                        <mat-chip-list>
+                          <mat-chip color="warn" selected>
+                            Cancelled
+                          </mat-chip>
+                        </mat-chip-list>
+                      </p>
+                      <p class="mat-small reset-mr-imp">
+                          <span class="mat-body-strong">Booking Id:</span>
+                          {{trip.id}}
+                      </p>
+                      <p class="mat-small reset-mr-imp">
+                          <span class="mat-body-strong">Cancelled on:</span>
+                          {{trip.updatedAt | date :'EEE, MMM d, yyyy'}}
+                      </p>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+            <mat-card-actions class="reset-pd-imp">
+                <button mat-flat-button color="primary" class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="History">
+            <div class="clearfix mr-t-10-imp" *ngIf="historyTripsLoading">
+              <mat-progress-bar mode="query"></mat-progress-bar>
+            </div>
+            <div class="clearfix mr-t-15" *ngIf="!myHistoryTripsList.length && !historyTripsLoading">
+              <p class="trip-exception-message text-center">You do not have any booking history.</p>
+            </div>
+            <mat-card class="mat-card mr-b-20 trip-card-wrapper"
+              *ngFor="let trip of myHistoryTripsList">
+              <mat-card-title>
+                <span matTooltip="{{trip.departureAirportName}}" class="cursor-default">
+                  {{trip.departureAirportCity}}({{trip.departureAirportCode}})
+                </span> - 
+                <span matTooltip="{{trip.arrivalAirportName}}" class="cursor-default">
+                  {{trip.arrivalAirportCity}}({{trip.arrivalAirportCode}})
+                </span>
+              </mat-card-title>
+              <mat-card-content class="home-component-card-summary mat-card-content mr-b-5-imp">
+                <mat-grid-list cols="2" rowHeight="105px">
+                  <mat-grid-tile>
+                    <mat-card-content class="mr-b-5-imp">
+                      <mat-list>
+                        <h3 mat-subheader class="height-auto reset-pd-imp reset-mr-imp">
+                          Date of journey
+                        </h3>
+                        <mat-list-item>
+                          <div class="pull-left mr-r-10 mat-card-title">
+                              {{trip.date_of_journey | date:'d'}}
+                          </div>
+                          <div class="disp-ib">
+                            <h4 mat-line class="height-auto reset-pd-imp reset-mr-imp">
+                              {{trip.date_of_journey | date:'EEE'}}
+                            </h4>
+                            <p mat-line>{{trip.date_of_journey | date:'MMM`yy' }}</p>
+                          </div>
+                        </mat-list-item>                       
+                      </mat-list>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <mat-card-content>
+                      <p class="mr-b-5-imp">
+                        <mat-chip-list>
+                          <mat-chip color="accent" selected>
+                            Travelled
+                          </mat-chip>
+                        </mat-chip-list>
+                      </p>
+                      <p class="mat-small reset-mr-imp">
+                          <span class="mat-body-strong">Booking Id:</span>
+                          {{trip.id}}
+                      </p>
+                      <p class="mat-small reset-mr-imp">
+                          <span class="mat-body-strong">Booked on:</span>
+                          {{trip.createdAt | date :'EEE, MMM d, yyyy'}}
+                      </p>
+                    </mat-card-content>
+                  </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+            <mat-card-actions class="reset-pd-imp">
+                <button mat-flat-button color="primary" class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-tab>
       </mat-tab-group>
 
     <!-- <div class="clearfix mat-subheading-2">

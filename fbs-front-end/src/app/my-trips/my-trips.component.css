@@ -7,3 +7,9 @@
     margin: 20px 2%;
     width: 40%;
 }
+.trip-exception-message{
+    padding-top: 35px;
+}
+.mat-tab-body-active{
+    overflow-y: unset !important;
+}
