@@ -17,4 +17,14 @@ export class MyTripsService {
     let url = this.flightBookingUrl+ '/upcoming' +'?userId='+userId;
     return this.http.get(url);
   }
+
+  getCancelledTripsList(userId){
+    let url = this.flightBookingUrl+ '/cancelled' +'?userId='+userId;
+    return this.http.get(url);
+  }
+
+  getHistoryTripsList(userId){
+    let url = this.flightBookingUrl+ '/history' +'?userId='+userId;
+    return this.http.get(url);
+  }
 }
