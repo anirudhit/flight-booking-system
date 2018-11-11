@@ -125,3 +125,13 @@ exports.cancelFlightBooking = (req, res) => {
         res.status(200).json({message:"The flight booking is cancelled"});
     });
 };
+
+//Manage a Flight booking
+exports.manageFlightBooking = (req, res) => {
+    let flightBooking = req.body;
+	FlightBooking.update(flightBooking.value,{
+        where: {id: flightBooking.id}
+    }).then(() => {
+        res.status(200).json({message:"The flight booking is modified"});
+    });
+};
