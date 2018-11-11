@@ -30,6 +30,8 @@ import { FlightHistoryComponent } from './flight-history/flight-history.componen
 import { MatDialogModule }  from '@angular/material/dialog';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
 import { MyTripsComponent } from './my-trips/my-trips.component';
+import { FlightTicketComponent } from './flight-ticket/flight-ticket.component';
+
 
 import { DeleteScheduleDialog } from './flight-history/flight-history.component';
 import { UpdateScheduleDialog } from './flight-history/flight-history.component';
@@ -55,6 +57,7 @@ import { ManageBookingDialog } from './my-trips/my-trips.component';
     FlightHistoryComponent,
     FlightBookingComponent,
     MyTripsComponent,
+    FlightTicketComponent,
     DeleteScheduleDialog,
     UpdateScheduleDialog,
     CancelBookingDialog,
