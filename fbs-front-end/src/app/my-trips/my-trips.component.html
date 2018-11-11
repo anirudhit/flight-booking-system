@@ -82,8 +82,10 @@
                 </mat-grid-list>
             </mat-card-content>
             <mat-card-actions class="reset-pd-imp">
-                <button mat-flat-button color="primary" 
-                  class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+                <a class="mr-l-20-imp mr-r-10-imp" mat-flat-button color="primary"
+                  routerLink="/ticket/{{trip.id}}">
+                  <span>View ticket</span>
+                </a>
                 <button mat-flat-button color="primary" class="mr-r-10-imp"
                   (click)="openManageBookingDialog(trip)">Manage ticket</button>
                 <button mat-flat-button color="warn" class="mr-r-10-imp"
@@ -152,7 +154,10 @@
                 </mat-grid-list>
             </mat-card-content>
             <mat-card-actions class="reset-pd-imp">
-                <button mat-flat-button color="primary" class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+              <a class="mr-l-20-imp mr-r-10-imp" mat-flat-button color="primary"
+                routerLink="/ticket/{{trip.id}}">
+                <span>View ticket</span>
+              </a>
             </mat-card-actions>
           </mat-card>
         </mat-tab>
@@ -217,7 +222,10 @@
                 </mat-grid-list>
             </mat-card-content>
             <mat-card-actions class="reset-pd-imp">
-                <button mat-flat-button color="primary" class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+              <a class="mr-l-20-imp mr-r-10-imp" mat-flat-button color="primary"
+                routerLink="/ticket/{{trip.id}}">
+                <span>View ticket</span>
+              </a>
             </mat-card-actions>
           </mat-card>
         </mat-tab>
