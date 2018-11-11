@@ -27,5 +27,5 @@ export const rootRouterConfig: Routes = [
   { path: 'flightshistory', component: FlightHistoryComponent, resolve: {data: UserResolver}},
   { path: 'booking', component: FlightBookingComponent, resolve: {data: UserResolver}},
   { path: 'trips', component: MyTripsComponent, resolve: {data: UserResolver}},
-  { path: 'ticket', component: FlightTicketComponent, resolve: {data: UserResolver}}
+  { path: 'ticket/:bookingId', component: FlightTicketComponent, resolve: {data: UserResolver}}
 ];
