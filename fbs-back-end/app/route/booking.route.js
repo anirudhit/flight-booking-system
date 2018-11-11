@@ -8,6 +8,7 @@ module.exports = function(app) {
 
 
     app.get('/api/booking/trips/upcoming', bookings.userUpcomingTrips);// Get user trips
-    app.get('/api/booking/trips/cancelled', bookings.userCancelledTrips);// Get user trips
-    app.get('/api/booking/trips/history', bookings.userHistoryTrips);// Get user trips
+    app.get('/api/booking/trips/cancelled', bookings.userCancelledTrips);// Get cancelled trips
+    app.get('/api/booking/trips/history', bookings.userHistoryTrips);// Get history trips
+    app.get('/api/booking/trips/cancel', bookings.cancelFlightBooking);// Cancel trip
 }
