@@ -14,6 +14,7 @@ import { FlightHistoryComponent } from './flight-history/flight-history.componen
 import { ProfileComponent } from './profile/profile.component';
 import { FlightBookingComponent } from './flight-booking/flight-booking.component';
 import { MyTripsComponent } from './my-trips/my-trips.component';
+import { FlightTicketComponent } from './flight-ticket/flight-ticket.component';
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -25,5 +26,6 @@ export const rootRouterConfig: Routes = [
   { path: 'schedule', component: FlightScheduleComponent, resolve: {data: UserResolver}},
   { path: 'flightshistory', component: FlightHistoryComponent, resolve: {data: UserResolver}},
   { path: 'booking', component: FlightBookingComponent, resolve: {data: UserResolver}},
-  { path: 'trips', component: MyTripsComponent, resolve: {data: UserResolver}}
+  { path: 'trips', component: MyTripsComponent, resolve: {data: UserResolver}},
+  { path: 'ticket', component: FlightTicketComponent, resolve: {data: UserResolver}}
 ];
