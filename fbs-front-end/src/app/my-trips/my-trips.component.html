@@ -84,7 +84,8 @@
             <mat-card-actions class="reset-pd-imp">
                 <button mat-flat-button color="primary" 
                   class="mr-l-20-imp mr-r-10-imp">View ticket</button>
-                <button mat-flat-button color="primary" class="mr-r-10-imp">Manage ticket</button>
+                <button mat-flat-button color="primary" class="mr-r-10-imp"
+                  (click)="openManageBookingDialog(trip)">Manage ticket</button>
                 <button mat-flat-button color="warn" class="mr-r-10-imp"
                   (click)="openCancelBookingDialog(trip)">Cancel ticket</button>
             </mat-card-actions>

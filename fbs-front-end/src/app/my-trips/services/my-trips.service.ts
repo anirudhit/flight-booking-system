@@ -32,4 +32,9 @@ export class MyTripsService {
     let url = this.flightBookingUrl+ '/cancel' +'?bookingId='+bookingId;
     return this.http.get(url);
   }
+
+  manageBooking(bookingObj){
+    let url = this.flightBookingUrl+ '/manage';
+    return this.http.post(url,bookingObj);
+  }
 }
