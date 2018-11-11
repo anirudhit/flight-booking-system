@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { MyTripsService } from './services/my-trips.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseUserModel } from '../auth-fb/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+export interface CancelBookingData {
+  trip: any
+}
 
 @Component({
   selector: 'app-my-trips',
@@ -22,7 +28,9 @@ export class MyTripsComponent implements OnInit {
   historyTripsLoading : boolean = true;
   constructor(
     private myTripsService:  MyTripsService,
-    private route: ActivatedRoute
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -79,6 +87,70 @@ export class MyTripsComponent implements OnInit {
     }else if(loadingTabIndex === 2){
       this.loadHistoryTripsList();
     }
+  }
+
+  cancelBooking(trip){
+    // this.flightHistoryService.deleteFlightSchedule(schedule.id)
+    // .subscribe(scheduleResponse => {
+    //   if(scheduleResponse){
+    //     let scheduleObj : any = scheduleResponse;
+    //     this.scheduledHistoryToast(scheduleObj.message,"Ok");
+    //     this.loadFlightSchedulesList();
+    //   }else{
+    //     this.scheduledHistoryToast("Sorry. Some error occured","Ok");
+    //   }
+    // });
+
+    this.myTripsService.cancelBooking(trip.id)
+    .subscribe(tripResponse => {
+        if(tripResponse){
+          let tripObj : any = tripResponse;
+          this.snackBar.open(tripObj.message,"Ok",{
+            duration: 2000,
+          });
+          this.loadUpcomingTripsList();
+        }else{
+          this.snackBar.open("Sorry. Some error occured","Ok",{
+            duration: 2000,
+          });
+        }
+    });
+  }
+
+  openCancelBookingDialog(trip): void {
+    const dialogRef = this.dialog.open(CancelBookingDialog, {
+      width: '250px',
+      data: trip
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.cancelBooking(result);
+      }
+    });
+  }
+
+}
+
+
+@Component({
+  selector: 'cancel-booking-dialog',
+  templateUrl: 'dialog/cancel-trip-dialog.html',
+})
+export class CancelBookingDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<CancelBookingDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: CancelBookingData
+  ) { }
+
+  
+  onTicketCancel(): void {
+    this.dialogRef.close(this.data);
+  }
+
+  onTicketClose(): void {
+    this.dialogRef.close();
   }
 
 }

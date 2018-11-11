@@ -75,16 +75,18 @@
                       </p>
                       <p class="mat-small reset-mr-imp">
                           <span class="mat-body-strong">Booked on:</span>
-                          {{trip.createdAt | date :'EEE, MMM d, yyyy'}}
+                          {{trip.createdAt | date :'EEE  MMM d, yyyy'}}
                       </p>
                     </mat-card-content>
                   </mat-grid-tile>
                 </mat-grid-list>
             </mat-card-content>
             <mat-card-actions class="reset-pd-imp">
-                <button mat-flat-button color="primary" class="mr-l-20-imp mr-r-10-imp">View ticket</button>
+                <button mat-flat-button color="primary" 
+                  class="mr-l-20-imp mr-r-10-imp">View ticket</button>
                 <button mat-flat-button color="primary" class="mr-r-10-imp">Manage ticket</button>
-                <button mat-flat-button color="warn" class="mr-r-10-imp">Cancel ticket</button>
+                <button mat-flat-button color="warn" class="mr-r-10-imp"
+                  (click)="openCancelBookingDialog(trip)">Cancel ticket</button>
             </mat-card-actions>
           </mat-card>
         </mat-tab>
@@ -142,7 +144,7 @@
                       </p>
                       <p class="mat-small reset-mr-imp">
                           <span class="mat-body-strong">Cancelled on:</span>
-                          {{trip.updatedAt | date :'EEE, MMM d, yyyy'}}
+                          {{trip.updatedAt | date :'EEE  MMM d, yyyy'}}
                       </p>
                     </mat-card-content>
                   </mat-grid-tile>
@@ -207,7 +209,7 @@
                       </p>
                       <p class="mat-small reset-mr-imp">
                           <span class="mat-body-strong">Booked on:</span>
-                          {{trip.createdAt | date :'EEE, MMM d, yyyy'}}
+                          {{trip.createdAt | date :'EEE  MMM d, yyyy'}}
                       </p>
                     </mat-card-content>
                   </mat-grid-tile>

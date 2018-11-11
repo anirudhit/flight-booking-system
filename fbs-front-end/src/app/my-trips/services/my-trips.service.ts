@@ -27,4 +27,9 @@ export class MyTripsService {
     let url = this.flightBookingUrl+ '/history' +'?userId='+userId;
     return this.http.get(url);
   }
+
+  cancelBooking(bookingId){
+    let url = this.flightBookingUrl+ '/cancel' +'?bookingId='+bookingId;
+    return this.http.get(url);
+  }
 }
