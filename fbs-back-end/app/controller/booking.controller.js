@@ -45,7 +45,6 @@ exports.userUpcomingTrips = (req, res) => {
     let query = bookingQueries.BOOKING_UPCOMING_TRIPS + '\''+userId+ '\'';
     let orderBy = 'ORDER BY `t_flight_bookings`.`date_of_journey`';
     let finalQuery = query + orderBy;
-    console.log(userId);
     FlightBooking.sequelize.query(finalQuery,{ type: Sequelize.QueryTypes.SELECT})
     .then(ticketList => {
         res.json(ticketList);
@@ -112,4 +111,17 @@ exports.userHistoryTrips = (req, res) => {
     .then(ticketList => {
         res.json(ticketList);
     });    
+};
+
+//Cancel a Flight booking
+exports.cancelFlightBooking = (req, res) => {
+    let flightBookingId = req.query.bookingId;
+    let cancelFlightBooking = {
+        cancel_booking : 1
+    };
+	FlightBooking.update(cancelFlightBooking,{
+        where: {id: flightBookingId}
+    }).then(() => {
+        res.status(200).json({message:"The flight booking is cancelled"});
+    });
 };
