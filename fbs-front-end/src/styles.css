@@ -170,6 +170,24 @@ body {
 .pd-5-imp{
     padding: 5px !important;
 }
+.pd-10{
+    padding: 10px;
+}
+.pd-10-imp{
+    padding: 10px !important;
+}
+.pd-15{
+    padding: 15px;
+}
+.pd-15-imp{
+    padding: 15px !important;
+}
+.pd-20{
+    padding: 20px;
+}
+.pd-20-imp{
+    padding: 20px !important;
+}
 .pd-t-5{
     padding-top: 5px;
 }
