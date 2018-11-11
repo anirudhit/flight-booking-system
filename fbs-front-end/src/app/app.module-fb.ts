@@ -33,11 +33,13 @@ import { MyTripsComponent } from './my-trips/my-trips.component';
 
 import { DeleteScheduleDialog } from './flight-history/flight-history.component';
 import { UpdateScheduleDialog } from './flight-history/flight-history.component';
+import { CancelBookingDialog } from './my-trips/my-trips.component';
 
 @NgModule({
   entryComponents:[
     DeleteScheduleDialog,
-    UpdateScheduleDialog
+    UpdateScheduleDialog,
+    CancelBookingDialog
   ],
   declarations: [
     AppComponent,
@@ -52,7 +54,8 @@ import { UpdateScheduleDialog } from './flight-history/flight-history.component'
     FlightBookingComponent,
     MyTripsComponent,
     DeleteScheduleDialog,
-    UpdateScheduleDialog
+    UpdateScheduleDialog,
+    CancelBookingDialog
   ],
   imports: [
     ReactiveFormsModule,
