@@ -23,7 +23,10 @@ exports.bookATicket = (req, res) => {
             for (let i = 0; i < passengerReq.length; i++) { 
                 Passenger.create(passengerReq[i]);  
             }
-            res.json({"message":"Your ticket is booked"});
+            res.json({
+                "message":"Your ticket is booked",
+                "flightBooking": result
+            });
         }
     });
 
