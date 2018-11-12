@@ -12,5 +12,5 @@ module.exports = function(app) {
     app.get('/api/booking/trips/history', bookings.userHistoryTrips);// Get history trips
     app.get('/api/booking/trips/cancel', bookings.cancelFlightBooking);// Cancel trip
     app.post('/api/booking/trips/manage', bookings.manageFlightBooking);// Manage trip
-    app.get('/api/booking/trips/ticket', bookings.flightTicketDetails);// Manage trip
+    app.get('/api/booking/trips/ticket', bookings.flightTicketDetails);// Ticket details
 }
