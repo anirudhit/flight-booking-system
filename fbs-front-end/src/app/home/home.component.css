@@ -16,6 +16,9 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+.home-list-card{
+    min-height: 85px;
+}
 
 .home-component-list{
     display: inline-block;
