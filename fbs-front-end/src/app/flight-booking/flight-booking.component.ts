@@ -93,9 +93,7 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
 
   initPassengerForm(){
     this.passengerFormGroup = this.fb.group({
-      passengers: this.fb.array([
-          this.initPassenger(),
-      ]),
+      passengers: this.fb.array([]),
       email:  ['',[Validators.required,Validators.email]],
       cell_number: ['',Validators.required]
     });
@@ -145,9 +143,20 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
   }
 
   selectPassenger(passengerCount){
-    if(passengerCount > 1){
+    const control = <FormArray>this.passengerFormGroup.controls['passengers'];
+    if(control.controls.length >= 1){
+      let j, pjCount = 0;
+      for(j = control.controls.length -1; j>=pjCount; j--){
+        control.removeAt(j);
+      }
+
+      let k=0, pkCount = passengerCount-1;
+      for(k = 0; k<=pkCount; k++){
+        this.addPassenger();
+      }
+    }else{
       let i=0, pCount = passengerCount-1;
-      for(i = 0; i<pCount; i++){
+      for(i = 0; i<=pCount; i++){
         this.addPassenger();
       }
     }
@@ -270,7 +279,6 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       cell_number: this.passengerFormGroup.value.cell_number,
       passengers: passengers
     };
-    console.log(req);
     this.flightBookingService.confirmBooking(req)
     .subscribe(bookingResponse => {
       let bookingResponseObj : any = bookingResponse;
@@ -279,8 +287,8 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
           this.snackBar.open("Your booking is confirmed","Ok",{
             duration: 2000,
           });
-          let ticketUrl = "ticket/"+ bookingResponseObj.flightBooking.id;
-          this.router.navigate([ticketUrl]);
+          //let ticketUrl = "ticket/"+ bookingResponseObj.flightBooking.id;
+          this.router.navigate(['trips']);
         }else{
           this.snackBar.open("Sorry. Some error occured","Ok",{
             duration: 2000,
