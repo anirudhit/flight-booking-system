@@ -37,9 +37,13 @@
   </div>
 
   <div class="clearfix duratioinfo mr-b-20">
-    <p>
+    <p class="mat-body-strong">
         <mat-icon>flight</mat-icon>
-        <span>Duration : {{ticketDetails.flight_schedule.duration}}</span>
+        <span>&nbsp;&nbsp;Duration : {{ticketDetails.flight_schedule.duration}}</span>
+        <span>&nbsp;|&nbsp;</span>
+        <span class="mat-small">{{ticketDetails.departure_airport.name}}, {{ticketDetails.departure_airport.code}}</span>
+        <span>&nbsp;-&nbsp;</span>
+        <span class="mat-small">{{ticketDetails.arrival_airport.name}}, {{ticketDetails.arrival_airport.code}}</span>
     </p>
   </div>
 
@@ -47,8 +51,8 @@
     <table class="flight-table">
       <tr class="flight-table-header">
         <td class="flight-table-cell pd-10">Date</td>
-        <td class="flight-table-cell pd-10">Departure time</td>
-        <td class="flight-table-cell pd-10">Arrival time</td>
+        <td class="flight-table-cell pd-10">Departure</td>
+        <td class="flight-table-cell pd-10">Arrival</td>
         <td class="flight-table-cell pd-10">From</td>
         <td class="flight-table-cell pd-10">To</td>
         <td class="flight-table-cell pd-10">Flight No.</td>
@@ -77,9 +81,9 @@
         </tr>
 
         <tr>
-            <td class="flight-table-cell pd-10 mat-body-strong">Price summary :</td>
-            <td class="flight-table-cell pd-10">$ {{subTotalFare | number : '.2'}}</td>
-          </tr>
+          <td class="flight-table-cell pd-10 mat-body-strong">Price summary :</td>
+          <td class="flight-table-cell pd-10">$ {{subTotalFare | number : '.2'}}</td>
+        </tr>
       </table>
   </div>
 </div>
