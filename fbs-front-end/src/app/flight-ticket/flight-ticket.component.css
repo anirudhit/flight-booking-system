@@ -1,0 +1,27 @@
+.ticket-wrapper{
+    margin: 0 auto;
+    width: 85%;
+}
+
+.ticket-header{
+    min-height: 30px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #444444;
+}
+
+.passenger-header{
+    border-bottom: 1px solid #444444;
+}
+
+.flight-table{
+    border-spacing: unset;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.flight-table-header{
+    background-color: #CACACA;
+}
+.flight-table-cell{
+    width: 16%;
+    text-align: left;
+}
