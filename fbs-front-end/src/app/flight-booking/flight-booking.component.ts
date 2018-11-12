@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FlightBookingService } from './services/flight-booking.service';
 import { formatDate } from '@angular/common';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseUserModel } from '../auth-fb/user.model';
 
 declare let paypal: any;
@@ -48,6 +48,7 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private flightBookingService: FlightBookingService
@@ -272,11 +273,14 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
     console.log(req);
     this.flightBookingService.confirmBooking(req)
     .subscribe(bookingResponse => {
+      let bookingResponseObj : any = bookingResponse;
         if(bookingResponse){
           console.log(bookingResponse);
           this.snackBar.open("Your booking is confirmed","Ok",{
             duration: 2000,
           });
+          let ticketUrl = "ticket/"+ bookingResponseObj.flightBooking.id;
+          this.router.navigate([ticketUrl]);
         }else{
           this.snackBar.open("Sorry. Some error occured","Ok",{
             duration: 2000,
