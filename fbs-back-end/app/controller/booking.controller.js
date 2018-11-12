@@ -156,6 +156,7 @@ exports.flightTicketDetails = (req, res) => {
                 passengers : []
             };
             ticketDetails.forEach(ticket =>{
+                console.log(ticket);
                 responseObj.id = ticket.id;
                 responseObj.cancel_booking = ticket.cancel_booking;
                 responseObj.createdAt = ticket.createdAt;
