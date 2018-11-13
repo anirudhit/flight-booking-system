@@ -1,12 +1,12 @@
-<div class="clearfix mr-t-15 mr-b-15">
-    <h2 class="mat-h2">Ticket details</h2>
+<div class="docs-primary-header component-page-header">
+  <h1>Ticket details</h1>
 </div>
 
 <div class="clearfix mr-t-10-imp" *ngIf="ticketDetailsLoading">
     <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 
-<div class="clearfix ticket-wrapper" *ngIf="!ticketDetailsLoading">
+<div class="clearfix ticket-wrapper mr-t-20-imp" *ngIf="!ticketDetailsLoading">
   <p class="ticket-header">
     <span class="mat-body-strong pull-left">
       Flight Ticket - {{ticketDetails.departure_airport.city}} to {{ticketDetails.arrival_airport.city}}
