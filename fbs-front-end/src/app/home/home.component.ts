@@ -46,14 +46,17 @@ export class HomeComponent implements OnInit {
   initUserMenu(){
     this.menuOptions.push({
       name: "Book a ticket",
+      content: "Plan your travel",
       page: "/booking"
     });
     this.menuOptions.push({
       name: "My trips",
+      content: "View your tickets",
       page: "/trips"
     });
     this.menuOptions.push({
       name: "Profile",
+      content: "Create/View profile",
       page: "/profile"
     });
   }
@@ -61,22 +64,27 @@ export class HomeComponent implements OnInit {
   initAdminMenu(){
     this.menuOptions.push({
       name: "Book a ticket",
+      content: "Plan your travel",
       page: "/booking"
     });
     this.menuOptions.push({
       name: "My trips",
+      content: "View your tickets",
       page: "/trips"
     });
     this.menuOptions.push({
       name: "Profile",
+      content: "Create/View profile",
       page: "/profile"
     });
     this.menuOptions.push({
       name: "Schedule a flight",
+      content: "Create flight schedules",
       page: "/schedule"
     });
     this.menuOptions.push({
       name: "Flight schedules",
+      content: "View/Modify flight schedules",
       page: "/flightshistory"
     });
   }
