@@ -19,11 +19,11 @@
             </mat-card-header>
             <mat-card-content>
                 <mat-grid-list cols="2" rowHeight="30px" gutterSize="6px" class="full-width">
-                    <mat-grid-tile>
+                    <mat-grid-tile class="cursor-default">
                         <p matTooltip="{{schedule.departureAirportName}}"><mat-icon>flight_takeoff</mat-icon></p>
                         <p class="mr-l-15-imp mat-title" matTooltip="{{schedule.departureAirportCity}}">{{schedule.departureAirportCode}}</p>
                     </mat-grid-tile>
-                    <mat-grid-tile>
+                    <mat-grid-tile class="cursor-default">
                         <p matTooltip="{{schedule.arrivalAirportName}}"><mat-icon>flight_land</mat-icon></p>
                         <p class="mr-l-15-imp mat-title" matTooltip="{{schedule.arrivalAirportCity}}">{{schedule.arrivalAirportCode}}</p>
                     </mat-grid-tile>
