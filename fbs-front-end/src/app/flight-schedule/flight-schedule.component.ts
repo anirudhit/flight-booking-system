@@ -36,8 +36,8 @@ export class FlightScheduleComponent implements OnInit {
       arrival           : [{ value: '', disabled:true }, Validators.required],
       departureTime     : ['', Validators.required],
       arrivalTime       : ['', Validators.required],
-      departureTerminal : ['', Validators.required],
-      arrivalTerminal   : ['', Validators.required],
+      departureTerminal : ['A', Validators.required],
+      arrivalTerminal   : ['B', Validators.required],
       flightFare        : ['', Validators.required],
       flightId          : ['', Validators.required]
     });
