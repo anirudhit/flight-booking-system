@@ -54,11 +54,11 @@ export class HomeComponent implements OnInit {
       content: "View your tickets",
       page: "/trips"
     });
-    this.menuOptions.push({
-      name: "Profile",
-      content: "Create/View profile",
-      page: "/profile"
-    });
+    // this.menuOptions.push({
+    //   name: "Profile",
+    //   content: "Create/View profile",
+    //   page: "/profile"
+    // });
   }
 
   initAdminMenu(){
@@ -72,11 +72,11 @@ export class HomeComponent implements OnInit {
       content: "View your tickets",
       page: "/trips"
     });
-    this.menuOptions.push({
-      name: "Profile",
-      content: "Create/View profile",
-      page: "/profile"
-    });
+    // this.menuOptions.push({
+    //   name: "Profile",
+    //   content: "Create/View profile",
+    //   page: "/profile"
+    // });
     this.menuOptions.push({
       name: "Schedule a flight",
       content: "Create flight schedules",
