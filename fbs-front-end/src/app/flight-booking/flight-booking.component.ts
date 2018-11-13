@@ -222,8 +222,8 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       return actions.payment.create({
         payment: {
           transactions: [
-            //{ amount: { total: this.subTotalFare.toFixed(2), currency: 'USD' } }
-            { amount: { total: 1, currency: 'USD' } }
+            { amount: { total: this.subTotalFare.toFixed(2), currency: 'USD' } }
+            //{ amount: { total: 1, currency: 'USD' } }
           ]
         }
       });
