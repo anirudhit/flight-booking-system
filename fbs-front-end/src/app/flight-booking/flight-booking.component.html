@@ -126,7 +126,7 @@
                   <div class="clearfix">
                       <mat-grid-list cols="5" rowHeight="50px">
                         <mat-grid-tile>{{schedule.flightCode}}</mat-grid-tile>
-                        <mat-grid-tile>
+                        <mat-grid-tile class="cursor-default">
                           <mat-card-content class="reset-mr-imp">
                             <div matTooltip="{{schedule.departureAirportName}}">
                                 {{schedule.departureAirportCity}} ({{schedule.departureAirportCode}})
@@ -136,7 +136,7 @@
                             </div>
                           </mat-card-content>
                         </mat-grid-tile>
-                        <mat-grid-tile>
+                        <mat-grid-tile class="cursor-default">
                           <mat-card-content class="reset-mr-imp">
                             <div matTooltip="{{schedule.arrivalAirportName}}">
                                 {{schedule.arrivalAirportCity}} ({{schedule.arrivalAirportCode}})
