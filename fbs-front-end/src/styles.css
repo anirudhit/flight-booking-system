@@ -10,7 +10,16 @@ body {
     background-color: #FAFAFA;
 }
 .body-wrapper{
-    padding: 8px;
+    padding: 55px 8px 8px 8px;
+}
+.app-login-register{
+    margin: -55px 0 0 0 !important;
+}
+.application-logo{
+    height: 26px !important;   
+}
+.mat-toolbar-row, .mat-toolbar-single-row{
+    height: 55px !important;
 }
 .br-t-1{
     border-top: 1px solid #cacaca;
@@ -51,6 +60,27 @@ body {
 .disp-b-imp{
     display: block !important;
 }
+
+.docs-primary-header{
+    background: #3f51b5;
+    margin: 0 -8px;
+    padding-left: 20px;
+}
+
+.docs-primary-header h1{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    padding: 28px 8px;
+}
+
+.component-page-header{
+    align-items: center;
+    display: flex;
+}
+
+
 .height-auto{
     min-height: 1px !important;
     height: auto !important;
