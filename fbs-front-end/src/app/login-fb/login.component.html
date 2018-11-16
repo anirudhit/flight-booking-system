@@ -1,0 +1,99 @@
+<mat-toolbar color="primary" class="app-login-register">
+  <span>
+    <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
+    AL Air
+  </span>
+  <span class="fill-remaining-space"></span>
+  <a mat-button routerLink="/register">Register</a>
+</mat-toolbar>
+  
+<div class="user-card-content">
+  <mat-card class="user-mat-card">
+    <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="User login">
+            <p class="mat-title mr-t-20-imp">
+                Login with Social providers
+            </p>
+            <br/>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryGoogleLogin()">Login with Google</button>
+            </p>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryFacebookLogin()">Login with Facebook</button>
+            </p>
+            <p>
+              <button mat-raised-button color="primary"
+                (click)="tryTwitterLogin()">Login with Twitter</button>
+            </p>
+          </mat-tab>
+          <mat-tab label="Admin login">
+            <form [formGroup]="loginForm">
+              <p class="mat-title mr-t-20-imp">
+                  Please login to continue
+              </p>
+              <br/>
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Email address" type="email" formControlName="email" required>
+                <mat-error *ngIf="isFieldInvalid('email')">
+                  Please enter your email address
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width-input">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="isFieldInvalid('password')">
+                  Please enter your password
+                </mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" class="mr-t-20-imp"
+                (click)="tryLogin(loginForm.value)">Login</button>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+<!-- <h1 class="header">Login with Firebase or Social Providers</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <label class="error">{{errorMessage}}</label>
+        </div>
+        <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-default">Login</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <button type="button" class="btn btn-primary btn-block" (click)="tryFacebookLogin()">Login with Facebook</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Login with Google</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <button type="button" class="btn btn-info btn-block" (click)="tryTwitterLogin()">Login with Twitter</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <p>No account yet? <a href="/register">Create an account</a></p>
+    </div>
+  </div>
+</div> -->

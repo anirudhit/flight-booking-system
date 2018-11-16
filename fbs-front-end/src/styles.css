@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { 
+    height: 100%;
+}
+body {
+    margin: 0;
+    background-color: #FAFAFA;
+}
+.body-wrapper{
+    padding: 55px 8px 8px 8px;
+}
+.app-login-register{
+    margin: -55px 0 0 0 !important;
+}
+.application-logo{
+    height: 26px !important;   
+}
+.mat-toolbar-row, .mat-toolbar-single-row{
+    height: 55px !important;
+}
+.br-t-1{
+    border-top: 1px solid #cacaca;
+}
+.br-r-1{
+    border-right: 1px solid #cacaca;
+}
+.br-b-1{
+    border-bottom: 1px solid #cacaca;
+}
+.br-l-1{
+    border-left: 1px solid #cacaca;
+}
+.clearfix{
+    clear: both;
+}
+.cursor-default {
+    cursor: default;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.disp-i{
+    display: inline;
+};
+.disp-i-imp{
+    display: inline !important;
+};
+.disp-ib{
+    display: inline-block;
+};
+.disp-ib-imp{
+    display: inline-block !important;
+};
+.disp-b{
+    display: block;
+};
+.disp-b-imp{
+    display: block !important;
+}
+
+.docs-primary-header{
+    background: #3f51b5;
+    margin: 0 -8px;
+    padding-left: 20px;
+}
+
+.docs-primary-header h1{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    padding: 28px 8px;
+}
+
+.component-page-header{
+    align-items: center;
+    display: flex;
+}
+
+
+.height-auto{
+    min-height: 1px !important;
+    height: auto !important;
+}
+.reset-mr{
+    margin: 0;
+}
+.reset-mr-imp{
+    margin: 0 !important;
+}
+.mr-t-5{
+    margin-top: 5px;
+}
+.mr-t-5-imp{
+    margin-top: 5px !important;
+}
+.mr-t-10{
+    margin-top: 10px;
+}
+.mr-t-10-imp{
+    margin-top: 10px !important;
+}
+.mr-t-15{
+    margin-top: 15px;
+}
+.mr-t-15-imp{
+    margin-top: 15px !important;
+}
+.mr-t-20{
+    margin-top: 20px;
+}
+.mr-t-20-imp{
+    margin-top: 20px !important;
+}
+
+.mr-r-5{
+    margin-right: 5px;
+}
+.mr-r-5-imp{
+    margin-right: 5px !important;
+}
+.mr-r-10{
+    margin-right: 10px;
+}
+.mr-r-10-imp{
+    margin-right: 10px !important;
+}
+.mr-r-15{
+    margin-right: 15px;
+}
+.mr-r-15-imp{
+    margin-right: 15px !important;
+}
+.mr-r-20{
+    margin-right: 20px;
+}
+
+.mr-b-5{
+    margin-bottom: 5px;
+}
+.mr-b-5-imp{
+    margin-bottom: 5px !important;
+}
+.mr-b-10{
+    margin-bottom: 10px;
+}
+.mr-b-10-imp{
+    margin-bottom: 10px !important;
+}
+.mr-b-15{
+    margin-bottom: 15px;
+}
+.mr-b-15-imp{
+    margin-bottom: 15px !important;
+}
+.mr-b-20{
+    margin-bottom: 20px;
+}
+.mr-b-20-imp{
+    margin-bottom: 20px !important;
+}
+
+.mr-l-5{
+    margin-left: 5px;
+}
+.mr-l-5-imp{
+    margin-left: 5px !important;
+}
+.mr-l-10{
+    margin-left: 10px;
+}
+.mr-l-10-imp{
+    margin-left: 10px !important;
+}
+.mr-l-15{
+    margin-left: 15px;
+}
+.mr-l-15-imp{
+    margin-left: 15px !important;
+}
+.mr-l-20{
+    margin-left: 20px;
+}
+.mr-l-20-imp{
+    margin-left: 20px !important;
+}
+
+.reset-pd{
+    padding: 0;
+}
+.reset-pd-imp{
+    padding: 0 !important;
+}
+.pd-5{
+    padding: 5px;
+}
+.pd-5-imp{
+    padding: 5px !important;
+}
+.pd-10{
+    padding: 10px;
+}
+.pd-10-imp{
+    padding: 10px !important;
+}
+.pd-15{
+    padding: 15px;
+}
+.pd-15-imp{
+    padding: 15px !important;
+}
+.pd-20{
+    padding: 20px;
+}
+.pd-20-imp{
+    padding: 20px !important;
+}
+.pd-t-5{
+    padding-top: 5px;
+}
+.pd-t-10{
+    padding-top: 10px;
+}
+.pd-t-15{
+    padding-top: 15px;
+}
+.pd-t-20{
+    padding-top: 20px;
+}
+
+.full-width{
+    width: 100%;
+}
+.muted-text{
+    color: #999999;
+    font-size: 10px;
+    font-family: 'Tahoma';
+}
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-left-imp{
+    text-align: center !important;
+}
+.text-right{
+    text-align: right;
+}
+.text-right-imp{
+    text-align: right !important;
+}
+.text-left{
+    text-align: left;
+}
+.text-left-imp{
+    text-align: left !important;
+}
+
+.ic-35{
+	font-size: 35px;
+}
+
+.fs-24{
+	font-size: 24px !important;
+}
+
+/* Styles for the header in login, register and header component */
+.application-logo {
+    margin: 0 4px 3px 0;
+    height: 35px;
+    vertical-align: middle;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+/* Styles for the user card login and register */
+.user-mat-card {
+    margin: 2em auto;
+    max-width: 400px;
+    min-height: 325px;
+    text-align: center;
+}
+.user-card-content {
+  padding: 60px 1rem;
+}
+.full-width-input {
+  width: 100%;
+}
+.fbs-card-header{
+    background-color: #3f51b5;
+    color: #FFFFFF;
+    display: flex;
+    align-content: center;
+    min-height: 50px;
+    padding-left: 10px;
+    line-height: 50px;
+}
+.profile-user-img-75{
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 75px;
+    width: 75px;
+}

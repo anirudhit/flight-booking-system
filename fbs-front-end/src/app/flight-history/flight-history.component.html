@@ -1,0 +1,69 @@
+<div class="docs-primary-header component-page-header">
+    <h1>Flight history</h1>
+</div>
+
+<div class="clearfix" *ngIf="flightSchedulesLoading">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+
+<div class="clearfix">
+    <div class="flight-history-card" *ngFor="let schedule of flightSchedules">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon class="ic-35">flight</mat-icon>
+                </div>
+                <mat-card-title class="fs-24">Flight</mat-card-title>
+                <mat-card-subtitle>{{schedule.flightCode}} ({{schedule.flightName}})</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="30px" gutterSize="6px" class="full-width">
+                    <mat-grid-tile class="cursor-default">
+                        <p matTooltip="{{schedule.departureAirportName}}"><mat-icon>flight_takeoff</mat-icon></p>
+                        <p class="mr-l-15-imp mat-title" matTooltip="{{schedule.departureAirportCity}}">{{schedule.departureAirportCode}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile class="cursor-default">
+                        <p matTooltip="{{schedule.arrivalAirportName}}"><mat-icon>flight_land</mat-icon></p>
+                        <p class="mr-l-15-imp mat-title" matTooltip="{{schedule.arrivalAirportCity}}">{{schedule.arrivalAirportCode}}</p>
+                    </mat-grid-tile>
+                    <!-- <mat-grid-tile>
+                        <p class="mat-body-strong">Departure terminal:
+                            <span class="mat-body">{{schedule.departure_terminal}}</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Arrival terminal:
+                            <span class="mat-body">{{schedule.arrival_terminal}}</span>
+                        </p>
+                    </mat-grid-tile> -->
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Departure time:
+                            <span class="mat-body">{{schedule.departure_time}}</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Arrival time:
+                            <span class="mat-body">{{schedule.arrival_time}}</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Fare:
+                            <span class="mat-body">$ {{schedule.fare}}</span>
+                        </p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p class="mat-body-strong">Duration:
+                            <span class="mat-body">{{schedule.duration}}</span>
+                        </p>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="openUpdateScheduleDialog(schedule)" class="mr-l-15-imp mr-r-15-imp">Update schedule</button>
+                <button mat-raised-button color="warn" (click)="openDeleteScheduleDialog(schedule)">Delete schedule</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+

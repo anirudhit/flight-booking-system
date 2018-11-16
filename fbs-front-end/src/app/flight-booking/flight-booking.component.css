@@ -1,0 +1,29 @@
+.mat-stepper-horizontal, .mat-stepper-vertical{
+    background-color: inherit !important;
+}
+.flight-schedule-header{
+    background-color: #3f51b5;
+    color: #FFFFFF;
+}
+.flight-booking-list{
+    float: left;
+    width: 68%;
+    padding-right: 0.5%;
+}
+.flight-trip-summary{
+    float: right;
+    width: 30%;
+    padding-left: 0.5%;
+}
+.yts-l{
+    width: 59%;
+}
+.yts-m{
+    width: 1%;
+}
+.yts-r{
+    width: 40%;
+}
+.yts-l,.yts-m,.yts-r{
+    padding-bottom: 5px;
+}

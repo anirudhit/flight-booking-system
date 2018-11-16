@@ -1,0 +1,90 @@
+<div class="docs-primary-header component-page-header">
+  <h1>Ticket details</h1>
+</div>
+
+<div class="clearfix mr-t-10-imp" *ngIf="ticketDetailsLoading">
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<div class="clearfix ticket-wrapper mr-t-20-imp" *ngIf="!ticketDetailsLoading">
+  <p class="ticket-header">
+    <span class="mat-body-strong pull-left">
+      Flight Ticket - {{ticketDetails.departure_airport.city}} to {{ticketDetails.arrival_airport.city}}
+    </span>
+    <span class="mat-body-strong pull-right">
+      <a href="javascript:window.print();"
+      matTooltip="Print ticket">
+        <mat-icon>print</mat-icon>
+      </a>
+    </span>
+  </p>
+
+  <div class="clearfix passenger-wrapper mr-b-20">
+      <div class="passenger-header">
+        <mat-grid-list cols="3" rowHeight="50px">
+          <mat-grid-tile class="mat-body-strong">Passenger's name</mat-grid-tile>
+          <mat-grid-tile class="mat-body-strong">Status</mat-grid-tile>
+          <mat-grid-tile class="mat-body-strong">Seat No.</mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div class="passenger-content mr-t-20" *ngFor="let passengerInfo of ticketDetails.passengers; let i=index">
+        <mat-grid-list cols="3" rowHeight="50px">
+          <mat-grid-tile class="mat-body-strong">{{i+1}}. {{passengerInfo.first_name}} {{passengerInfo.last_name}}</mat-grid-tile>
+          <mat-grid-tile class="mat-body-strong">Confirmed</mat-grid-tile>
+          <mat-grid-tile class="mat-body-strong">{{passengerInfo.seat_number}}</mat-grid-tile>
+        </mat-grid-list>
+      </div>
+  </div>
+
+  <div class="clearfix duratioinfo mr-b-20">
+    <p class="mat-body-strong">
+        <mat-icon>flight</mat-icon>
+        <span>&nbsp;&nbsp;Duration : {{ticketDetails.flight_schedule.duration}}</span>
+        <span>&nbsp;|&nbsp;</span>
+        <span class="mat-small">{{ticketDetails.departure_airport.name}}, {{ticketDetails.departure_airport.code}}</span>
+        <span>&nbsp;-&nbsp;</span>
+        <span class="mat-small">{{ticketDetails.arrival_airport.name}}, {{ticketDetails.arrival_airport.code}}</span>
+    </p>
+  </div>
+
+  <div class="clearfix flight-details-wrapper">
+    <table class="flight-table">
+      <tr class="flight-table-header">
+        <td class="flight-table-cell pd-10">Date</td>
+        <td class="flight-table-cell pd-10">Departure</td>
+        <td class="flight-table-cell pd-10">Arrival</td>
+        <td class="flight-table-cell pd-10">From</td>
+        <td class="flight-table-cell pd-10">To</td>
+        <td class="flight-table-cell pd-10">Flight No.</td>
+      </tr>
+      <tr>
+        <td class="pd-15">{{ticketDetails.date_of_journey | date :'mediumDate'}}</td>
+        <td class="pd-15">{{ticketDetails.flight_schedule.departure_time}}</td>
+        <td class="pd-15">{{ticketDetails.flight_schedule.arrival_time}}</td>
+        <td class="pd-15">{{ticketDetails.departure_airport.city}}</td>
+        <td class="pd-15">{{ticketDetails.arrival_airport.city}}</td>
+        <td class="pd-15">{{ticketDetails.flight_details.code}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="clearfix ticket-info mr-b-20">
+      <table>
+        <tr>
+          <td class="flight-table-cell pd-10 mat-body-strong">Booking reference number :</td>
+          <td class="flight-table-cell pd-10">{{ticketDetails.id}}</td>
+        </tr>
+        
+        <tr>
+          <td class="flight-table-cell pd-10 mat-body-strong">Payment reference number :</td>
+          <td class="flight-table-cell pd-10">{{ticketDetails.payment_id}}</td>
+        </tr>
+
+        <tr>
+          <td class="flight-table-cell pd-10 mat-body-strong">Price summary :</td>
+          <td class="flight-table-cell pd-10">$ {{subTotalFare | number : '.2'}}</td>
+        </tr>
+      </table>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
+  <a mat-button routerLink="/home">
+    <span>
+      <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
+      AL Air
+    </span>
+  </a>
+  <span class="fill-remaining-space"></span>
+  <!-- <button mat-button>About</button>
+  <button mat-button>Contact</button> -->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <!-- <a mat-menu-item routerLink="/profile">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </a> -->
+    <a mat-menu-item routerLink="/booking">
+      <mat-icon>flight</mat-icon>
+      <span>Book a ticket</span>
+    </a>
+    <a mat-menu-item routerLink="/trips">
+      <mat-icon>card_travel</mat-icon>
+      <span>My trips</span>
+    </a>
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+    
+  </mat-menu>
+  <!-- <button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button> -->
+</mat-toolbar>

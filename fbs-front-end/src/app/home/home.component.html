@@ -1,0 +1,39 @@
+<div class="docs-primary-header component-page-header">
+    <h1>Home</h1>
+</div>
+
+<a class="home-component-list" 
+    [routerLink]="tile.page"
+    *ngFor="let tile of menuOptions">
+    <mat-card class="home-list-card mat-card">
+        <mat-card-title class="mat-card-title">
+            {{tile.name}}
+        </mat-card-title>
+        <mat-card-content class="home-component-card-summary mat-card-content">
+            {{tile.content}}
+        </mat-card-content>
+    </mat-card>
+</a>
+
+<!-- <mat-card>
+    <mat-card-content>
+        <div class="home-ripple-wrapper">
+            <mat-grid-list cols="4" rowHeight="80px" gutterSize="25px">
+                <mat-grid-tile
+                    *ngFor="let tile of menuOptions">
+                    <a class="home-ripple-container mat-elevation-z4"
+                        mat-button
+                        [routerLink]="tile.page"
+                        matRipple
+                        [matRippleCentered]="centered"
+                        [matRippleDisabled]="disabled"
+                        [matRippleUnbounded]="unbounded"
+                        [matRippleRadius]="radius"
+                        [matRippleColor]="color">
+                        {{tile.name}}
+                    </a>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </mat-card-content>
+</mat-card> -->

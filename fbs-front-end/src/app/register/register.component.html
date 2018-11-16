@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <span>
+    <img src="assets/img/angular_whiteTransparent.svg" class="application-logo">
+    Hsv Air
+  </span>
+  <span class="fill-remaining-space"></span>
+  <a mat-button routerLink="/login">Login</a>
+</mat-toolbar>
+
+<div class="user-card-content">
+  <mat-card class="user-mat-card">
+    <mat-card-content>
+      <form [formGroup]="userRegisterForm">
+        <p>Please register with github username to continue</p>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Username" formControlName="userName" required>
+          <mat-error *ngIf="isFieldInvalid('userName')">
+            Please enter your username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="isFieldInvalid('userName')">
+            Please enter your password
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary"
+        (click)="checkUsername()">Register</button>
+
+        <div class="exception-message clearfix mr-t-15" *ngIf="showErrorMessage">
+          <mat-error>
+            {{errorMessage}}
+          </mat-error>
+        </div>
+
+        <div class="success-message clearfix mr-t-15" *ngIf="showHintMessage">
+          <mat-hint>
+            User registered successfully.
+          </mat-hint><a routerLink="/login">Login</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

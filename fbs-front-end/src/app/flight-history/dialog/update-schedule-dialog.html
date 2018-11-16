@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Update schedule</h1>
+<div mat-dialog-content>
+    <form [formGroup]="updateFlightScheduleForm">
+        <mat-grid-list cols="2" rowHeight="75px" gutterSize="12px">
+          <div class="clearfix">
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                <input matInput placeholder="Departure terminal" maxlength="5" formControlName="departure_terminal" required>
+                <mat-hint align="end">{{updateFlightScheduleForm.value.departure_terminal.length || 0}}/5</mat-hint>
+                <mat-error>
+                  Please enter the flight departure terminal
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                <input matInput placeholder="Arrival terminal" maxlength="5" formControlName="arrival_terminal" required>
+                <mat-hint align="end">{{updateFlightScheduleForm.value.departure_terminal.length || 0}}/5</mat-hint>
+                <mat-error>
+                    Please enter the flight arrival terminal
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          </div>
+
+          <div class="clearfix">
+              <mat-grid-tile>
+                <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                  <input matInput placeholder="Departure time" maxlength="5" formControlName="departure_time" required>
+                  <mat-hint align="end">{{updateFlightScheduleForm.value.departure_time.length || 0}}/5</mat-hint>
+                  <mat-error>
+                    Please enter the flight departure time
+                  </mat-error>
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-form-field class="full-width-input" hintLabel="Max 5 characters">
+                  <input matInput placeholder="Arrival time" maxlength="5" formControlName="arrival_time" required>
+                  <mat-hint align="end">{{updateFlightScheduleForm.value.arrival_time.length || 0}}/5</mat-hint>
+                  <mat-error>
+                      Please enter the flight arrival time
+                  </mat-error>
+                </mat-form-field>
+              </mat-grid-tile>
+            </div>
+      
+          <div class="clearfix">
+            <mat-grid-tile>
+              <mat-form-field class="full-width-input" hintLabel="Max 8 characters">
+                <input matInput placeholder="Flight fare" maxlength="8" formControlName="fare" required>
+                <mat-hint align="end">{{updateFlightScheduleForm.value.fare.length || 0}}/8</mat-hint>
+                <mat-error>
+                  Please enter the flight fare
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+          </div>
+        </mat-grid-list>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onUpdateClick()">Update</button>
+  <button mat-raised-button (click)="onCancelClick()">Cancel</button>
+</div>
