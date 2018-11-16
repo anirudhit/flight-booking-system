@@ -1,13 +1,13 @@
 {
-  "name": "nodejs-express-sequelizejs-mysql",
+  "name": "fbs-back-end",
   "version": "1.0.0",
-  "description": "nodejs-express-sequelizejs-mysql",
+  "description": "api for fbs front end",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "NodeJs-Express-SequelizeJs-MySQL"
+    "NodeJs api"
   ],
   "author": "JSA",
   "license": "ISC",
