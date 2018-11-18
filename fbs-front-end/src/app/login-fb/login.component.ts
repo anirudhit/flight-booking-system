@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth-fb/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginFbComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
     this.createForm();
   }
@@ -61,8 +63,10 @@ export class LoginFbComponent {
     .then(res => {
       this.router.navigate(['/home']);
     }, err => {
-      console.log(err);
       this.errorMessage = err.message;
+      this.snackBar.open(this.errorMessage,"Ok",{
+        duration: 2000,
+      });
     })
   }
 }
