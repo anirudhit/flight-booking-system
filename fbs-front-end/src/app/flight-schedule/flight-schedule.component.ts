@@ -80,7 +80,9 @@ export class FlightScheduleComponent implements OnInit {
   }
 
   scheduledFlightToast(message: string, action: string) {
-    this.snackBar.open(message, action);
+    this.snackBar.open(message, action,{
+      duration: 2000
+    });
   }
 
   scheduleFlight(){
@@ -103,12 +105,22 @@ export class FlightScheduleComponent implements OnInit {
 
       this.flightScheduleService.scheduleFlight(req)
       .subscribe(schedule => {
-          if(schedule){
-            this.adminFlightScheduleForm.reset();
-            this.scheduledFlightToast("Flight scheduled","Ok");
-          }else{
-            this.scheduledFlightToast("Sorry. Some error occured","Ok");
-          }
+        if(schedule){
+          this.scheduledFlightToast("Flight scheduled","Ok");
+          this.adminFlightScheduleForm.reset();
+          this.adminFlightScheduleForm.patchValue({
+            departure         : "",
+            arrival           : "",
+            departureTime     : "",
+            arrivalTime       : "",
+            departureTerminal : "A",
+            arrivalTerminal   : "B",
+            flightFare        : "",
+            flightId          : ""
+          });
+        }else{
+          this.scheduledFlightToast("Sorry. Some error occured","Ok");
+        }
       });
     }
   }
