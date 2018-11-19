@@ -90,7 +90,9 @@ export class FlightHistoryComponent implements OnInit {
   }
 
   scheduledHistoryToast(message: string, action: string) {
-    this.snackBar.open(message, action);
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 
 }
@@ -140,8 +142,8 @@ export class UpdateScheduleDialog {
     this.updateFlightScheduleForm  = this.fb.group({
       departure_time     : [this.data.departure_time, Validators.required],
       arrival_time       : [this.data.arrival_time, Validators.required],
-      departure_terminal : [this.data.departure_terminal, Validators.required],
-      arrival_terminal   : [this.data.arrival_terminal, Validators.required],
+      departure_terminal : ["B", Validators.required],
+      arrival_terminal   : ["A", Validators.required],
       fare               : [this.data.fare, Validators.required]
     });
   }
