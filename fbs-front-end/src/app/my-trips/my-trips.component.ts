@@ -196,9 +196,9 @@ export class ManageBookingDialog {
     this.manageBookingForm  = this.fb.group({
       date_of_journey : ['', Validators.required]
     });
-    this.manageBookingForm.patchValue({
-      date_of_journey : new Date(this.data.date_of_journey)
-    });
+    // this.manageBookingForm.patchValue({
+    //   date_of_journey : new Date(this.data.date_of_journey)
+    // });
   }
   
   onUpdateClick(): void {
