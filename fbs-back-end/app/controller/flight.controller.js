@@ -26,10 +26,18 @@ exports.createFlightSchedule = (req, res) => {
 //Delete a Flight schedule
 exports.deleteFlightSchedule = (req, res) => {
     let id = req.params.flightId;
-    FlightSchedule.destroy({
-        where: { id: id }
+    let deleteSchedule = {
+        delete_schedule : 1
+    };
+    // FlightSchedule.destroy({
+    //     where: { id: id }
+    // }).then(() => {
+    //     res.status(200).json({message:"The flight schedule is deleted."});
+    // });
+    FlightSchedule.update(deleteSchedule,{
+        where: {id: id}
     }).then(() => {
-        res.status(200).json({message:"The flight schedule is deleted."});
+            res.status(200).json({message:"The flight schedule is cancelled."});
     });
 };
 
@@ -49,7 +57,8 @@ exports.getSelectedFlightSchedules = (req, res) => {
     let flightScheduleIds = req.query;
     let arrival_id = "`t_flight_schedules`.`arrival_id` = " + flightScheduleIds.arrivalId;
     let departure_id = "`t_flight_schedules`.`departure_id` = " + flightScheduleIds.departureId;
-    let filerByArrivalDepartureId = " WHERE " + arrival_id + " AND " + departure_id + ";";
+    let checkCancelledSchedule = " AND `t_flight_schedules`.`delete_schedule`=0;";
+    let filerByArrivalDepartureId = " WHERE " + arrival_id + " AND " + departure_id + checkCancelledSchedule;
     let query = flightQueries.FLIGHT_SELECTED_SCHEDULE_LIST + filerByArrivalDepartureId;
     FlightSchedule.sequelize.query(query,{ type: Sequelize.QueryTypes.SELECT})
     .then(selectedScheduleList => {
