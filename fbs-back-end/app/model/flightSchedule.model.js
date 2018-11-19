@@ -38,6 +38,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         flight_id: {
             type: Sequelize.UUID
+        },
+        delete_schedule: {
+            type: Sequelize.STRING
         }
 	});
 	return FlightSchedule;
