@@ -6,6 +6,12 @@
     <mat-progress-bar mode="query"></mat-progress-bar>
 </div>
 
+<div class="clearfix mr-t-15" *ngIf="!flightSchedules.length && !historyTripsLoading">
+    <p class="flight-history-exception-message text-center">
+        There are no flights scheduled. Please schedule the flights.
+    </p>
+</div>
+
 
 <div class="clearfix">
     <div class="flight-history-card" *ngFor="let schedule of flightSchedules">
@@ -61,7 +67,7 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color="primary" (click)="openUpdateScheduleDialog(schedule)" class="mr-l-15-imp mr-r-15-imp">Update schedule</button>
-                <button mat-raised-button color="warn" (click)="openDeleteScheduleDialog(schedule)">Delete schedule</button>
+                <button mat-raised-button color="warn" (click)="openDeleteScheduleDialog(schedule)">Cancel schedule</button>
             </mat-card-actions>
         </mat-card>
     </div>
