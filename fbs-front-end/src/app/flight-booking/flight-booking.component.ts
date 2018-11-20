@@ -98,7 +98,7 @@ export class FlightBookingComponent implements OnInit,AfterViewChecked {
       cell_number: ['',Validators.required]
     });
     this.passengerFormGroup.patchValue({
-      email: this.user.email
+      email: this.user.email?this.user.email:""
     });
   }
 
